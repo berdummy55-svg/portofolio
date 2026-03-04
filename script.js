@@ -129,7 +129,7 @@ form.addEventListener("submit", function(event) {
 
 // ===== SAFE PAGE TRANSITION =====
 
-document.querySelectorAll("a[href$='.html']").forEach(link => {
+document.querySelectorAll("a[href$='.html']:not([href*='#'])").forEach(link => {
   link.addEventListener("click", function(e) {
 
     if (this.target === "_blank") return;
