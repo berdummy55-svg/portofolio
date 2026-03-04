@@ -1,177 +1,148 @@
-// ===============================
-// SAFE GLOBAL SCRIPT
-// ===============================
+// Toggle Menu
+const menuToggle = document.getElementById("menu-toggle");
+const navLinks = document.getElementById("nav-links");
+const overlay = document.getElementById("menu-overlay");
 
-document.addEventListener("DOMContentLoaded", function () {
+// Toggle menu
+menuToggle.addEventListener("click", () => {
+  navLinks.classList.toggle("active");
+  overlay.classList.toggle("active");
+  menuToggle.classList.toggle("active"); // ⬅ tambahkan ini
+});
 
-  // ===============================
-  // MENU TOGGLE
-  // ===============================
-  const menuToggle = document.getElementById("menu-toggle");
-  const navLinks = document.getElementById("nav-links");
-  const overlay = document.getElementById("menu-overlay");
-
-  if (menuToggle && navLinks) {
-    menuToggle.addEventListener("click", () => {
-      navLinks.classList.toggle("active");
-      menuToggle.classList.toggle("active");
-      if (overlay) overlay.classList.toggle("active");
-    });
-  }
-
-  if (overlay) {
-    overlay.addEventListener("click", () => {
-      navLinks.classList.remove("active");
-      overlay.classList.remove("active");
-      if (menuToggle) menuToggle.classList.remove("active");
-    });
-  }
-
-  document.querySelectorAll(".nav-links a").forEach(link => {
-    link.addEventListener("click", () => {
-      if (navLinks) navLinks.classList.remove("active");
-      if (overlay) overlay.classList.remove("active");
-      if (menuToggle) menuToggle.classList.remove("active");
-    });
+// Tutup menu jika klik link
+document.querySelectorAll(".nav-links a").forEach(link => {
+  link.addEventListener("click", () => {
+    navLinks.classList.remove("active");
+    overlay.classList.remove("active");
+    menuToggle.classList.remove("active");
   });
+});
 
+// Tutup jika klik luar
+overlay.addEventListener("click", () => {
+  navLinks.classList.remove("active");
+  overlay.classList.remove("active");
+  menuToggle.classList.remove("active");
+});
 
-  // ===============================
-  // TYPING ANIMATION (SAFE)
-  // ===============================
-  const typingElement = document.getElementById("typing");
+// AOS Init
+AOS.init({
+  duration: 1000,
+  once: true
+});
 
-  if (typingElement) {
-    const texts = ["Web Developer", "UI/UX Designer", "Freelancer"];
-    let count = 0;
-    let index = 0;
+// Typing Animation
+const texts = ["Web Developer", "UI/UX Designer", "Freelancer"];
+let count = 0;
+let index = 0;
+let currentText = "";
+let letter = "";
 
-    function type() {
-      if (count === texts.length) count = 0;
-
-      const currentText = texts[count];
-      const letter = currentText.slice(0, ++index);
-
-      typingElement.textContent = letter;
-
-      if (letter.length === currentText.length) {
-        count++;
-        index = 0;
-      }
-
-      setTimeout(type, 150);
-    }
-
-    type();
+(function type(){
+  if(count === texts.length){
+    count = 0;
   }
+  currentText = texts[count];
+  letter = currentText.slice(0, ++index);
 
+  document.getElementById("typing").textContent = letter;
+  if(letter.length === currentText.length){
+    count++;
+    index = 0;
+  }
+  setTimeout(type, 150);
+})();
 
-  // ===============================
-  // SKILL ANIMATION
-  // ===============================
-  window.addEventListener("scroll", () => {
-    document.querySelectorAll(".progress-bar").forEach(bar => {
-      const value = bar.getAttribute("data-progress");
-      if (value) bar.style.width = value;
-    });
+// Skill Animation
+window.addEventListener("scroll", () => {
+  document.querySelectorAll(".progress-bar").forEach(bar => {
+    bar.style.width = bar.getAttribute("data-progress");
   });
+});
 
-
-  // ===============================
-  // PARTICLES (SAFE CHECK)
-  // ===============================
-  if (document.getElementById("particles-js") && typeof particlesJS !== "undefined") {
-    particlesJS("particles-js", {
-      particles: {
-        number: { value: 60 },
-        color: { value: "#3b82f6" },
-        size: { value: 3 },
-        move: { speed: 2 }
-      }
-    });
+// Particles
+particlesJS("particles-js", {
+  particles: {
+    number: { value: 60 },
+    color: { value: "#3b82f6" },
+    size: { value: 3 },
+    move: { speed: 2 }
   }
+});
+
+// ===== EMAILJS PROFESSIONAL VERSION =====
+
+// GANTI DENGAN DATA KAMU
+console.log("Script loaded");
+
+emailjs.init("xXTWDV723kzcDGK1B");
 
 
-  // ===============================
-  // EMAILJS (SAFE)
-  // ===============================
-  const form = document.getElementById("contact-form");
+const form = document.getElementById("contact-form");
+const btn = document.getElementById("submit-btn");
+const btnText = btn.querySelector(".btn-text");
+const loader = btn.querySelector(".loader");
+const statusDiv = document.getElementById("form-status");
 
-  if (form && typeof emailjs !== "undefined") {
+form.addEventListener("submit", function(event) {
+  event.preventDefault();
 
-    emailjs.init("i6uk0Pr54h0CPLOCq");
+  btn.classList.remove("success", "error");
+  statusDiv.classList.remove("show");
 
-    const btn = document.getElementById("submit-btn");
-    const btnText = btn?.querySelector(".btn-text");
-    const loader = btn?.querySelector(".loader");
-    const statusDiv = document.getElementById("form-status");
+  // Loading state
+  btn.disabled = true;
+  btnText.textContent = "Mengirim...";
+  loader.style.display = "inline-block";
 
-    form.addEventListener("submit", function (event) {
-      event.preventDefault();
+  emailjs.sendForm("service_ynuxbpp", "template_hsrjkc8", this)
+    .then(() => {
 
-      btn?.classList.remove("success", "error");
-      statusDiv?.classList.remove("show");
+      btn.classList.add("success");
+      statusDiv.textContent = "Pesan berhasil dikirim 🚀";
+      statusDiv.classList.add("show");
 
-      if (btn) btn.disabled = true;
-      if (btnText) btnText.textContent = "Mengirim...";
-      if (loader) loader.style.display = "inline-block";
-
-      emailjs.sendForm("service_ynuxbpp", "template_hsrjkc8", this)
-        .then(() => {
-
-          btn?.classList.add("success");
-          if (statusDiv) {
-            statusDiv.textContent = "Pesan berhasil dikirim 🚀";
-            statusDiv.classList.add("show");
-          }
-
-          form.reset();
-
-          setTimeout(() => {
-            btn?.classList.remove("success");
-            if (btnText) btnText.textContent = "Kirim";
-            if (btn) btn.disabled = false;
-          }, 3000);
-
-        })
-        .catch(() => {
-
-          btn?.classList.add("error");
-          if (statusDiv) {
-            statusDiv.textContent = "Gagal mengirim pesan ❌";
-            statusDiv.classList.add("show");
-          }
-
-          if (btn) btn.disabled = false;
-          if (btnText) btnText.textContent = "Kirim";
-
-        })
-        .finally(() => {
-          if (loader) loader.style.display = "none";
-        });
-
-    });
-  }
-
-
-  // ===============================
-  // PAGE TRANSITION
-  // ===============================
-  document.querySelectorAll("a[href$='.html']").forEach(link => {
-    link.addEventListener("click", function (e) {
-
-      if (this.target === "_blank") return;
-
-      e.preventDefault();
-      const href = this.getAttribute("href");
-
-      document.body.classList.add("fade-out");
+      form.reset();
 
       setTimeout(() => {
-        window.location.href = href;
-      }, 300);
+        btn.classList.remove("success");
+        btnText.textContent = "Kirim";
+        btn.disabled = false;
+      }, 3000);
 
+    })
+    .catch(() => {
+
+      btn.classList.add("error");
+      statusDiv.textContent = "Gagal mengirim pesan ❌";
+      statusDiv.classList.add("show");
+
+      btn.disabled = false;
+      btnText.textContent = "Kirim";
+
+    })
+    .finally(() => {
+      loader.style.display = "none";
     });
-  });
-
 });
+
+// ===== SAFE PAGE TRANSITION =====
+
+document.querySelectorAll("a[href$='.html']").forEach(link => {
+  link.addEventListener("click", function(e) {
+
+    if (this.target === "_blank") return;
+
+    e.preventDefault();
+    const href = this.getAttribute("href");
+
+    document.body.classList.add("fade-out");
+
+    setTimeout(() => {
+      window.location.href = href;
+    }, 300);
+
+  });
+});
+
