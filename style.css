@@ -26,13 +26,13 @@ body.fade-out {
 
   /* Particle background */
   #particles-js {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    background: linear-gradient(135deg, #0b1120, #0f172a);
-  }
-  
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
   /* Navbar */
   header {
     position: fixed;
