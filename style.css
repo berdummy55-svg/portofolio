@@ -573,6 +573,7 @@ html, body {
 body {
   display: flex;
   flex-direction: column;
+    padding-top: 100px; /* tinggi navbar */
 }
 
 .project-detail {
