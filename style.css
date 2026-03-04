@@ -567,9 +567,9 @@ html {
 }
 
 html, body {
-  height: 100%;
+  overflow-x: hidden;   /* hanya cegah scroll samping */
+  overflow-y: auto;     /* izinkan scroll atas-bawah */
 }
-
 body {
   display: flex;
   flex-direction: column;
