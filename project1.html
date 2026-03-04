@@ -4,89 +4,66 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Project 1 - Company Profile</title>
-
-  <!-- Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-  <!-- AOS -->
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
-
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div id="particles-js"></div>
+  <!-- FIX MENU OVERLAY -->
+  <div class="menu-overlay" id="menu-overlay"></div>
+  <div id="particles-js"></div>
 
-<!-- Navbar sama seperti index -->
-<header>
-  <nav class="navbar">
-    <div class="logo">Portofolio</div>
-    <div class="menu-wrapper">
-      <div class="menu-toggle" id="menu-toggle">&#8942;</div>
-      <ul class="nav-links" id="nav-links">
-        <li><a href="index.html#home">Home</a></li>
-        <li><a href="index.html#about">Tentang</a></li>
-        <li><a href="index.html#skills">Skill</a></li>
-        <li><a href="index.html#portfolio">Portofolio</a></li>
-        <li><a href="index.html#contact">Kontak</a></li>
-      </ul>
-    </div>
-  </nav>
-</header>
-
-<!-- PROJECT DETAIL -->
-<section class="project-detail container">
-
-  <div class="project-grid">
-
-    <!-- GAMBAR -->
-    <div class="project-image" data-aos="fade-right">
-      <img src="https://via.placeholder.com/600x400" alt="Project 1">
-    </div>
-
-    <!-- DETAIL -->
-    <div class="project-info" data-aos="fade-left">
-      <h1>Website Company Profile</h1>
-      <p>
-        Project ini adalah website company profile modern dengan desain clean 
-        dan responsif untuk kebutuhan branding perusahaan.
-      </p>
-
-      <h3>Teknologi yang Digunakan:</h3>
-      <ul class="tech-list">
-        <li>HTML5</li>
-        <li>CSS3</li>
-        <li>JavaScript</li>
-        <li>AOS Animation</li>
-      </ul>
-
-      <div class="project-buttons">
-        <a href="#" class="btn-primary">Live Demo</a>
-        <a href="#" class="btn-primary">Source Code</a>
+  <header>
+    <nav class="navbar">
+      <div class="logo">Portofolio</div>
+      <div class="menu-wrapper">
+        <div class="menu-toggle" id="menu-toggle">&#8942;</div>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="index.html#home">Home</a></li>
+          <li><a href="index.html#about">Tentang</a></li>
+          <li><a href="index.html#skills">Skill</a></li>
+          <li><a href="index.html#portfolio">Portofolio</a></li>
+          <li><a href="index.html#contact">Kontak</a></li>
+        </ul>
       </div>
+    </nav>
+  </header>
 
-      <br>
-      <a href="index.html#portfolio" class="btn-primary">← Kembali ke Portfolio
-      </a>
-
+  <section class="project-detail container" style="padding-top:140px;">
+    <div class="project-grid">
+      <div class="project-image" data-aos="fade-right">
+        <img src="https://via.placeholder.com/600x400" alt="Project 1">
+      </div>
+      <div class="project-info" data-aos="fade-left">
+        <h1>Website Company Profile</h1>
+        <p>Project ini adalah website company profile modern dengan desain clean dan responsif untuk kebutuhan branding perusahaan.</p>
+        <h3>Teknologi yang Digunakan:</h3>
+        <ul class="tech-list">
+          <li>HTML5</li>
+          <li>CSS3</li>
+          <li>JavaScript</li>
+          <li>AOS Animation</li>
+        </ul>
+        <div class="project-buttons">
+          <a href="#" class="btn-primary">Live Demo</a>
+          <a href="#" class="btn-primary">Source Code</a>
+        </div>
+        <br><a href="index.html#portfolio" class="btn-primary">← Kembali ke Portfolio</a>
+      </div>
     </div>
+  </section>
 
-  </div>
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Nama Kamu. All Rights Reserved.</p>
+    </div>
+  </footer>
 
-</section>
-
-<footer>
-  <div class="container">
-    <p>&copy; 2026 Nama Kamu. All Rights Reserved.</p>
-  </div>
-</footer>
-
-<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-AOS.init({ duration: 1000, once: true });
-</script>
-<script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>AOS.init({ duration: 1000, once: true });</script>
+  <script src="script.js"></script>
 
 </body>
 </html>
