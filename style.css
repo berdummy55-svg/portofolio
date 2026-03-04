@@ -173,13 +173,13 @@ h2 {
    HERO
 ================================= */
 .hero {
-  min-height: 80vh;
+  min-height: 100vh;
+  padding-top: 140px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
-
 .hero-image {
   margin-bottom: 25px;
 }
