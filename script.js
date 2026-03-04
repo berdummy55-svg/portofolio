@@ -1,146 +1,177 @@
-// Toggle Menu
-const menuToggle = document.getElementById("menu-toggle");
-const navLinks = document.getElementById("nav-links");
-const overlay = document.getElementById("menu-overlay");
+// ===============================
+// SAFE GLOBAL SCRIPT
+// ===============================
 
-// Toggle menu
-menuToggle.addEventListener("click", () => {
-  navLinks.classList.toggle("active");
-  overlay.classList.toggle("active");
-  menuToggle.classList.toggle("active"); // ⬅ tambahkan ini
-});
+document.addEventListener("DOMContentLoaded", function () {
 
-// Tutup menu jika klik link
-document.querySelectorAll(".nav-links a").forEach(link => {
-  link.addEventListener("click", () => {
-    navLinks.classList.remove("active");
-    overlay.classList.remove("active");
-    menuToggle.classList.remove("active");
+  // ===============================
+  // MENU TOGGLE
+  // ===============================
+  const menuToggle = document.getElementById("menu-toggle");
+  const navLinks = document.getElementById("nav-links");
+  const overlay = document.getElementById("menu-overlay");
+
+  if (menuToggle && navLinks) {
+    menuToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+      menuToggle.classList.toggle("active");
+      if (overlay) overlay.classList.toggle("active");
+    });
+  }
+
+  if (overlay) {
+    overlay.addEventListener("click", () => {
+      navLinks.classList.remove("active");
+      overlay.classList.remove("active");
+      if (menuToggle) menuToggle.classList.remove("active");
+    });
+  }
+
+  document.querySelectorAll(".nav-links a").forEach(link => {
+    link.addEventListener("click", () => {
+      if (navLinks) navLinks.classList.remove("active");
+      if (overlay) overlay.classList.remove("active");
+      if (menuToggle) menuToggle.classList.remove("active");
+    });
   });
-});
 
-// Tutup jika klik luar
-overlay.addEventListener("click", () => {
-  navLinks.classList.remove("active");
-  overlay.classList.remove("active");
-  menuToggle.classList.remove("active");
-});
 
-// AOS Init
-AOS.init({
-  duration: 1000,
-  once: true
-});
+  // ===============================
+  // TYPING ANIMATION (SAFE)
+  // ===============================
+  const typingElement = document.getElementById("typing");
 
-// Typing Animation
-const texts = ["Web Developer", "UI/UX Designer", "Freelancer"];
-let count = 0;
-let index = 0;
-let currentText = "";
-let letter = "";
+  if (typingElement) {
+    const texts = ["Web Developer", "UI/UX Designer", "Freelancer"];
+    let count = 0;
+    let index = 0;
 
-(function type(){
-  if(count === texts.length){
-    count = 0;
+    function type() {
+      if (count === texts.length) count = 0;
+
+      const currentText = texts[count];
+      const letter = currentText.slice(0, ++index);
+
+      typingElement.textContent = letter;
+
+      if (letter.length === currentText.length) {
+        count++;
+        index = 0;
+      }
+
+      setTimeout(type, 150);
+    }
+
+    type();
   }
-  currentText = texts[count];
-  letter = currentText.slice(0, ++index);
 
-  document.getElementById("typing").textContent = letter;
-  if(letter.length === currentText.length){
-    count++;
-    index = 0;
-  }
-  setTimeout(type, 150);
-})();
 
-// Skill Animation
-window.addEventListener("scroll", () => {
-  document.querySelectorAll(".progress-bar").forEach(bar => {
-    bar.style.width = bar.getAttribute("data-progress");
+  // ===============================
+  // SKILL ANIMATION
+  // ===============================
+  window.addEventListener("scroll", () => {
+    document.querySelectorAll(".progress-bar").forEach(bar => {
+      const value = bar.getAttribute("data-progress");
+      if (value) bar.style.width = value;
+    });
   });
-});
 
-// Particles
-particlesJS("particles-js", {
-  particles: {
-    number: { value: 60 },
-    color: { value: "#3b82f6" },
-    size: { value: 3 },
-    move: { speed: 2 }
+
+  // ===============================
+  // PARTICLES (SAFE CHECK)
+  // ===============================
+  if (document.getElementById("particles-js") && typeof particlesJS !== "undefined") {
+    particlesJS("particles-js", {
+      particles: {
+        number: { value: 60 },
+        color: { value: "#3b82f6" },
+        size: { value: 3 },
+        move: { speed: 2 }
+      }
+    });
   }
-});
 
-// ===== EMAILJS PROFESSIONAL VERSION =====
 
-// GANTI DENGAN DATA KAMU
-console.log("Script loaded");
+  // ===============================
+  // EMAILJS (SAFE)
+  // ===============================
+  const form = document.getElementById("contact-form");
 
-emailjs.init("i6uk0Pr54h0CPLOCq");
+  if (form && typeof emailjs !== "undefined") {
 
-const form = document.getElementById("contact-form");
-const btn = document.getElementById("submit-btn");
-const btnText = btn.querySelector(".btn-text");
-const loader = btn.querySelector(".loader");
-const statusDiv = document.getElementById("form-status");
+    emailjs.init("i6uk0Pr54h0CPLOCq");
 
-form.addEventListener("submit", function(event) {
-  event.preventDefault();
+    const btn = document.getElementById("submit-btn");
+    const btnText = btn?.querySelector(".btn-text");
+    const loader = btn?.querySelector(".loader");
+    const statusDiv = document.getElementById("form-status");
 
-  btn.classList.remove("success", "error");
-  statusDiv.classList.remove("show");
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
 
-  // Loading state
-  btn.disabled = true;
-  btnText.textContent = "Mengirim...";
-  loader.style.display = "inline-block";
+      btn?.classList.remove("success", "error");
+      statusDiv?.classList.remove("show");
 
-  emailjs.sendForm("service_ynuxbpp", "template_hsrjkc8", this)
-    .then(() => {
+      if (btn) btn.disabled = true;
+      if (btnText) btnText.textContent = "Mengirim...";
+      if (loader) loader.style.display = "inline-block";
 
-      btn.classList.add("success");
-      statusDiv.textContent = "Pesan berhasil dikirim 🚀";
-      statusDiv.classList.add("show");
+      emailjs.sendForm("service_ynuxbpp", "template_hsrjkc8", this)
+        .then(() => {
 
-      form.reset();
+          btn?.classList.add("success");
+          if (statusDiv) {
+            statusDiv.textContent = "Pesan berhasil dikirim 🚀";
+            statusDiv.classList.add("show");
+          }
+
+          form.reset();
+
+          setTimeout(() => {
+            btn?.classList.remove("success");
+            if (btnText) btnText.textContent = "Kirim";
+            if (btn) btn.disabled = false;
+          }, 3000);
+
+        })
+        .catch(() => {
+
+          btn?.classList.add("error");
+          if (statusDiv) {
+            statusDiv.textContent = "Gagal mengirim pesan ❌";
+            statusDiv.classList.add("show");
+          }
+
+          if (btn) btn.disabled = false;
+          if (btnText) btnText.textContent = "Kirim";
+
+        })
+        .finally(() => {
+          if (loader) loader.style.display = "none";
+        });
+
+    });
+  }
+
+
+  // ===============================
+  // PAGE TRANSITION
+  // ===============================
+  document.querySelectorAll("a[href$='.html']").forEach(link => {
+    link.addEventListener("click", function (e) {
+
+      if (this.target === "_blank") return;
+
+      e.preventDefault();
+      const href = this.getAttribute("href");
+
+      document.body.classList.add("fade-out");
 
       setTimeout(() => {
-        btn.classList.remove("success");
-        btnText.textContent = "Kirim";
-        btn.disabled = false;
-      }, 3000);
+        window.location.href = href;
+      }, 300);
 
-    })
-    .catch(() => {
-
-      btn.classList.add("error");
-      statusDiv.textContent = "Gagal mengirim pesan ❌";
-      statusDiv.classList.add("show");
-
-      btn.disabled = false;
-      btnText.textContent = "Kirim";
-
-    })
-    .finally(() => {
-      loader.style.display = "none";
     });
-});
-
-// ===== SAFE PAGE TRANSITION =====
-
-document.querySelectorAll("a[href$='.html']").forEach(link => {
-  link.addEventListener("click", function(e) {
-
-    if (this.target === "_blank") return;
-
-    e.preventDefault();
-    const href = this.getAttribute("href");
-
-    document.body.classList.add("fade-out");
-
-    setTimeout(() => {
-      window.location.href = href;
-    }, 300);
-
   });
+
 });
