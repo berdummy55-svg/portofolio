@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project 2 - Startup Landing</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    .project-detail {
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      border-radius: 20px;
+      padding: 60px 30px;
+    }
+
+    .project-info h1 {
+      background: linear-gradient(to right, #3b82f6, #9333ea);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .tech-list li {
+      background: rgba(59,130,246,0.2);
+      padding: 6px 12px;
+      border-radius: 20px;
+      margin: 6px 0;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+
+<div id="particles-js"></div>
+
+<header>
+  <nav class="navbar">
+    <div class="logo">Portofolio</div>
+    <div class="menu-wrapper">
+      <div class="menu-toggle" id="menu-toggle">&#8942;</div>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html#home">Home</a></li>
+        <li><a href="index.html#about">Tentang</a></li>
+        <li><a href="index.html#skills">Skill</a></li>
+        <li><a href="index.html#portfolio">Portofolio</a></li>
+        <li><a href="index.html#contact">Kontak</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<section class="project-detail container" style="padding-top:120px;">
+
+  <div class="project-grid">
+
+    <div class="project-image" data-aos="zoom-in">
+      <img src="https://via.placeholder.com/600x400/3b82f6/ffffff" alt="Project 2">
+    </div>
+
+    <div class="project-info" data-aos="fade-up">
+      <h1>Startup Landing Page</h1>
+      <p>
+        Landing page modern untuk startup digital dengan fokus konversi,
+        animasi smooth, dan layout responsive.
+      </p>
+
+      <h3>Teknologi yang Digunakan:</h3>
+      <ul class="tech-list">
+        <li>HTML5</li>
+        <li>CSS Flexbox</li>
+        <li>JavaScript</li>
+        <li>AOS Animation</li>
+      </ul>
+
+      <div class="project-buttons">
+        <a href="#" class="btn-primary">Live Demo</a>
+        <a href="#" class="btn-primary">Source Code</a>
+      </div>
+
+      <br>
+      <a href="index.html#portfolio" class="btn-primary">← Kembali ke Portfolio</a>
+    </div>
+
+  </div>
+
+</section>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 Nama Kamu. All Rights Reserved.</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+AOS.init({ duration: 1000, once: true });
+</script>
+<script src="script.js"></script>
+
+</body>
+</html>
