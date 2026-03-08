@@ -652,7 +652,7 @@ html {
   text-decoration: none;
   border-radius: 50px;
   font-weight: 600;
-  transition: all 0.3s ease;
+  transition: 0.2s ease;
   border: 2px solid transparent;
   min-width: 120px;
   text-align: center;
@@ -665,6 +665,7 @@ nav-btn:focus {
   border-color: #2563eb;
   color: #2563eb;
   transform: translateY(-3px);
+    transition: none;
 }
 
 /* ===== TAMPILAN MOBILE ===== */
