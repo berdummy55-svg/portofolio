@@ -458,14 +458,14 @@ html {
   transition: 0.2s ease;
   z-index: 999;
 }
-.back-area:hover{
+/*.back-area:hover{
   background: transparent;
   border-left: 5px solid #1e6cff;
-}
+}*/
 .back-area:active {
   background: transparent;
   border-left: 5px solid #1e6cff;
-  transition: 0.03s ease; /* perubahan instan */
+  transition: 0.2s ease; /* perubahan instan */
 }
 
 /* ===== MANGA DETAIL PAGE ===== */
