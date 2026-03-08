@@ -58,28 +58,6 @@ if (!mangaId || !chapterNum) {
         // Contoh: manga1/chapter53/NN 53_1.jpg
         img.src = `${mangaId}/chapter${chapterNum}/${manga.prefix} ${chapterNum}_${i}.jpg`;
         img.alt = `Halaman ${i}`;
-        img.classList.add('lazy-image');
-        img.loading = 'lazy'; // muat gambar hanya saat mendekati viewport
-
-         // prioritas tinggi untuk gambar pertama
-        if (i === 1) {
-        img.fetchPriority = 'high';
-        img.src = img.dataset.src;//langsung muat
-        } else {
-          imgObserver.observe(img);
-        } 
-
-        // Intersection Observer untuk lazy loading gambar lain
-const imgObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const img = entry.target;
-      img.src = img.dataset.src;
-      imgObserver.unobserve(img);
-    }
-  });
-}, {rootMargin: '200px'}// mulai muat saat 200px sebelum masuk viewport
-  );
         
         img.onerror = () => { img.src = 'placeholder.jpg'; }; // gambar cadangan
         imagesContainer.appendChild(img);
