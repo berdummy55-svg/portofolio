@@ -115,16 +115,6 @@ const imgObserver = new IntersectionObserver((entries) => {
   }
 }
 
-     // Preload gambar pertama chapter berikutnya jika ada
-if (chapter.next) {
-  const nextChapterNum = chapter.next;
-  const preloadLink = document.createElement('link');
-  preloadLink.rel = 'preload';
-  preloadLink.as = 'image';
-  preloadLink.href = `${mangaId}/chapter${nextChapterNum}/${manga.prefix} ${nextChapterNum}_1.jpg`;
-  document.head.appendChild(preloadLink);
-}
-
 // Setelah navigasi prev/next diatur
 if (chapter.next) {
   const preloadImg = new Image();
