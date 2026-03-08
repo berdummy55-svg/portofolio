@@ -115,11 +115,11 @@ form.addEventListener("submit", function(event) {
 });
 
 // Animasi klik untuk semua project card
-document.querySelectorAll(".project-card").forEach(card => {
+/*document.querySelectorAll(".project-card").forEach(card => {
   card.addEventListener("click", function () {
     card.classList.add("clicked");
     setTimeout(() => {
       card.classList.remove("clicked");
     }, 300);
   });
-});
+});*/
