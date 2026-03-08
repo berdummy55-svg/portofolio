@@ -365,7 +365,7 @@ html {
 .project-card {
   background: #2563eb; /* biru awal */
     color: #ffffff;
-  transition: all 0.5s ease;
+  transition: all 0.6s ease;
   border: 2px solid #0b1120;
     cursor: pointer;
     outline: none;
@@ -389,7 +389,7 @@ html {
   border-color: #2563eb;
   color: #2563eb;
   box-shadow: 0 0 12px rgba(37,99,235,0.6);
-    animation: clickAnim 0.3s ease;
+    animation: clickAnim 0.6s ease;
 }
 @keyframes clickAnim {
   0% { transform: scale(1); }
@@ -456,7 +456,7 @@ html {
   background: #1e6cff;
   border-left: 5px solid #1e6cff;
   z-index: 999;
-    transituon: all 0.3s ease;
+    transition: all 0.3s ease;
 }
 .back-area:hover{
   background: transparent;
