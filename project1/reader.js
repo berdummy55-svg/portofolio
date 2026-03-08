@@ -58,11 +58,10 @@ if (!mangaId || !chapterNum) {
         // Contoh: manga1/chapter53/NN 53_1.jpg
         img.src = `${mangaId}/chapter${chapterNum}/${manga.prefix} ${chapterNum}_${i}.jpg`;
         img.alt = `Halaman ${i}`;
-        
         img.onerror = () => { img.src = 'placeholder.jpg'; }; // gambar cadangan
         imagesContainer.appendChild(img);
       }
-      
+
        // Link kembali ke halaman detail manga (dinamis)
       document.getElementById('nav-home').href = `${mangaId}/${mangaId}.html`; // Sesuaikan jika file detail ada di folder
 
