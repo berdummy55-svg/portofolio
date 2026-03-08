@@ -376,21 +376,22 @@ html {
 }
 
 /* Hover */
-/*.project-card:hover {
+.project-card:hover {
   transform: translateY(-6px) scale(1.02)
     background: transparent;
     border-color: #2563eb;
     color: #2553eb;
-}*/
+    animation: clickAnim 0.3s ease ease;
+}
 
 /* Saat diklik → outline */
-.project-card.clicked {
+/*.project-card.clicked {
   background: transparent;
   border-color: #2563eb;
   color: #2563eb;
   box-shadow: 0 0 12px rgba(37,99,235,0.6);
     animation: clickAnim 0.3s ease;
-}
+}*/
 @keyframes clickAnim {
   0% { transform: scale(1); }
   50% { transform: scale(0.92); }
@@ -458,14 +459,14 @@ html {
     transition: all 0.3s ease; 
   z-index: 999;
 }
-/*.back-area:hover{
-  background: transparent;
-  border-left: 5px solid #1e6cff;
-}*/
-.back-area:active {
+ .back-area:hover{
   background: transparent;
   border-left: 5px solid #1e6cff;
 }
+/*.back-area:active {
+  background: transparent;
+  border-left: 5px solid #1e6cff;
+}*/
 
 /* ===== MANGA DETAIL PAGE ===== */
 .manga-detail-container {
