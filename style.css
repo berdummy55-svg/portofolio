@@ -462,6 +462,11 @@ html {
   background: transparent;
   border-left: 5px solid #1e6cff;
 }
+.back-area:active {
+  background: transparent;
+  border-left: 5px solid #1e6cff;
+  transition: none; /* perubahan instan */
+}
 
 /* ===== MANGA DETAIL PAGE ===== */
 .manga-detail-container {
