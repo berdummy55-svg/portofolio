@@ -455,17 +455,13 @@ html {
   height: 100vh;
   background: #1e6cff;
   border-left: 5px solid #1e6cff;
-  transition: all 0.3s ease;
+  transition: 0.3s ease;
   z-index: 999;
 }
-.back-area:hover{
+.back-area:active {
   background: transparent;
   border-left: 5px solid #1e6cff;
-}
-.back-area.clicked {
-  background: transparent;
-  border-left: 5px solid #1e6cff;
-    animation: clickAnim 0.3s ease;
+  transition: none; /* perubahan instan */
 }
 
 /* ===== MANGA DETAIL PAGE ===== */
