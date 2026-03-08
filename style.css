@@ -456,6 +456,7 @@ html {
   background: #1e6cff;
   border-left: 5px solid #1e6cff;
   z-index: 999;
+    transituon: all 0.1s ease;
 }
 .back-area:hover{
   background: transparent;
