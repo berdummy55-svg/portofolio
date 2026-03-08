@@ -377,10 +377,10 @@ html {
 
 /* Hover */
 .project-card:hover {
-  transform: translateY(-6px) scale(1.02)
-    background: transparent;
-    border-color: #2563eb;
-    color: #2563eb;
+  transform: translateY(-6px) scale(1.02);
+  background: transparent;
+  border-color: #2563eb;
+  color: #2563eb;
 }
 
 /* Saat diklik → outline */
