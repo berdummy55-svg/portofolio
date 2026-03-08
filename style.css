@@ -376,12 +376,12 @@ html {
 }
 
 /* Hover */
-.project-card:hover {
+/*.project-card:hover {
   transform: translateY(-6px) scale(1.02)
     background: transparent;
     border-color: #2563eb;
     color: #2553eb;
-}
+}*/
 
 /* Saat diklik → outline */
 .project-card.clicked {
@@ -458,10 +458,10 @@ html {
     transition: all 0.3s ease; 
   z-index: 999;
 }
-.back-area:hover{
+/*.back-area:hover{
   background: transparent;
   border-left: 5px solid #1e6cff;
-}
+}*/
 .back-area:active {
   background: transparent;
   border-left: 5px solid #1e6cff;
