@@ -457,6 +457,10 @@ html {
   border-left: 5px solid #1e6cff;
   z-index: 999;
 }
+.back-area:hover{
+  background: transparent;
+  border-left: 5px solid #1e6cff;
+}
 .back-area:active {
   background: transparent;
   border-left: 5px solid #1e6cff;
