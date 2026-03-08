@@ -382,21 +382,6 @@ html {
   border-color: #2563eb;
   color: #2563eb;
 }
-
-/* Saat diklik → outline */
-/*.project-card.clicked {
-  background: transparent;
-  border-color: #2563eb;
-  color: #2563eb;
-  box-shadow: 0 0 12px rgba(37,99,235,0.6);
-    animation: clickAnim 0.3s ease;
-}*/
-/*@keyframes clickAnim {
-  0% { transform: scale(1); }
-  50% { transform: scale(0.92); }
-  100% { transform: scale(1); }
-}*/
-
  /*Manga*/
 .manga-container {
       padding-top: 140px;
@@ -449,23 +434,22 @@ html {
 /* AREA TOMBOL KEMBALI*/
 .back-area{
   position: fixed;
-  top: 70px;
+  top: 68px;
   right: 0;
   width: 55px;
   height: 100vh;
   background: #1e6cff;
   border-left: 5px solid #1e6cff;
-    transition: all 0.1s ease; 
   z-index: 999;
 }
- .back-area:hover{
-  background: transparent;
-  border-left: 5px solid #1e6cff;
-}
-/*.back-area:active {
+ /*.back-area:hover{
   background: transparent;
   border-left: 5px solid #1e6cff;
 }*/
+.back-area:active {
+  background: transparent;
+  border-left: 5px solid #1e6cff;
+}
 
 /* ===== MANGA DETAIL PAGE ===== */
 .manga-detail-container {
