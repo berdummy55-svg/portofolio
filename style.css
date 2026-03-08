@@ -365,7 +365,7 @@ html {
 .project-card {
   background: #2563eb; /* biru awal */
     color: #ffffff;
-  transition: all 0.3s ease;
+  transition: all 0.5s ease;
   border: 2px solid #0b1120;
     cursor: pointer;
     outline: none;
@@ -419,7 +419,7 @@ html {
   display: flex;
     justify-content: center;
     align-items: center;
-  transition: all 0.3s ease;
+  transition: all 0.5s ease;
     cursor: pointer;
     outline: none; /* Hilangkan garis biru default browser */
 }
@@ -456,16 +456,16 @@ html {
   background: #1e6cff;
   border-left: 5px solid #1e6cff;
   z-index: 999;
-    transituon: all 0.1s ease;
+    transituon: all 0.3s ease;
 }
 .back-area:hover{
   background: transparent;
   border-left: 5px solid #1e6cff;
 }
-.back-area:active {
+/*.back-area:active {
   background: transparent;
   border-left: 5px solid #1e6cff;
-}
+}*/
 
 /* ===== MANGA DETAIL PAGE ===== */
 .manga-detail-container {
