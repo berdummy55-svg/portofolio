@@ -426,11 +426,7 @@ html {
     .manga-card:hover {
       transform: translateY(-6px) scale(1.03);
       border-color: #2563eb;
-    }
-    .manga-card:active {
-      transform: scale(0.95);
-        border-color: #2563eb;
-    }
+    } 
 
 /* gambar di dalam card */
 .manga-card img {
@@ -441,7 +437,7 @@ html {
 }
 
     /* Responsive HP */
-    @media (max-width: 768px) {
+    @media (max-width: 480px) {
       .manga-container {
         grid-template-columns: 1fr;
           margin-right: 60px;
@@ -455,7 +451,7 @@ html {
   position: fixed;
   top: 70px;
   right: 0;
-  width: 50px;
+  width: 55px;
   height: 100vh;
   background: #1e6cff;
   border-left: 5px solid #1e6cff;
@@ -464,10 +460,6 @@ html {
 }
 .back-area:hover{
   background: transparent;
-  border-left: 5px solid;
-}
-.back-area:active{
-    background: transparent;
   border-left: 5px solid #1e6cff;
 }
 
