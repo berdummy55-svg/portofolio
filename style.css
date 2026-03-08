@@ -437,6 +437,7 @@ html {
   width: 55px;
   height: 100vh;
   background: #1e6cff;
+    transition: 0.2s;
   border-left: 5px solid #1e6cff;
   z-index: 999;
 }
@@ -444,10 +445,6 @@ html {
   background: transparent;
   border-left: 5px solid #1e6cff;
  }
-/*.back-area:active {
-  background: transparent;
-  border-left: 5px solid #1e6cff;
-}*/
 
 /* ===== MANGA DETAIL PAGE ===== */
 .manga-detail-container {
