@@ -55,15 +55,16 @@ if (!mangaId || !chapterNum) {
       for (let i = 1; i <= chapter.pages; i++) {
         const img = document.createElement('img');
         // Path dinamis sesuai mangaId, chapterNum, dan nomor halaman
-        // Contoh: manga1/chapter53/NN 53_1.jpg
         img.src = `${mangaId}/chapter${chapterNum}/${manga.prefix} ${chapterNum}_${i}.jpg`;
         img.alt = `Halaman ${i}`;
+        // Prioritas tinggi untuk halaman pertama
+        if (i === 1) img.fetchPriority = 'high';
         img.onerror = () => { img.src = 'placeholder.jpg'; }; // gambar cadangan
         imagesContainer.appendChild(img);
       }
 
-       // Link kembali ke halaman detail manga (dinamis)
-      document.getElementById('nav-home').href = `${mangaId}/${mangaId}.html`; // Sesuaikan jika file detail ada di folder
+      // Link kembali ke halaman detail manga (dinamis)
+      document.getElementById('nav-home').href = `${mangaId}/${mangaId}.html`;
 
       // Navigasi prev
       const prevLink = document.getElementById('prev-chapter');
@@ -83,6 +84,12 @@ if (!mangaId || !chapterNum) {
         nextLink.href = `reader.html?manga=${mangaId}&chapter=${chapter.next}`;
         nextLink.style.opacity = '1';
         nextLink.style.pointerEvents = 'auto';
+
+        // --- PRELOAD CHAPTER BERIKUTNYA ---
+        // Preload gambar pertama chapter berikutnya agar lebih cepat saat navigasi
+        const preloadImg = new Image();
+        preloadImg.src = `${mangaId}/chapter${chapter.next}/${manga.prefix} ${chapter.next}_1.jpg`;
+        preloadImg.loading = 'eager'; // muat segera
       } else {
         nextLink.href = '#';
         nextLink.style.opacity = '0.5';
