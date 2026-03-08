@@ -120,6 +120,6 @@ document.querySelectorAll(".project-card").forEach(card => {
     card.classList.add("clicked");
     setTimeout(() => {
       card.classList.remove("clicked");
-    }, 300);
+    }, 600);
   });
 });
