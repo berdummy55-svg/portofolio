@@ -84,6 +84,13 @@ const imgObserver = new IntersectionObserver((entries) => {
         img.onerror = () => { img.src = 'placeholder.jpg'; }; // gambar cadangan
         imagesContainer.appendChild(img);
       }
+
+      // Setelah navigasi prev/next diatur
+if (chapter.next) {
+  const preloadImg = new Image();
+  preloadImg.src = `${mangaId}/chapter${chapter.next}/${manga.prefix} ${chapter.next}_1.jpg`;
+  preloadImg.loading = 'eager';
+}
       
        // Link kembali ke halaman detail manga (dinamis)
       document.getElementById('nav-home').href = `${mangaId}/${mangaId}.html`; // Sesuaikan jika file detail ada di folder
@@ -113,11 +120,4 @@ const imgObserver = new IntersectionObserver((entries) => {
       }
     }
   }
-}
-
-// Setelah navigasi prev/next diatur
-if (chapter.next) {
-  const preloadImg = new Image();
-  preloadImg.src = `${mangaId}/chapter${chapter.next}/${manga.prefix} ${chapter.next}_1.jpg`;
-  preloadImg.loading = 'eager';
 }
