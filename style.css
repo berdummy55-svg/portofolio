@@ -365,7 +365,7 @@ html {
 .project-card {
   background: #2563eb;
   color: #ffffff;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
   border: 2px solid #0b1120;
   cursor: pointer;
   outline: none;
@@ -380,14 +380,6 @@ html {
   background: transparent;
   border-color: #2563eb;
   color: #2563eb;
-}
-/* Efek saat diklik (active) */
-.project-card:active {
-  transform: scale(0.80);  /* sedikit mengecil */
-  background: transparent;
-  border-color: #2563eb;
-  color: #2563eb;
-  transition: all 0.1s ease;  /* responsif lebih cepat */
 }
 
  /*Manga*/
@@ -442,6 +434,7 @@ html {
 /* AREA TOMBOL KEMBALI*/
 .back-area{
   position: fixed;
+    transition: 0.1s ease;
   top: 68px;
   right: 0;
   width: 55px;
@@ -454,10 +447,10 @@ html {
   background: transparent;
   border-left: 5px solid #1e6cff;
  }
-.back-area:active {
+/*.back-area:active {
   background: transparent;
   border-left: 5px solid #1e6cff;
-}
+}*/
 
 /* ===== MANGA DETAIL PAGE ===== */
 .manga-detail-container {
