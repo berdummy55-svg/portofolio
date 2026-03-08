@@ -380,8 +380,6 @@ html {
   transform: translateY(-6px) scale(1.02)
     background: transparent;
     border-color: #2563eb;
-    color: #2553eb;
-    animation: clickAnim 0.3s ease ease;
 }
 
 /* Saat diklik → outline */
@@ -392,11 +390,11 @@ html {
   box-shadow: 0 0 12px rgba(37,99,235,0.6);
     animation: clickAnim 0.3s ease;
 }*/
-@keyframes clickAnim {
+/*@keyframes clickAnim {
   0% { transform: scale(1); }
   50% { transform: scale(0.92); }
   100% { transform: scale(1); }
-}
+}*/
 
  /*Manga*/
 .manga-container {
