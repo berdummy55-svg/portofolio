@@ -365,7 +365,6 @@ html {
 .project-card {
   background: #2563eb;
   color: #ffffff;
-  transition: all 0.2s ease;
   border: 2px solid #0b1120;
   cursor: pointer;
   outline: none;
@@ -375,8 +374,7 @@ html {
   border-radius: 15px;
 }
 /* Efek hover */
-.project-card:hover {
-  transform: translateY(-4px) scale(1.02);  /* sedikit terangkat */
+.project-card:hover {  /* sedikit terangkat */
   background: transparent;
   border-color: #2563eb;
   color: #2563eb;
@@ -434,7 +432,6 @@ html {
 /* AREA TOMBOL KEMBALI*/
 .back-area{
   position: fixed;
-    transition: 0.1s ease;
   top: 68px;
   right: 0;
   width: 55px;
