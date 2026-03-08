@@ -124,3 +124,25 @@ document.querySelectorAll(".project-card").forEach(card => {
   });
 });
 
+// Animasi klik untuk back-area (dengan tunda navigasi)
+document.querySelectorAll('.back-area').forEach(area => {
+  area.addEventListener('click', function(e) {
+    // Jika sudah memiliki class clicked, mungkin ganda? kita cegah
+    if (this.classList.contains('clicked')) return;
+
+    // Tambah class clicked
+    this.classList.add('clicked');
+
+    // Simpan href tujuan
+    const href = this.getAttribute('href');
+
+    // Cegah navigasi langsung
+    e.preventDefault();
+
+    // Setelah animasi selesai (300ms), pindah halaman
+    setTimeout(() => {
+      window.location.href = href;
+    }, 300);
+  });
+});
+
