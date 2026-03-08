@@ -363,25 +363,35 @@ html {
 
 /* ===== PROJECT CARD BLUE STYLE ===== */
 .project-card {
-  background: #2563eb; /* biru awal */
-    color: #ffffff;
+  background: #2563eb;
+  color: #ffffff;
   transition: all 0.3s ease;
   border: 2px solid #0b1120;
-    cursor: pointer;
-    outline: none;
-    text-decoration: none;
-    display: block;
-    padding: 15px;
-    border-radius: 15px;
+  cursor: pointer;
+  outline: none;
+  text-decoration: none;
+  display: block;
+  padding: 15px;
+  border-radius: 15px;
 }
 
-/* Hover */
+/* Efek hover */
 .project-card:hover {
-  transform: scale(0.8);
+  transform: translateY(-4px) scale(1.02);  /* sedikit terangkat */
   background: transparent;
   border-color: #2563eb;
   color: #2563eb;
 }
+
+/* Efek saat diklik (active) */
+.project-card:active {
+  transform: scale(0.80);  /* sedikit mengecil */
+  background: transparent;
+  border-color: #2563eb;
+  color: #2563eb;
+  transition: all 0.1s ease;  /* responsif lebih cepat */
+}
+
  /*Manga*/
 .manga-container {
       padding-top: 140px;
@@ -442,10 +452,10 @@ html {
   border-left: 5px solid #1e6cff;
   z-index: 999;
 }
- /*.back-area:hover{
+ .back-area:hover{
   background: transparent;
   border-left: 5px solid #1e6cff;
-}*/
+ }
 .back-area:active {
   background: transparent;
   border-left: 5px solid #1e6cff;
@@ -466,6 +476,7 @@ html {
   display: grid;
   grid-template-columns: minmax(350px, 450px) 1fr; /* cover besar, info fleksibel */
   gap: 60px;
+    
   background: #1e293b;
   border-radius: 30px;
   padding: 50px;
