@@ -377,7 +377,7 @@ html {
 
 /* Hover */
 .project-card:hover {
-  transform: translateY(-6px) scale(1.02);
+  transform: scale(0.8);
   background: transparent;
   border-color: #2563eb;
   color: #2563eb;
@@ -455,7 +455,7 @@ html {
   height: 100vh;
   background: #1e6cff;
   border-left: 5px solid #1e6cff;
-    transition: all 0.3s ease; 
+    transition: all 0.1s ease; 
   z-index: 999;
 }
  .back-area:hover{
