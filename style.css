@@ -365,7 +365,7 @@ html {
 .project-card {
   background: #2563eb; /* biru awal */
     color: #ffffff;
-  transition: all 0.4s ease;
+  transition: all 0.3s ease;
   border: 2px solid #0b1120;
     cursor: pointer;
     outline: none;
@@ -455,7 +455,7 @@ html {
   height: 100vh;
   background: #1e6cff;
   border-left: 5px solid #1e6cff;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
   z-index: 999;
 }
 .back-area:hover{
@@ -465,7 +465,7 @@ html {
 .back-area.clicked {
   background: transparent;
   border-left: 5px solid #1e6cff;
-  transition: 0.2s ease, background 0.2s ease;
+    animation: clickAnim 0.3s ease;
 }
 
 /* ===== MANGA DETAIL PAGE ===== */
