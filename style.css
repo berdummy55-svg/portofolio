@@ -432,7 +432,7 @@ html {
 /* AREA TOMBOL KEMBALI*/
 .back-area{
   position: fixed;
-    transition: none;
+    transition: 0.1s;
   top: 68px;
   right: 0;
   width: 55px;
