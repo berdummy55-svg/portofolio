@@ -432,6 +432,7 @@ html {
 /* AREA TOMBOL KEMBALI*/
 .back-area{
   position: fixed;
+    transition: none;
   top: 68px;
   right: 0;
   width: 55px;
@@ -440,7 +441,7 @@ html {
   border-left: 5px solid #1e6cff;
   z-index: 999;
 }
- .back-area:hover {
+ .back-area: hover {
   background: transparent;
   border-left: 5px solid #1e6cff;
  }
