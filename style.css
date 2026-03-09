@@ -374,7 +374,7 @@ html {
   border-radius: 15px;
 }
 /* Efek hover */
-.project-card:hover {  /* sedikit terangkat */
+.project-card:hover {
   background: transparent;
   border-color: #2563eb;
   color: #2563eb;
@@ -430,18 +430,18 @@ html {
     }
 
 /* AREA TOMBOL KEMBALI*/
-.back-area{
+.back-area {
   position: fixed;
   top: 68px;
   right: 0;
   width: 55px;
   height: 100vh;
   background: #1e6cff;
-    transition: 0.2s;
+    transition: none;
   border-left: 5px solid #1e6cff;
   z-index: 999;
 }
- .back-area:hover{
+ .back-area: hover{
   background: transparent;
   border-left: 5px solid #1e6cff;
  }
