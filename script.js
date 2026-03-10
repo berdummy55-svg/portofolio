@@ -128,7 +128,7 @@ function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 async function navigateWithDelay(url) {
-  document.body.classList.add('project-card'​, 'back-area');
-  await sleep(900); // Menunda 900ms
+  document.body.classList.add('project-card', 'back-area');
+  await sleep(500); // Menunda 500ms
   window.location.href = url;
 }
