@@ -123,3 +123,18 @@ document.querySelectorAll(".project-card, .back-area").forEach(card => {
     }, 300);
   });
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Pilih semua link yang berada di dalam .project-card atau .back-area
+    const links = document.querySelectorAll('.project-card a, .back-area a');
+    links.forEach(link => {
+        link.addEventListener('click', function(event) {
+            event.preventDefault(); // Cegah navigasi langsun
+            const targetUrl = this.href; // Simpan URL tujuan
+            // Tunda navigasi 3 detik
+            setTimeout(() => {
+                window.location.href = targetUrl;
+            }, 1000);
+        });
+    });
+});
