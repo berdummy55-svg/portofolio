@@ -129,6 +129,6 @@ function sleep(ms) {
 }
 async function navigateWithDelay(url) {
   document.body.classList.add('project-card'​, 'back-area');
-  await sleep(900); // Menunda 500ms
+  await sleep(900); // Menunda 900ms
   window.location.href = url;
-}/
+}
