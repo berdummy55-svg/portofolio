@@ -15,6 +15,7 @@ const mangaData = {
       55: { prev: 54, next: 56, pages: 26 },
       56: { prev: 55, next: 57, pages: 26 },
       57: { prev: 56, next: 58, pages: 26 }, 
+      58: { prev: 57, next: 59, pages: 26 }
     }
   },
   manga2: {
