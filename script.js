@@ -114,8 +114,9 @@ form.addEventListener("submit", function(event) {
     });
 });
 
+// ✅ PASTIKAN HANYA ADA SATU BLOK INI
 document.addEventListener("click", function(e) {
-  const clicked = e.target.closest("a.project-card");
+  const clicked = e.target.closest("a.back-area, a.project-card");
   if (clicked) {
     e.preventDefault(); 
     e.stopPropagation();
@@ -125,11 +126,3 @@ document.addEventListener("click", function(e) {
     }, 300);
   }
 });
-
-  document.getElementById("metu").addEventListener('click', function(event) {
-    event.preventDefault();
-    const targetUrl = this.href;
-    setTimeout(function() {
-      window.location.href = targetUrl;
-    }, 300);
-  });
