@@ -125,3 +125,11 @@ document.addEventListener("click", function(e) {
     }, 300);
   }
 });
+
+  document.getElementById("metu").addEventListener('click', function(event) {
+    event.preventDefault();
+    const targetUrl = this.href;
+    setTimeout(function() {
+      window.location.href = targetUrl;
+    }, 300);
+  });
