@@ -124,11 +124,14 @@ document.querySelectorAll(".project-card, .back-area").forEach(card => {
   });
 });
 
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
-async function navigateWithDelay(url) {
-  document.body.classList.add('project-card', 'back-area');
-  await sleep(500); // Menunda 500ms
-  window.location.href = url;
-}
+document.addEventListener("click", function(e) {
+  // Cari elemen terdekat yang matching selector
+  const clicked = e.target.closest("a.project-card, a.back-area");
+  if (clicked) {
+  e.preventDefault();
+    const target = clicked.href;
+    setTimeout(function() {
+      window.location.href = target;
+    }, 300);
+  }
+});
