@@ -115,7 +115,7 @@ form.addEventListener("submit", function(event) {
 });
 
 document.addEventListener("click", function(e) {
-  const clicked = e.target.closest("a.project-card, a.back-area");
+  const clicked = e.target.closest("a.project-card");
   if (clicked) {
     e.preventDefault(); 
     e.stopPropagation();
