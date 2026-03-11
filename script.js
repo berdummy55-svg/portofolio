@@ -114,24 +114,14 @@ form.addEventListener("submit", function(event) {
     });
 });
 
-// Animasi klik untuk semua project card
-document.querySelectorAll(".project-card, .back-area").forEach(card => {
-  card.addEventListener("click", function () {
-    card.classList.add("clicked");
-    setTimeout(() => {
-      card.classList.remove("clicked");
-    }, 300);
-  });
-});
-
 document.addEventListener("click", function(e) {
-  // Cari elemen terdekat yang matching selector
   const clicked = e.target.closest("a.project-card, a.back-area");
   if (clicked) {
-  e.preventDefault();
-    const target = clicked.href;
-    setTimeout(function() {
-      window.location.href = target;
+    e.preventDefault(); 
+    e.stopPropagation();
+    clicked.classList.add("clicked");
+    setTimeout(() => {
+      window.location.href = clicked.getAttribute('href');
     }, 300);
   }
 });
