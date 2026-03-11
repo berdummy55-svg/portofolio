@@ -462,10 +462,7 @@ transition: all 0.3s ease;
   background: transparent;
   border-left: 5px solid #1e6cff;
 }
-.back-aera.clicked {
-  background: transparent;
-  border-left: 5px solid #1e6cff;
-}
+.back-area:active {outline: none;}
 
 /* ===== MANGA DETAIL PAGE ===== */
 .manga-detail-container {
