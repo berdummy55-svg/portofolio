@@ -5,7 +5,7 @@ function getQueryParam(param) {
 }
 
 // Base URL​ dari cloudflare
-const BASE_URL = "https://pub-e8931c5705eb48b4b09534f5efbeacb9.r2.dev/manga-gallery";
+const BASE_URL = "https://pub-e8931c5705eb48b4b09534f5efbeacb9.r2.dev";
 
 // Data manga
 const mangaData = {
