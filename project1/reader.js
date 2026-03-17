@@ -4,6 +4,9 @@ function getQueryParam(param) {
   return urlParams.get(param);
 }
 
+// Base URL​ dari cloudflare
+const BASE_URL = "https://pub-e8931c5705eb48b4b09534f5efbeacb9.r2.dev/manga-gallery";
+
 // Data manga
 const mangaData = {
   manga1: {
@@ -59,9 +62,11 @@ else {
       for (let i = 1; i <= chapter.pages; i++) {
         const img = document.createElement('img');
         // Path dinamis sesuai mangaId, chapterNum, dan nomor halaman
-        img.src = `${mangaId}/chapter${chapterNum}/${manga.prefix} ${chapterNum}_${i}.jpg`;
+        img.src = `${BASE_URL}/${mangaId}/chapter${chapterNum}/${manga.prefix} ${chapterNum}_${i}.jpg`;
         img.alt = `Halaman ${i}`;
         // Prioritas tinggi untuk halaman pertama
+        img.src = img.src.replace(/\s+/g, ' '); // Normalize spasi
+        img.alt = `Halaman ${i}`;
         if (i === 1) img.fetchPriority = 'high';
         img.onerror = () => { img.src = 'placeholder.jpg'; }; // gambar cadangan
         imagesContainer.appendChild(img);
@@ -93,7 +98,8 @@ else {
         // --- PRELOAD CHAPTER BERIKUTNYA ---
         // Preload gambar pertama chapter berikutnya agar lebih cepat saat navigasi
         const preloadImg = new Image();
-        preloadImg.src = `${mangaId}/chapter${chapter.next}/${manga.prefix} ${chapter.next}_1.jpg`;
+        preloadImg.src = `${BASE_URL}/${mangaId}/chapter${chapter.next}/${manga.prefix} ${chapter.next}_1.jpg`;
+        preloadImg.src = preloadImg.src.replace(/\s+/g, ' ');
         preloadImg.loading = 'eager'; // muat segera
       } 
       else {
