@@ -8,6 +8,7 @@
     background: #0b1120;
     color: #e2e8f0;
     overflow-x: hidden;
+      max-width: 100%;
   transition: opacity 0.9s ease;
   }
 
@@ -631,6 +632,7 @@ transition: all 0.3s ease;
   width: 100%;
     max-width: 100%;
   height: auto;
+    display: block;
 }
 .chapter-navigation {
   display: flex;
@@ -664,9 +666,9 @@ nav-btn:focus {
 /* ===== TAMPILAN MOBILE ===== */
 @media (max-width: 768px) {
   .reader-container {
-    margin-right: 60px;       /* area back lebih kecil */
-    margin-left: 15px;
+    margin: 0;       /* area back lebih kecil */
     padding-top: 120px;
+      width: 100%;
   }
   .chapter-title h1 {
     font-size: 1.5rem;
