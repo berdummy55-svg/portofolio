@@ -607,7 +607,6 @@ transition: all 0.3s ease;
 .reader-container {
   padding-top: 140px;
   padding-bottom: 60px;
-  margin-right: 90px;        /* ruang untuk back-area */
   margin-left: 20px;
   min-height: 100vh;
   max-width: 1000px;
@@ -631,7 +630,6 @@ transition: all 0.3s ease;
 }
 .chapter-images img {
   width: 100%;
-  max-width: 800px;          /* batasi lebar agar nyaman dibaca */
   height: auto;
 }
 .chapter-navigation {
