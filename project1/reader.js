@@ -116,3 +116,21 @@ else {
     }
   }
 }
+
+// Fungsi untuk menghitung dan mengupdate progress bar
+function updateReadingProgress() {
+  const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const scrolled = (winScroll / height) * 100;
+
+  const progressBar = document.getElementById('readingProgressBar');
+  if (progressBar) {
+    progressBar.style.width = scrolled + '%';
+  }
+}
+
+// Panggil fungsi saat scroll
+window.addEventListener('scroll', updateReadingProgress);
+
+// Panggil sekali saat halaman dimuat untuk mengatur posisi awal
+window.addEventListener('load', updateReadingProgress);
