@@ -607,11 +607,9 @@ transition: all 0.3s ease;
 .reader-container {
   padding-top: 140px;
   padding-bottom: 60px;
-  margin-left: 20px;
+  margin: 0;
   min-height: 100vh;
-  max-width: 1000px;
-  margin-left: auto;         /* agar konten tetap di tengah */
-  margin-right: auto;
+  max-width: none;        /* agar konten tetap di tengah */
 }
 .chapter-title {
   text-align: center;
@@ -627,9 +625,11 @@ transition: all 0.3s ease;
   flex-direction: column;
   align-items: center;
     gap: 3px;
+    width: 100%;
 }
 .chapter-images img {
   width: 100%;
+    max-width: 100%;
   height: auto;
 }
 .chapter-navigation {
