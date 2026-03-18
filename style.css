@@ -700,7 +700,7 @@ nav-btn:focus {
   left: 0;
   width: 100%;
   height: 8px;
-  background: transparent; /* latar belakang abu-abu gelap */
+  background: #3b82f633; /* latar belakang abu-abu gelap */
   z-index: 999;
 }
 /* Bar yang menunjukkan progres */
