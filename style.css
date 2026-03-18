@@ -696,11 +696,11 @@ nav-btn:focus {
 /* Container progress bar */
 .reading-progress-container {
   position: fixed;
-  top: 72px; /* sesuaikan dengan tinggi header */
+  top: 67px; /* sesuaikan dengan tinggi header*/
   left: 0;
   width: 100%;
   height: 5px;
-  background: #0b1121; /* latar belakang abu-abu gelap */
+  background: solid rgba(59,130,246,0.2); /* latar belakang abu-abu gelap */
   z-index: 999;
 }
 /* Bar yang menunjukkan progres */
@@ -709,5 +709,5 @@ nav-btn:focus {
   width: 0%;
   background: #3b82f6; /* warna biru */
   transition: width 0.1s ease;
-  border-radius: 0 5px 5px 0;
+  border-radius: 0 2px 2px 0;
 }
