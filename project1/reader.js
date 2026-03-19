@@ -136,16 +136,39 @@ window.addEventListener('load', updateReadingProgress);
 // Ambil elemen header dan progress container
 const header = document.querySelector('header');
 const progressContainer = document.querySelector('.reading-progress-container');
+
 // Fungsi untuk menyetel posisi top progress bar
 function setProgressPosition() {
   if (header && progressContainer) {
-    // Gunakan offsetHeight untuk mendapatkan tinggi header yang sebenarnya
-    progressContainer.style.top = header.offsetHeight + 'px';
+    // Dapatkan posisi dan ukuran header relatif terhadap viewport
+    const rect = header.getBoundingClientRect();
+    // Atur top progress bar tepat di bawah header
+    progressContainer.style.top = rect.bottom + 'px';
   }
 }
-// Panggil saat halaman selesai dimuat
+
+// Panggil saat halaman selesai dimuat dan saat ukuran layar berubah
 window.addEventListener('load', setProgressPosition);
-// Panggil juga saat ukuran layar berubah (misal orientasi HP berubah)
 window.addEventListener('resize', setProgressPosition);
-// Jika ada gambar yang dimuat lambat dan mengubah tinggi halaman,
-// progress bar tetap aman karena posisinya fixed berdasarkan header.
+// Jika ada gambar yang dimuat lambat dan mengubah tata letak, panggil lagi
+// Misalnya setelah semua gambar selesai dimuat
+window.addEventListener('load', function() {
+  // Tunggu semua gambar
+  const images = document.querySelectorAll('img');
+  let loaded = 0;
+  if (images.length === 0) {
+    setProgressPosition();
+  } else {
+    images.forEach(img => {
+      if (img.complete) {
+        loaded++;
+        if (loaded === images.length) setProgressPosition();
+      } else {
+        img.addEventListener('load', function() {
+          loaded++;
+          if (loaded === images.length) setProgressPosition();
+        });
+      }
+    });
+  }
+});
