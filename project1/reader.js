@@ -128,9 +128,24 @@ function updateReadingProgress() {
     progressBar.style.width = scrolled + '%';
   }
 }
-
 // Panggil fungsi saat scroll
 window.addEventListener('scroll', updateReadingProgress);
-
 // Panggil sekali saat halaman dimuat untuk mengatur posisi awal
 window.addEventListener('load', updateReadingProgress);
+
+// Ambil elemen header dan progress container
+const header = document.querySelector('header');
+const progressContainer = document.querySelector('.reading-progress-container');
+// Fungsi untuk menyetel posisi top progress bar
+function setProgressPosition() {
+  if (header && progressContainer) {
+    // Gunakan offsetHeight untuk mendapatkan tinggi header yang sebenarnya
+    progressContainer.style.top = header.offsetHeight + 'px';
+  }
+}
+// Panggil saat halaman selesai dimuat
+window.addEventListener('load', setProgressPosition);
+// Panggil juga saat ukuran layar berubah (misal orientasi HP berubah)
+window.addEventListener('resize', setProgressPosition);
+// Jika ada gambar yang dimuat lambat dan mengubah tinggi halaman,
+// progress bar tetap aman karena posisinya fixed berdasarkan header.
