@@ -245,7 +245,13 @@ html {
     padding: 20px;
     background: #0b1120;
   }
-
+@media (max-width: 480px) {
+    footer {
+        padding-bottom: 30px;
+        font-size: 14px;
+    }
+} 
+    
 /* ===== MENU TITIK TIGA ===== */
 .menu-wrapper {
   position: relative;
@@ -695,10 +701,7 @@ nav-btn:focus {
   }
    .reader-container {
     padding-bottom: 30px;
-}
-   footer {
-    font-size: 14px;
-    } 
+   }
 }
 
 /* Container progress bar */
