@@ -693,6 +693,12 @@ nav-btn:focus {
     font-size: 0.8rem;
     min-width: 80px;
   }
+   .reader-container {
+    padding-bottom: 30px;
+}
+   footer {
+    font-size: 14px;
+    } 
 }
 
 /* Container progress bar */
