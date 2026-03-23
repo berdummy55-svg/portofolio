@@ -28,7 +28,8 @@ const mangaData = {
     }
   },
   manga2: {
-    title: "Judul Manga 2",
+    title: "Renkinjutsushi no Henkyou Saisei Slow Life",
+    prefix: "ALCHE",
     chapters: {
       1: { prev: null, next: 2, pages: 3 },
       2: { prev: 1, next: 3, pages: 3 },
