@@ -579,7 +579,7 @@ transition: all 0.3s ease;
     border-radius: 30px;
     border: 1px solid rgba(59,130,246,0.3);
     text-align: center;
-    transition: all 0.3s ease;
+    transition: all 0.1s ease;
 }
 .chapter-list li a {
     display: block;
@@ -664,13 +664,8 @@ transition: all 0.3s ease;
     .manga-description {
         font-size: 0.9rem;
     }    
-    .chapter-label h3 {
-        text-align: center;
-        width: 100%;
-    }  
-    .chapter-list li a {
-        padding: 8px 10px;
-        font-size: 0.85rem;
+    .chapter-list {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); 
     }
 }
 
