@@ -547,8 +547,12 @@ transition: all 0.3s ease;
 .manga-bottom-row {
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     gap: 15px;
-    align-items: flex-start;
+    align-items: center;
+}
+.chapter-label {
+    margin-right: 20px;
 }
 .chapter-label h3 {
     color: #3b82f6;
@@ -565,11 +569,12 @@ transition: all 0.3s ease;
     list-style: none;
     padding: 0;
     margin: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    display: contents;
     gap: 10px;
 }
 .chapter-list li {
+    flex: 1 1 100px;
+    min-width: 100px;
     background: rgba(59,130,246,0.15);
     border-radius: 30px;
     border: 1px solid rgba(59,130,246,0.3);
@@ -623,7 +628,6 @@ transition: all 0.3s ease;
         gap: 30px;
     }    
     .chapter-label {
-        flex: 0 0 180px;
         padding-top: 10px;
     }    
     .chapter-label h3 {
