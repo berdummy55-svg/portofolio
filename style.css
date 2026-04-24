@@ -665,16 +665,9 @@ transition: all 0.3s ease;
         font-size: 0.9rem;
     }    
     .chapter-label h3 {
-        font-size: 1.1rem;
         text-align: center;
         width: 100%;
-    }    
-    .manga-bottom-row {
-        align-items: center;
-    }    
-    .chapter-list {
-        gap: 8px;
-    }
+    }  
     .chapter-list li a {
         padding: 8px 10px;
         font-size: 0.85rem;
