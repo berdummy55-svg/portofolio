@@ -473,6 +473,7 @@ transition: all 0.3s ease;
 .back-area:active {outline: none;}
 
 /* ===== MANGA DETAIL PAGE ===== */
+/* ===== MANGA DETAIL PAGE ===== */
 .manga-detail-container {
   padding-top: 140px;
   padding-bottom: 60px;
@@ -533,7 +534,6 @@ transition: all 0.3s ease;
   word-break: break-word;
   hyphens: auto;
 }
-
 .manga-title h1 {
   margin: 0;
   font-size: inherit;
@@ -547,52 +547,40 @@ transition: all 0.3s ease;
   text-align: justify;
 }
 
-/*Daftar Chapter*/
+/* Daftar Chapter */
 .manga-chapters {
   color: #e2e8f0;
 }
-
-.chapter-wrapper {
-  display: flex;
-  align-items: flex-start;
-  gap: 15px;
-  flex-wrap: wrap;          /* agar heading dan daftar tetap rapi jika layar sempit */
-}
-
-.chapter-wrapper h3 {
+.manga-chapters h3 {
   color: #3b82f6;
-  margin: 0;
+  margin: 0 0 12px 0;
   font-size: 1.5rem;
   font-weight: 600;
-  white-space: nowrap;      /* "Daftar Chapter" tidak pecah */
-  padding-top: 8px;         /* sejajar visual dengan tombol */
 }
 
+/* Grid 2 kolom selalu (mobile & desktop) */
 .chapter-list {
   list-style: none;
   padding: 0;
   margin: 0;
-  display: flex;
-  flex-wrap: wrap;          /* tombol mengalir ke kanan, lalu turun */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 10px;
-  flex: 1;                  /* mengambil sisa lebar setelah heading */
 }
-
 .chapter-list li {
   background: rgba(59,130,246,0.15);
   border-radius: 30px;
   border: 1px solid rgba(59,130,246,0.3);
+  text-align: center;
   transition: all 0.3s ease;
 }
-
 .chapter-list li a {
   display: block;
-  padding: 10px 20px;
+  padding: 10px 12px;
   color: #e2e8f0;
   text-decoration: none;
   font-weight: 500;
 }
-
 .chapter-list li:hover {
   background: #2563eb;
   border-color: #2563eb;
