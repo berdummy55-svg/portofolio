@@ -664,8 +664,13 @@ transition: all 0.3s ease;
     .manga-description {
         font-size: 0.9rem;
     }    
-    .chapter-list {
-        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); 
+       .chapter-list {
+        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+        gap: 8px;
+    }
+      .chapter-list li a {
+        padding: 8px 10px;
+        font-size: 0.85rem;
     }
 }
 
