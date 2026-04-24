@@ -473,6 +473,7 @@ transition: all 0.3s ease;
 .back-area:active {outline: none;}
 
 /* ===== MANGA DETAIL PAGE ===== */
+/* ===== MANGA DETAIL PAGE ===== */
 .manga-detail-container {
     padding-top: 140px;
     padding-bottom: 60px;
@@ -494,7 +495,6 @@ transition: all 0.3s ease;
     width: 100%;
     box-shadow: 0 0 40px rgba(59,130,246,0.4);
 }
-
 /* ===== BARIS ATAS: Cover + Info ===== */
 .manga-top-row {
     display: flex;
@@ -524,6 +524,7 @@ transition: all 0.3s ease;
     gap: 20px;
     width: 100%;
 }
+
 .manga-title {
     color: #3b82f6;
     font-size: 1.8rem;
@@ -531,10 +532,12 @@ transition: all 0.3s ease;
     line-height: 1.2;
     text-align: center;
 }
+
 .manga-title h1 {
     margin: 0;
     font-size: inherit;
 }
+
 .manga-description {
     font-size: 1rem;
     line-height: 1.7;
@@ -549,6 +552,7 @@ transition: all 0.3s ease;
     gap: 15px;
     align-items: flex-start;
 }
+
 .chapter-label h3 {
     color: #3b82f6;
     margin: 0;
@@ -557,30 +561,20 @@ transition: all 0.3s ease;
     white-space: nowrap;
 }
 
-/* Daftar Chapter Container */
 .manga-chapters {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-.manga-chapters h3 {
-    color: #3b82f6;
-    margin: 0;
-    font-size: 1.3rem;
-    font-weight: 600;
-    text-align: left;
+    flex: 1;
+    width: 100%;
 }
 
-/* Grid chapter - responsif */
 .chapter-list {
     list-style: none;
     padding: 0;
     margin: 0;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     gap: 10px;
-    width: 100%;
 }
+
 .chapter-list li {
     background: rgba(59,130,246,0.15);
     border-radius: 30px;
@@ -588,6 +582,7 @@ transition: all 0.3s ease;
     text-align: center;
     transition: all 0.3s ease;
 }
+
 .chapter-list li a {
     display: block;
     padding: 10px 12px;
@@ -596,6 +591,7 @@ transition: all 0.3s ease;
     font-weight: 500;
     font-size: 0.9rem;
 }
+
 .chapter-list li:hover {
     background: #2563eb;
     border-color: #2563eb;
@@ -605,35 +601,59 @@ transition: all 0.3s ease;
 
 /* ===== DESKTOP LAYOUT ===== */
 @media (min-width: 768px) {
-    .manga-detail-card {
+    /* Baris atas: Cover kiri, Info kanan */
+    .manga-top-row {
         flex-direction: row;
         align-items: flex-start;
-        gap: 50px;
-        padding: 50px;
-	}    
+        gap: 40px;
+    }
+    
     .manga-cover {
         flex: 0 0 280px;
         max-width: 280px;
         margin: 0;
-	}    
+    }
+    
     .manga-info {
         flex: 1;
-        gap: 25px;
-	}    
+    }
+    
     .manga-title {
         text-align: left;
         font-size: 2.4rem;
-	}    
+    }
+    
     .manga-description {
         font-size: 1.1rem;
         line-height: 1.8;
     }
     
-    /* Desktop: chapter grid lebih banyak kolom */
+    /* Baris bawah: Label kiri, Grid kanan */
+    .manga-bottom-row {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 30px;
+    }
+    
+    .chapter-label {
+        flex: 0 0 180px;
+        padding-top: 10px;
+    }
+    
+    .chapter-label h3 {
+        font-size: 1.5rem;
+        text-align: left;
+    }
+    
+    .manga-chapters {
+        flex: 1;
+    }
+    
     .chapter-list {
-        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
         gap: 12px;
-	}    
+    }
+    
     .chapter-list li a {
         padding: 12px 15px;
         font-size: 0.95rem;
@@ -646,20 +666,36 @@ transition: all 0.3s ease;
         margin-right: 60px;
         margin-left: 10px;
         padding-top: 120px;
-	}    
+    }
+    
     .manga-detail-card {
         padding: 20px;
-	}    
+        gap: 30px;
+    }
+    
     .manga-title {
-        font-size: 1.6rem;
-	}    
+        font-size: 1.5rem;
+    }
+    
     .manga-description {
-        font-size: 0.95rem;
-	}    
+        font-size: 0.9rem;
+    }
+    
+    .chapter-label h3 {
+        font-size: 1.1rem;
+        text-align: center;
+        width: 100%;
+    }
+    
+    .manga-bottom-row {
+        align-items: center;
+    }
+    
     .chapter-list {
-        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
         gap: 8px;
-	}
+    }
+    
     .chapter-list li a {
         padding: 8px 10px;
         font-size: 0.85rem;
