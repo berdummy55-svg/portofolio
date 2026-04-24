@@ -495,6 +495,7 @@ transition: all 0.3s ease;
     width: 100%;
     box-shadow: 0 0 40px rgba(59,130,246,0.4);
 }
+
 /* ===== BARIS ATAS: Cover + Info ===== */
 .manga-top-row {
     display: flex;
@@ -524,7 +525,6 @@ transition: all 0.3s ease;
     gap: 20px;
     width: 100%;
 }
-
 .manga-title {
     color: #3b82f6;
     font-size: 1.8rem;
@@ -532,57 +532,56 @@ transition: all 0.3s ease;
     line-height: 1.2;
     text-align: center;
 }
-
 .manga-title h1 {
     margin: 0;
     font-size: inherit;
 }
-
 .manga-description {
     font-size: 1rem;
     line-height: 1.7;
     color: #cbd5e1;
     text-align: justify;
 }
-
 /* ===== BARIS BAWAH: Label + Grid Chapter ===== */
 .manga-bottom-row {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 0; /* Hilangkan gap default */
     align-items: flex-start;
+    width: 100%;
 }
-
 .chapter-label h3 {
     color: #3b82f6;
-    margin: 0;
+    margin: 0; /* Hilangkan margin bawah */
     font-size: 1.3rem;
     font-weight: 600;
     white-space: nowrap;
+    line-height: 1; /* Hilangkan extra spacing */
 }
-
 .manga-chapters {
     flex: 1;
     width: 100%;
+    padding-top: 8px; /* Jarak minimal dari teks "Daftar Chapter" */
 }
-
 .chapter-list {
     list-style: none;
     padding: 0;
     margin: 0;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
     gap: 10px;
+    width: 100%;
+    align-items: start; /* Grid dimulai dari atas */
+    align-content: start; /* Content dimulai dari atas */
 }
-
 .chapter-list li {
     background: rgba(59,130,246,0.15);
     border-radius: 30px;
     border: 1px solid rgba(59,130,246,0.3);
     text-align: center;
     transition: all 0.3s ease;
+    margin: 0; /* Hilangkan margin default */
 }
-
 .chapter-list li a {
     display: block;
     padding: 10px 12px;
@@ -590,118 +589,57 @@ transition: all 0.3s ease;
     text-decoration: none;
     font-weight: 500;
     font-size: 0.9rem;
-}
-
-.chapter-list li:hover {
-    background: #2563eb;
-    border-color: #2563eb;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(37,99,235,0.4);
+    margin: 0; /* Hilangkan margin */
 }
 
 /* ===== DESKTOP LAYOUT ===== */
 @media (min-width: 768px) {
-    /* Baris atas: Cover kiri, Info kanan */
-    .manga-top-row {
-        flex-direction: row;
-        align-items: flex-start;
-        gap: 40px;
-    }
-    
-    .manga-cover {
-        flex: 0 0 280px;
-        max-width: 280px;
-        margin: 0;
-    }
-    
-    .manga-info {
-        flex: 1;
-    }
-    
-    .manga-title {
-        text-align: left;
-        font-size: 2.4rem;
-    }
-    
-    .manga-description {
-        font-size: 1.1rem;
-        line-height: 1.8;
-    }
-    
-    /* Baris bawah: Label kiri, Grid kanan */
     .manga-bottom-row {
         flex-direction: row;
         align-items: flex-start;
         gap: 30px;
-    }
-    
+    }    
     .chapter-label {
         flex: 0 0 180px;
-        padding-top: 10px;
-    }
-    
+        padding-top: 0;
+    }    
     .chapter-label h3 {
         font-size: 1.5rem;
         text-align: left;
-    }
-    
+        line-height: 1;
+    }    
     .manga-chapters {
         flex: 1;
-    }
-    
+        padding-top: 0;
+    }    
     .chapter-list {
-        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
         gap: 12px;
-    }
-    
-    .chapter-list li a {
-        padding: 12px 15px;
-        font-size: 0.95rem;
+        align-items: start;
     }
 }
 
 /* ===== MOBILE ===== */
 @media (max-width: 480px) {
-    .manga-detail-container {
-        margin-right: 60px;
-        margin-left: 10px;
-        padding-top: 120px;
-    }
-    
-    .manga-detail-card {
-        padding: 20px;
-        gap: 30px;
-    }
-    
-    .manga-title {
-        font-size: 1.5rem;
-    }
-    
-    .manga-description {
-        font-size: 0.9rem;
-    }
-    
+    .manga-bottom-row {
+        flex-direction: column;
+        align-items: center;
+    }    
     .chapter-label h3 {
         font-size: 1.1rem;
         text-align: center;
         width: 100%;
-    }
-    
-    .manga-bottom-row {
-        align-items: center;
-    }
-    
+        margin-bottom: 8px;
+    }    
+    .manga-chapters {
+        width: 100%;
+        padding-top: 0;
+    }    
     .chapter-list {
-        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
         gap: 8px;
     }
-    
-    .chapter-list li a {
-        padding: 8px 10px;
-        font-size: 0.85rem;
-    }
 }
-
 
 /* ===== READER PAGE ===== */
 .reader-container {
