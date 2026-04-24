@@ -673,7 +673,6 @@ transition: all 0.3s ease;
         align-items: center;
     }    
     .chapter-list {
-        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
         gap: 8px;
     }
     .chapter-list li a {
