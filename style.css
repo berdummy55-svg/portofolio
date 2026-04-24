@@ -529,7 +529,7 @@ transition: all 0.3s ease;
   font-weight: 700;
   line-height: 1.2;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   align-self: start;  /* judul rata atas jika tinggi baris melebihi konten */
     word-wrap: break-word;     /* Tambahan agar judul panjang membungkus*/ 
 overflow-wrap: break-word;
