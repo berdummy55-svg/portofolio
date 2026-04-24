@@ -555,7 +555,7 @@ text-align: justify;
 display: flex;
 flex-direction: column;
 gap: 20px;
-align-items: flex-start;
+align-items: center;
 width: 100%;
 }
 
@@ -565,6 +565,8 @@ margin: 0;
 font-size: 1.3rem;
 font-weight: 600;
 white-space: nowrap;
+    text-align: center;
+    width: 100%;
 }
 
 .chapter-list {
@@ -583,6 +585,10 @@ border-radius: 30px;
 border: 1px solid rgba(59,130,246,0.3);
 text-align: center;
 transition: all 0.3s ease;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .chapter-list li a {
@@ -592,7 +598,6 @@ color: #e2e8f0;
 text-decoration: none;
 font-weight: 500;
 font-size: 0.9rem;
-white-space: nowrap;
 }
 
 .chapter-list li:hover {
@@ -635,13 +640,15 @@ line-height: 1.8;
 .manga-bottom-row {
 flex-direction: row;
 align-items: flex-start;
+    justify-content: flex-start;
+    flex-wrap: wrap;
 gap: 30px;
 }
 
 .chapter-label {
-flex: 0 0 auto;
+flex: 0 0 180px;
 padding-top: 10px;
-min-width: 180px;
+margin-right: 0;
 }
 
 .chapter-label h3 {
@@ -651,18 +658,19 @@ text-align: left;
 
 .chapter-list {
 flex: 1;
-display: grid;
+display: content;
 grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
 gap: 12px;
 }
 
 .chapter-list li {
-min-width: 0;
+min-width: 120px;
+    max-width: 200px;
+    flex: 1 1 130px;
 }
 
 .chapter-list li a {
 padding: 12px 20px;
-font-size: 0.95rem;
 }
 }
 
