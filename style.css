@@ -556,17 +556,30 @@ transition: all 0.3s ease;
     font-weight: 600;
     white-space: nowrap;
 }
+
+/* Daftar Chapter Container */
 .manga-chapters {
-    flex: 1;
-    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
+.manga-chapters h3 {
+    color: #3b82f6;
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-align: left;
+}
+
+/* Grid chapter - responsif */
 .chapter-list {
     list-style: none;
     padding: 0;
     margin: 0;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
     gap: 10px;
+    width: 100%;
 }
 .chapter-list li {
     background: rgba(59,130,246,0.15);
@@ -592,11 +605,11 @@ transition: all 0.3s ease;
 
 /* ===== DESKTOP LAYOUT ===== */
 @media (min-width: 768px) {
-    /* Baris atas: Cover kiri, Info kanan */
-    .manga-top-row {
+    .manga-detail-card {
         flex-direction: row;
         align-items: flex-start;
-        gap: 40px;
+        gap: 50px;
+        padding: 50px;
 	}    
     .manga-cover {
         flex: 0 0 280px;
@@ -605,6 +618,7 @@ transition: all 0.3s ease;
 	}    
     .manga-info {
         flex: 1;
+        gap: 25px;
 	}    
     .manga-title {
         text-align: left;
@@ -615,25 +629,9 @@ transition: all 0.3s ease;
         line-height: 1.8;
     }
     
-    /* Baris bawah: Label kiri, Grid kanan */
-    .manga-bottom-row {
-        flex-direction: row;
-        align-items: flex-start;
-        gap: 30px;
-	}   
-    .chapter-label {
-        flex: 0 0 180px;
-        padding-top: 10px;
-	}    
-    .chapter-label h3 {
-        font-size: 1.5rem;
-        text-align: left;
-	}    
-    .manga-chapters {
-        flex: 1;
-	}    
+    /* Desktop: chapter grid lebih banyak kolom */
     .chapter-list {
-        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
         gap: 12px;
 	}    
     .chapter-list li a {
@@ -651,24 +649,15 @@ transition: all 0.3s ease;
 	}    
     .manga-detail-card {
         padding: 20px;
-        gap: 30px;
 	}    
     .manga-title {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
 	}    
     .manga-description {
-        font-size: 0.9rem;
-	}  
-    .chapter-label h3 {
-        font-size: 1.1rem;
-        text-align: center;
-        width: 100%;
-	} 
-    .manga-bottom-row {
-        align-items: center;
-	}
+        font-size: 0.95rem;
+	}    
     .chapter-list {
-        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
         gap: 8px;
 	}
     .chapter-list li a {
@@ -676,6 +665,7 @@ transition: all 0.3s ease;
         font-size: 0.85rem;
     }
 }
+
 
 /* ===== READER PAGE ===== */
 .reader-container {
