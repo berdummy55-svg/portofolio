@@ -504,6 +504,7 @@ transition: all 0.3s ease;
     "cover title"
     "cover synopsis"
     "chapters chapters";
+  overflow: hidden;
 }
 
 /* Menghubungkan elemen HTML dengan nama area*/
@@ -536,15 +537,18 @@ transition: all 0.3s ease;
   align-items: center; /* Tengah vertikal di area title */
   justify-content: center;
   text-align: center;
+    width:  100%;
 }
 
 .manga-title h1 {
   color: #3b82f6;
-  font-size: 4rem;
+  font-size: 3rem;
   font-weight: 700;
   line-height: 1.2;
   margin: 0;
   width: 100%;
+    word-break: break-word;
+    overflow-wrap: bteak-word;
 }
 
 .manga-synopsis {
@@ -553,6 +557,8 @@ transition: all 0.3s ease;
   font-size: 1.2rem;
   line-height: 1.8;
   text-align: justify;
+    word-break: break-word;
+    overflow-wrap: bteak-word;
 }
 
 /* Area Chapter */
