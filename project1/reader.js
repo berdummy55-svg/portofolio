@@ -143,7 +143,6 @@ document.addEventListener("click", function(e) {
   if (clicked && clicked.getAttribute('href') && clicked.getAttribute('href') !== '#') {
     e.preventDefault();          // batalkan navigasi langsung
     e.stopPropagation();        // hentikan propagasi event
-    clicked.classList.add("clicked");  // tambah kelas animasi (opsional)
     setTimeout(() => {
       window.location.href = clicked.getAttribute('href');
     }, 100);                    // pindah setelah 100ms
