@@ -177,3 +177,17 @@ function updateReadingProgress() {
 }
 window.addEventListener('scroll', updateReadingProgress);
 window.addEventListener('load', updateReadingProgress);
+
+// Efek delay 300ms saat klik Prev, Next, atau Home
+document.addEventListener("click", function(e) {
+  // Targetkan tombol navigasi reader berdasarkan ID
+  const clicked = e.target.closest("#prev-chapter, #next-chapter, #nav-home");
+    // Hanya proses jika elemen ditemukan, memiliki href, dan bukan tautan mati (#)
+  if (clicked && clicked.getAttribute('href') && clicked.getAttribute('href') !== '#') {
+    e.preventDefault();    // batalkan navigasi langsung
+    e.stopPropagation();  // hentikan propagasi event
+    setTimeout(() => {
+      window.location.href = clicked.getAttribute('href');
+    }, 300);    // pindah setelah 300ms
+  }
+});
