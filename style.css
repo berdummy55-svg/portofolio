@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+    -webkit-tap-highlight-color: transparent;
   }
   body {
     background: #0b1120;
@@ -456,7 +457,6 @@ transition: all 0.3s ease;
 /* AREA TOMBOL KEMBALI*/
 .back-area{
   position: fixed;
-  -webkit-tap-highlight-color: transparent; 
   top: 68px;
   right: 0;
   width: 55px;
