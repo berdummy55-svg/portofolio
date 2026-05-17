@@ -148,12 +148,18 @@ window.totalEbookPages = chapter.pages; // simpan untuk navigasi ebook
 
 // Fungsi untuk menghitung dan mengupdate progress bar
 function updateReadingProgress() {
-  const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-  const scrolled = (winScroll / height) * 100;
-
   const progressBar = document.getElementById('readingProgressBar');
-  if (progressBar) {
+  if (!progressBar) return;
+
+  if (ebookMode && window.totalEbookPages > 0) {
+    // Progress berdasarkan halaman ebook
+    const progress = ((currentEbookPage + 1) / window.totalEbookPages) * 100;
+    progressBar.style.width = progress + '%';
+  } else {
+    // Progress berdasarkan scroll vertikal (default)
+    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (winScroll / height) * 100;
     progressBar.style.width = scrolled + '%';
   }
 }
@@ -226,6 +232,7 @@ function exitEbookMode() {
     viewer.style.display = 'none';
     viewer.removeEventListener('click', handleEbookClick);
   }
+  updateReadingProgress();
 }
 
 function updateEbookImage() {
@@ -234,6 +241,7 @@ function updateEbookImage() {
     img.src = chapterImageSrcs[currentEbookPage];
     img.alt = `Halaman ${currentEbookPage + 1}`;
   }
+  updateReadingProgress();
 }
 
 function handleEbookClick(e) {
