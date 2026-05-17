@@ -3,13 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Baca Manga - Reader</title>
+  <title>Manga Reader</title>
   <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-  
-  <!-- Area Biru Kembali ke halaman Deatil manga -->
- <!--a href="../project1.html" class="back-area" id="metu"></a-->
 
   <!-- Header -->
   <header>
@@ -25,7 +22,24 @@
   <!-- Konten Reader -->
   <main class="reader-container">
     <div class="chapter-title">
-      <h1 id="chapter-title">Memuat..</h1>
+      <h1 id="chapter-title">Loading...</h1>
+      
+     <button id="toggle-ebook" class="ebook-icon-btn" style="display:none;" aria-label="Toggle reading mode" title="Ganti mode baca">
+  <!-- Ikon Mode Scroll (default, tampil saat tidak dalam mode ebook) -->
+  <svg class="icon-scroll" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <!-- Kotak dengan panah bawah -->
+    <rect x="4" y="3" width="16" height="18" rx="1" />
+    <path d="M12 8v5M8 12l4 4 4-4" />
+  </svg>
+  <!-- Ikon Mode E-Book (muncul saat mode ebook aktif) -->
+  <svg class="icon-ebook" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <!-- Kotak dengan panah kiri dan kanan -->
+    <rect x="4" y="3" width="16" height="18" rx="1" />
+    <path d="M8 12H6m2-3l-2 3 2 3" />
+    <path d="M16 12h2m-2-3l2 3-2 3" />
+  </svg>
+</button>
+      
     </div>
 
     <!-- Gambar Chapter (scrolling vertikal) -->
@@ -34,9 +48,9 @@
 
     <!-- Navigasi Chapter ◀ Prev -->
     <div class="chapter-navigation">
-       <a href="#" id="prev-chapter" class="nav-btn">◀ Prev</a>
+       <a href="#" id="prev-chapter" class="nav-btn">◀ Chapter</a>
       <a href="#" id="nav-home" class="nav-btn">Home</a>
-      <a href="#" id="next-chapter" class="nav-btn">Next ▶</a>
+      <a href="#" id="next-chapter" class="nav-btn">Chapter ▶</a>
     </div>
   </main>
 
