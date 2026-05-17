@@ -4,8 +4,12 @@ function getQueryParam(param) {
   return urlParams.get(param);
 }
 
-// Base URL​ dari cloudflare
+// Base URL dari cloudflare
 const BASE_URL = "https://pub-e8931c5705eb48b4b09534f5efbeacb9.r2.dev";
+
+let chapterImageSrcs = [];
+let ebookMode = false;
+let currentEbookPage = 0;
 
 // Data manga
 const mangaData = {
@@ -77,7 +81,31 @@ else {
         if (i === 1) img.fetchPriority = 'high';
         img.onerror = () => { img.src = 'placeholder.jpg'; }; // gambar cadangan
         imagesContainer.appendChild(img);
+        chapterImageSrcs.push(img.src);  // simpan URL
       }
+
+// Tampilkan tombol ebook
+const toggleEbookBtn = document.getElementById('toggle-ebook');
+if (toggleEbookBtn) {
+  toggleEbookBtn.style.display = 'inline-flex'; // karena kita pakai flex
+  // Hapus event listener lama (bisa dengan clone, tapi lebih simpel:)
+  const newBtn = toggleEbookBtn.cloneNode(true);
+  toggleEbookBtn.parentNode.replaceChild(newBtn, toggleEbookBtn);
+  // Tambahkan event listener ke tombol baru
+  document.getElementById('toggle-ebook').addEventListener('click', toggleEbookMode);
+  
+   // Cek localStorage untuk mode ebook yang tersimpan
+if (localStorage.getItem('ebookMode') === 'true') {
+  // Pastikan array gambar sudah terisi
+  if (chapterImageSrcs.length > 0) {
+    // Masuk mode ebook tanpa animasi klik
+    ebookMode = false; // sementara false agar fungsi berjalan benar
+    toggleEbookMode(); // akan mengaktifkan mode ebook dan memperbarui tombol
+    } 
+  }
+}
+
+window.totalEbookPages = chapter.pages; // simpan untuk navigasi ebook
 
       // Link kembali ke halaman detail manga (dinamis)
       document.getElementById('nav-home').href = `${mangaId}/${mangaId}.html`;
@@ -146,5 +174,110 @@ document.addEventListener("click", function(e) {
     setTimeout(() => {
       window.location.href = clicked.getAttribute('href');
     }, 100);                    // pindah setelah 100ms
+  }
+});
+
+// ========== MODE E-BOOK ==========
+function toggleEbookMode() {
+  const btn = document.getElementById('toggle-ebook');
+  if (!ebookMode) {
+    enterEbookMode();
+    btn.classList.add('active');   // tampilkan ikon ebook
+    btn.setAttribute('title', 'Mode Scroll');  // tooltip
+  } else {
+    exitEbookMode();
+    btn.classList.remove('active'); // tampilkan ikon scroll
+    btn.setAttribute('title', 'Mode E-Book');
+  }
+  localStorage.setItem('ebookMode', ebookMode);
+}
+
+function enterEbookMode() {
+  ebookMode = true;
+  document.getElementById('chapter-images').style.display = 'none';
+  
+  // Buat container viewer jika belum ada
+  let viewer = document.getElementById('ebook-viewer');
+  if (!viewer) {
+    viewer = document.createElement('div');
+    viewer.id = 'ebook-viewer';
+    viewer.innerHTML = '<img id="ebook-img" src="" alt="Halaman">';
+    // Sisipkan sebelum navigasi chapter
+    const nav = document.querySelector('.chapter-navigation');
+    nav.parentNode.insertBefore(viewer, nav);
+  }
+  viewer.style.display = 'block';
+  
+  // Tampilkan halaman pertama
+  currentEbookPage = 0;
+  updateEbookImage();
+  
+  // Event klik pada viewer (kiri/kanan)
+  viewer.addEventListener('click', handleEbookClick);
+  
+  // Nonaktifkan tombol Prev/Next chapter? (tidak perlu, biarkan saja)
+}
+
+function exitEbookMode() {
+  ebookMode = false;
+  document.getElementById('chapter-images').style.display = '';
+  const viewer = document.getElementById('ebook-viewer');
+  if (viewer) {
+    viewer.style.display = 'none';
+    viewer.removeEventListener('click', handleEbookClick);
+  }
+}
+
+function updateEbookImage() {
+  const img = document.getElementById('ebook-img');
+  if (img && chapterImageSrcs[currentEbookPage]) {
+    img.src = chapterImageSrcs[currentEbookPage];
+    img.alt = `Halaman ${currentEbookPage + 1}`;
+  }
+}
+
+function handleEbookClick(e) {
+  if (!ebookMode) return;
+  
+  const viewer = document.getElementById('ebook-viewer');
+  const rect = viewer.getBoundingClientRect();
+  const x = e.clientX - rect.left; // posisi horizontal klik
+  const half = rect.width / 2;
+  
+  if (x < half) {
+    // Klik kiri → halaman sebelumnya
+    if (currentEbookPage > 0) {
+      currentEbookPage--;
+      updateEbookImage();
+    } else {
+      // opsional: bisa beri efek getar atau abaikan
+      console.log('Halaman pertama');
+    }
+  } else {
+    // Klik kanan → halaman berikutnya
+    if (currentEbookPage < window.totalEbookPages - 1) {
+      currentEbookPage++;
+      updateEbookImage();
+    } else {
+      console.log('Halaman terakhir');
+    }
+  }
+}
+
+// Keyboard navigation (opsional) ← →
+document.addEventListener('keydown', function(e) {
+  if (!ebookMode) return;
+  if (e.key === 'ArrowLeft') {
+    e.preventDefault();
+    if (currentEbookPage > 0) {
+      currentEbookPage--;
+      updateEbookImage();
+    }
+  } else if (e.key === 'ArrowRight') {
+    e.preventDefault();
+    if (currentEbookPage < window.totalEbookPages - 1) {
+      currentEbookPage++;
+      updateEbookImage();
+    }
   }
 });
