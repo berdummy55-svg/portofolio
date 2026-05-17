@@ -867,7 +867,7 @@ nav-btn:focus {
 /* Tombol ikon mode baca */
 .ebook-icon-btn {
   background: rgba(255,255,255,0.1);
-  border: 1px solid rgba(255,255,255,0.6);
+  border: 1px solid #fff
   border-radius: 6px;
   padding: 6px;
   cursor: pointer;
@@ -876,12 +876,11 @@ nav-btn:focus {
   justify-content: center;
   color: #fff;
   transition: background 0.2s, border-color 0.2s;
-  margin-left: 1rem;
   vertical-align: middle;
 }
 .ebook-icon-btn:hover {
   background: rgba(255,255,255,0.1);
-  border-color: rgba(255,255,255,0.6);
+  border-color: #fff;
 }
 /* Saat mode ebook aktif, tombol lebih menonjol */
 .ebook-icon-btn.active {
