@@ -200,38 +200,67 @@ function toggleEbookMode() {
 
 function enterEbookMode() {
   ebookMode = true;
-  document.getElementById('chapter-images').style.display = 'none';
-  
-  // Buat container viewer jika belum ada
+  const imagesContainer = document.getElementById('chapter-images');
+
+  // === Deteksi halaman saat ini berdasarkan posisi scroll ===
+  const allImages = imagesContainer.querySelectorAll('img');
+  let bestPage = 0; // fallback halaman pertama
+  if (allImages.length > 0) {
+    const viewportCenter = window.innerHeight / 2;
+    let minDistance = Infinity;
+    allImages.forEach((img, index) => {
+      const rect = img.getBoundingClientRect();
+      // Abaikan gambar yang tingginya 0 (mungkin tersembunyi)
+      if (rect.height === 0) return;
+      const imgCenter = rect.top + rect.height / 2;
+      const distance = Math.abs(imgCenter - viewportCenter);
+      if (distance < minDistance) {
+        minDistance = distance;
+        bestPage = index;
+      }
+    });
+  }
+  currentEbookPage = bestPage;
+  // ========================================================
+  // Sembunyikan tampilan scroll
+  imagesContainer.style.display = 'none';
+  // Buat atau tampilkan viewer ebook
   let viewer = document.getElementById('ebook-viewer');
   if (!viewer) {
     viewer = document.createElement('div');
     viewer.id = 'ebook-viewer';
     viewer.innerHTML = '<img id="ebook-img" src="" alt="Halaman">';
-    // Sisipkan sebelum navigasi chapter
     const nav = document.querySelector('.chapter-navigation');
     nav.parentNode.insertBefore(viewer, nav);
   }
   viewer.style.display = 'block';
-  
-  // Tampilkan halaman pertama
-  currentEbookPage = 0;
+
+  // Tampilkan gambar halaman yang terdeteksi
   updateEbookImage();
-  
-  // Event klik pada viewer (kiri/kanan)
+
+  // Pasang event klik
   viewer.addEventListener('click', handleEbookClick);
-  
-  // Nonaktifkan tombol Prev/Next chapter? (tidak perlu, biarkan saja)
 }
 
 function exitEbookMode() {
   ebookMode = false;
-  document.getElementById('chapter-images').style.display = '';
+  // Tampilkan kembali container scroll
+  const imagesContainer = document.getElementById('chapter-images');
+  imagesContainer.style.display = '';
+  // Sembunyikan viewer ebook
   const viewer = document.getElementById('ebook-viewer');
   if (viewer) {
     viewer.style.display = 'none';
     viewer.removeEventListener('click', handleEbookClick);
   }
+  // Kembalikan posisi scroll ke halaman yang sesuai dengan currentEbookPage
+  const allImages = imagesContainer.querySelectorAll('img');
+  if (allImages.length > currentEbookPage) {
+    const targetImg = allImages[currentEbookPage];
+    // Scroll agar gambar target berada di tengah layar (atau di atas)
+    targetImg.scrollIntoView({ behavior: 'instant', block: 'center' });
+  }
+  // Update progress bar (agar segera menyesuaikan)
   updateReadingProgress();
 }
 
