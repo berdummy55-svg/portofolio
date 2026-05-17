@@ -257,8 +257,6 @@ function exitEbookMode() {
   const allImages = imagesContainer.querySelectorAll('img');
   if (allImages.length > currentEbookPage) {
     const targetImg = allImages[currentEbookPage];
-    // Scroll agar gambar target berada di tengah layar (atau di atas)
-    targetImg.scrollIntoView({ behavior: 'instant', block: 'center' });
   }
   // Update progress bar (agar segera menyesuaikan)
   updateReadingProgress();
