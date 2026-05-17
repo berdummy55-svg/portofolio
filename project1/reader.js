@@ -10,6 +10,7 @@ const BASE_URL = "https://pub-e8931c5705eb48b4b09534f5efbeacb9.r2.dev";
 let chapterImageSrcs = [];
 let ebookMode = false;
 let currentEbookPage = 0;
+let savedScrollY = 0;
 
 // Data manga
 const mangaData = {
@@ -258,6 +259,7 @@ function exitEbookMode() {
   if (allImages.length > currentEbookPage) {
     const targetImg = allImages[currentEbookPage];
   }
+  window.scrollTo({0, savedScrollY});
   // Update progress bar (agar segera menyesuaikan)
   updateReadingProgress();
 }
