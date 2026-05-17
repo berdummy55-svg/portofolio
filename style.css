@@ -849,3 +849,74 @@ nav-btn:focus {
   transition: width 0.1s ease;
   /*border-radius: 0 2px 2px 0;*/
 }
+
+/* Tombol toggle mode baca*/
+.ebook-btn {
+  margin-left: 1rem;
+  padding: 0.4rem 1rem;
+  background: #444;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+.ebook-btn.active {
+  background: #c0392b;
+}
+/* Tombol ikon mode baca */
+.ebook-icon-btn {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 6px;
+  padding: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  transition: background 0.2s, border-color 0.2s;
+  margin-left: 1rem;
+  vertical-align: middle;
+}
+.ebook-icon-btn:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.6);
+}
+/* Saat mode ebook aktif, tombol lebih menonjol */
+.ebook-icon-btn.active {
+  background: rgba(255,100,100,0.3);
+  border-color: #ff6b6b;
+}
+/* Sembunyikan ikon yang tidak sesuai */
+.icon-scroll,
+.icon-ebook {
+  display: none;
+}
+/* Default: tampilkan ikon scroll (karena mode awal scroll) */
+.ebook-icon-btn .icon-scroll {
+  display: block;
+}
+/* Saat mode ebook aktif, sembunyikan ikon scroll & tampilkan ikon ebook */
+.ebook-icon-btn.active .icon-scroll {
+  display: none;
+}
+.ebook-icon-btn.active .icon-ebook {
+  display: block;
+}
+
+/* Viewer ebook */
+#ebook-viewer {
+  display: none;
+  width: 100%;
+  max-width: 900px;
+  margin: 1rem auto;
+  cursor: pointer;
+  user-select: none;
+}
+#ebook-viewer img {
+  width: 100%;
+  height: auto;
+  display: block;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
