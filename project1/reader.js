@@ -240,8 +240,8 @@ function enterEbookMode() {
     const nav = document.querySelector('.chapter-navigation');
     nav.parentNode.insertBefore(viewer, nav);
   }
-  viewer.style.display = 'block';
-  window.scrollTo({ top: 80, behavior: 'instant' });
+  viewer.style.display = 'flex';
+  window.scrollTo({ top: 85, behavior: 'instant' });
   
 
   // Tampilkan gambar halaman yang terdeteksi
