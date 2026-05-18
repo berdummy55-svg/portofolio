@@ -229,8 +229,7 @@ function enterEbookMode() {
   currentEbookPage = bestPage;
   
   // ========================================================
-  // Sembunyikan tampilan scroll
-  imagesContainer.style.display = 'none';
+
   // Buat atau tampilkan viewer ebook
   let viewer = document.getElementById('ebook-viewer');
   if (!viewer) {
@@ -240,10 +239,11 @@ function enterEbookMode() {
     const nav = document.querySelector('.chapter-navigation');
     nav.parentNode.insertBefore(viewer, nav);
   }
-  viewer.style.display = 'flex';
+  viewer.style.display = 'block';
   window.scrollTo({ top: 80, behavior: 'instant' });
   
-
+  // Sembunyikan tampilan scroll
+  imagesContainer.style.display = 'none';
   // Tampilkan gambar halaman yang terdeteksi
   updateEbookImage();
 
