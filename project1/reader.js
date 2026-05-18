@@ -66,6 +66,11 @@ else {
       // Set judul halaman
       document.title = `${manga.title} - Chapter ${chapterNum}`;
       document.getElementById('chapter-title').textContent = `${manga.title} - Chapter ${chapterNum}`;
+// Ubah teks logo di navbar menjadi judul chapter
+const logoElement = document.querySelector('.logo');
+if (logoElement) {
+  logoElement.textContent = `Chapter ${chapterNum}`;
+}
       
       // Generate gambar chapter (dinamis)
       const imagesContainer = document.getElementById('chapter-images');
@@ -200,10 +205,10 @@ function toggleEbookMode() {
 }
 
 function enterEbookMode() {
+  savedScrollY = window.scrollY;
   ebookMode = true;
   const imagesContainer = document.getElementById('chapter-images');
-
-  // === Deteksi halaman saat ini berdasarkan posisi scroll ===
+ // === Deteksi halaman saat ini berdasarkan posisi scroll ===
   const allImages = imagesContainer.querySelectorAll('img');
   let bestPage = 0; // fallback halaman pertama
   if (allImages.length > 0) {
@@ -222,6 +227,7 @@ function enterEbookMode() {
     });
   }
   currentEbookPage = bestPage;
+  
   // ========================================================
   // Sembunyikan tampilan scroll
   imagesContainer.style.display = 'none';
@@ -235,6 +241,8 @@ function enterEbookMode() {
     nav.parentNode.insertBefore(viewer, nav);
   }
   viewer.style.display = 'block';
+  window.scrollTo({ top: 80, behavior: 'instant' });
+  
 
   // Tampilkan gambar halaman yang terdeteksi
   updateEbookImage();
@@ -245,7 +253,7 @@ function enterEbookMode() {
 
 function exitEbookMode() {
   ebookMode = false;
-  // Tampilkan kembali container scroll
+ // Tampilkan kembali container scroll
   const imagesContainer = document.getElementById('chapter-images');
   imagesContainer.style.display = '';
   // Sembunyikan viewer ebook
@@ -254,13 +262,17 @@ function exitEbookMode() {
     viewer.style.display = 'none';
     viewer.removeEventListener('click', handleEbookClick);
   }
-  // Kembalikan posisi scroll ke halaman yang sesuai dengan currentEbookPage
+
+  // Kembalikan posisi scroll ke halaman yang sesuai
   const allImages = imagesContainer.querySelectorAll('img');
   if (allImages.length > currentEbookPage) {
     const targetImg = allImages[currentEbookPage];
+    if (currentEbookPage > 0) {
+      // Halaman pertama 
+      targetImg.scrollIntoView({ behavior: 'instant', block: 'center'});
+    } 
   }
-  window.scrollTo({0, savedScrollY});
-  // Update progress bar (agar segera menyesuaikan)
+  // Update progress bar
   updateReadingProgress();
 }
 
