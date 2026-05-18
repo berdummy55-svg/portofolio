@@ -241,7 +241,7 @@ function enterEbookMode() {
     nav.parentNode.insertBefore(viewer, nav);
   }
   viewer.style.display = 'flex';
-  window.scrollTo({ top: 85, behavior: 'instant' });
+  window.scrollTo({ top: 80, behavior: 'instant' });
   
 
   // Tampilkan gambar halaman yang terdeteksi
