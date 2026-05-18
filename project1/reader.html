@@ -12,19 +12,8 @@
   <header>
     <nav class="navbar">
       <div class="logo">Project Translation</div>
-    </nav>
-    <!-- Progress bar -->
-<div class="reading-progress-container">
-  <div class="reading-progress-bar" id="readingProgressBar"></div>
-</div>
-  </header>
-  
-  <!-- Konten Reader -->
-  <main class="reader-container">
-    <div class="chapter-title">
-      <h1 id="chapter-title">Loading...</h1>
-      
-     <button id="toggle-ebook" class="ebook-icon-btn" style="display:none;" aria-label="Toggle reading mode" title="Ganti mode baca">
+      <div class="nav-controls">
+        <button id="toggle-ebook" class="ebook-icon-btn" style="display:none;" aria-label="Toggle reading mode" title="Ganti mode baca">
   <!-- Ikon Mode Scroll (default, tampil saat tidak dalam mode ebook) -->
   <svg class="icon-scroll" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
     <!-- Kotak dengan panah bawah -->
@@ -39,6 +28,19 @@
     <path d="M16 12h2m-2-3l2 3-2 3" />
   </svg>
 </button>
+        
+      </div>
+    </nav>
+    <!-- Progress bar -->
+<div class="reading-progress-container">
+  <div class="reading-progress-bar" id="readingProgressBar"></div>
+</div>
+  </header>
+  
+  <!-- Konten Reader -->
+  <main class="reader-container">
+    <div class="chapter-title">
+      <h1 id="chapter-title">Loading...</h1>
       
     </div>
 
@@ -56,7 +58,7 @@
 
   <!-- Footer (opsional) -->
   <footer>
-    <p>&copy; 2026 Nama Kamu. All Rights Reserved.</p>
+    <p>&copy; 2026 Manga Reader. All Rights Reserved.</p>
   </footer>
   <script src="reader.js"></script>
 </body>
