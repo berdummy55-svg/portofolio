@@ -27,6 +27,7 @@ body.fade-out {
 padding-bottom: 5px;
   }
 
+
 /* SMOOTH SCROLL */
 html {
   scroll-behavior: smooth;
@@ -61,7 +62,11 @@ html {
     margin: auto;
     display: flex;
     justify-content: space-between;
-    padding: 20px 0;
+    padding: 15px 0;
+  }
+  .nav-controls {
+    display: flex;
+    gap: 15px;
   }
   .logo {
     color: #3b82f6;
@@ -909,7 +914,7 @@ nav-btn:focus {
 #ebook-viewer {
   display: none;
   width: 100%;
-  max-width: 900px;
+  max-width: none;
   margin: 1rem auto;
   cursor: pointer;
   user-select: none;
