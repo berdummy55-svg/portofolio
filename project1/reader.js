@@ -242,11 +242,10 @@ function enterEbookMode() {
   viewer.style.display = 'block';
   window.scrollTo({ top: 80, behavior: 'instant' });
   
-  // Sembunyikan tampilan scroll
-  imagesContainer.style.display = 'none';
   // Tampilkan gambar halaman yang terdeteksi
   updateEbookImage();
-
+    // Sembunyikan tampilan scroll
+  imagesContainer.style.display = 'none';
   // Pasang event klik
   viewer.addEventListener('click', handleEbookClick);
 }
