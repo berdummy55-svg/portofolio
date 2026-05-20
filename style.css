@@ -462,7 +462,7 @@ transition: all 0.3s ease;
 /* AREA TOMBOL KEMBALI*/
 .back-area{
   position: fixed;
-  top: 68px;
+  top: 65px;
   right: 0;
   width: 55px;
   height: 100vh;
