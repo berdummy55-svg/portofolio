@@ -11,6 +11,7 @@ let chapterImageSrcs = [];
 let ebookMode = false;
 let currentEbookPage = 0;
 let savedScrollY = 0;
+let totalPages = 0;
 
 // Data manga
 const mangaData = {
@@ -68,9 +69,7 @@ else {
       document.getElementById('chapter-title').textContent = `${manga.title} - Chapter ${chapterNum}`;
 // Ubah teks logo di navbar menjadi judul chapter
 const logoElement = document.querySelector('.logo');
-if (logoElement) {
-  logoElement.textContent = `Chapter ${chapterNum}`;
-}
+
       
       // Generate gambar chapter (dinamis)
       const imagesContainer = document.getElementById('chapter-images');
@@ -89,6 +88,9 @@ if (logoElement) {
         imagesContainer.appendChild(img);
         chapterImageSrcs.push(img.src);  // simpan URL
       }
+      totalPages = chapter.pages;
+window.totalEbookPages = chapter.pages;
+updatePageIndicator(1);
 
 // Tampilkan tombol ebook
 const toggleEbookBtn = document.getElementById('toggle-ebook');
@@ -170,7 +172,32 @@ function updateReadingProgress() {
   }
 }
 // Panggil fungsi saat scroll
-window.addEventListener('scroll', updateReadingProgress);
+window.addEventListener('scroll', () => {
+  // Progress bar (tetap berfungsi)
+  if (!ebookMode) {
+    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    document.getElementById('readingProgressBar').style.width = (winScroll / height) * 100 + '%';
+    
+    // Deteksi halaman saat ini
+    const images = document.querySelectorAll('#chapter-images img');
+    if (images.length > 0) {
+      const viewportCenter = window.innerHeight / 2;
+      let best = 0, minDist = Infinity;
+      images.forEach((img, idx) => {
+        const rect = img.getBoundingClientRect();
+        if (rect.height === 0) return;
+        const dist = Math.abs(rect.top + rect.height/2 - viewportCenter);
+        if (dist < minDist) { minDist = dist; best = idx; }
+      });
+      updatePageIndicator(best + 1);
+    }
+  } else {
+    // Progress bar ebook pakai currentEbookPage
+    document.getElementById('readingProgressBar').style.width = ((currentEbookPage + 1) / totalPages) * 100 + '%';
+  }
+});
+
 // Panggil sekali saat halaman dimuat untuk mengatur posisi awal
 window.addEventListener('load', updateReadingProgress);
 
@@ -227,9 +254,10 @@ function enterEbookMode() {
     });
   }
   currentEbookPage = bestPage;
+  updatePageIndicator(currentEbookPage + 1);
   
   // ========================================================
-
+  
   // Buat atau tampilkan viewer ebook
   let viewer = document.getElementById('ebook-viewer');
   if (!viewer) {
@@ -240,11 +268,11 @@ function enterEbookMode() {
     nav.parentNode.insertBefore(viewer, nav);
   }
   viewer.style.display = 'block';
-  window.scrollTo({ top: 80, behavior: 'instant' });
+  window.scrollTo({ top: 85, behavior: 'instant' });
   
   // Tampilkan gambar halaman yang terdeteksi
   updateEbookImage();
-    // Sembunyikan tampilan scroll
+  // Sembunyikan tampilan scroll
   imagesContainer.style.display = 'none';
   // Pasang event klik
   viewer.addEventListener('click', handleEbookClick);
@@ -260,6 +288,7 @@ function exitEbookMode() {
   if (viewer) {
     viewer.style.display = 'none';
     viewer.removeEventListener('click', handleEbookClick);
+    updatePageIndicator(currentEbookPage + 1);
   }
 
   // Kembalikan posisi scroll ke halaman yang sesuai
@@ -280,6 +309,7 @@ function updateEbookImage() {
   if (img && chapterImageSrcs[currentEbookPage]) {
     img.src = chapterImageSrcs[currentEbookPage];
     img.alt = `Halaman ${currentEbookPage + 1}`;
+    updatePageIndicator(currentEbookPage + 1);
   }
   updateReadingProgress();
 }
@@ -329,3 +359,8 @@ document.addEventListener('keydown', function(e) {
     }
   }
 });
+
+function updatePageIndicator(pageNum) {
+  const logo = document.querySelector('.logo');
+  if (logo) logo.textContent = `${pageNum}/${totalPages}`;
+}
