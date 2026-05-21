@@ -5,8 +5,8 @@ const BASE_URL = 'https://pub-e8931c5705eb48b4b09534f5efbeacb9.r2.dev';
 const PRECACHE_ASSETS = [
   // Contoh: cover manga1, cover manga2, dll.
   // Kamu bisa menambahkan URL cover spesifik di sini
-  'project1/manga1/newnormal.png',
-  'project1/manga2/ALCHE.png',
+  '${BASE_URL}/manga1/newnormal.png',
+  '${BASE_URL}/manga2/ALCHE.png',
   // ... tambahkan sesuai kebutuhan
 ];
 
