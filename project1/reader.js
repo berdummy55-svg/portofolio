@@ -49,19 +49,19 @@ const chapterNum = getQueryParam('chapter');
 
 if (!mangaId || !chapterNum) {
   alert('Parameter manga atau chapter tidak ditemukan.');
-  window.location.href = 'index.html#portfolio';
+  window.location.href = 'index.html';
 } 
 else {
   const manga = mangaData[mangaId];
   if (!manga) {
     alert('Manga tidak dikenal.');
-    window.location.href = 'index.html#portfolio';
+    window.location.href = 'index.html';
   } 
   else {
     const chapter = manga.chapters[chapterNum];
     if (!chapter) {
       alert('Chapter tidak ditemukan.');
-      window.location.href = 'index.html#portfolio';
+      window.location.href = 'index.html';
     } 
     else {
       // Set judul halaman
