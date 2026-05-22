@@ -5,12 +5,12 @@ This is the folder structure for this website.
 ```
 Manga translation
 ├── project1
-│			├── manga1
-│			│		└── manga1.html
-│			├── manga2
-│			│		└── manga2.html
-│			├── reader.html
-│			└── reader.js
+│		├── manga1
+│		│		└── manga1.html
+│		├── manga2
+│		│		└── manga2.html
+│		├── reader.html
+│		└── reader.js
 ├── index.html
 ├── style.css
 └── sw.js
@@ -21,7 +21,7 @@ Cloudflare R2
 │		├── cover.png
 │		└── chapter img.jpg
 └── manga2
-			├── cover.png
-      └── chapter img.jpg
+		├── cover.png
+		└── chapter img.jpg
 ```
 
