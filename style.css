@@ -118,8 +118,8 @@ html {
 .manga-detail-container {
   padding-top: 140px;
   padding-bottom: 60px;
-  margin-right: 120px;        /* Ruang untuk back-area */
-  margin-left: 50px;
+  margin-right: 90px;        /* Ruang untuk back-area */
+  margin-left: 20px;
   min-height: 100vh;
   display: flex;
   justify-content: center;
