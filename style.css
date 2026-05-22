@@ -259,7 +259,7 @@ html {
 /* ===== TAMPILAN TABLET / HP LEBAR ===== */
 @media (max-width: 900px) {
   .manga-detail-container {
-    margin-right: 60px; /* Tetap mempertahankan back-area */
+    margin-right: 65px; /* Tetap mempertahankan back-area */
     margin-left: 10px;
     padding-top: 120px;
   }
@@ -351,7 +351,7 @@ html {
 /* ===== TAMPILAN HP KECIL ===== */
 @media (max-width: 480px) {
   .manga-detail-container {
-    margin-right: 60px;
+    margin-right: 65px;
     margin-left: 10px;
     padding-top: 120px;
   }
