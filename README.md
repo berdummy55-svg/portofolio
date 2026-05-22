@@ -1,7 +1,7 @@
 A simple manga reading website.
 This website is built using HTML, CSS, JavaScript, and Cloudflare R2.
 
-This is the folder structure for this website.
+The structure of this website
 ```
 Manga translation
 ├── project1
@@ -14,8 +14,7 @@ Manga translation
 ├── index.html
 ├── style.css
 └── sw.js
-```
-```
+
 Cloudflare R2
 ├── manga1
 │		├── cover.png
