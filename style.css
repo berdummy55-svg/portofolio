@@ -189,7 +189,7 @@ html {
   margin: 0;
   width: 100%;
     word-break: break-word;
-    overflow-wrap: bteak-word;
+    overflow-wrap: break-word;
 }
 
 .manga-synopsis {
@@ -199,7 +199,7 @@ html {
   line-height: 1.8;
   text-align: justify;
     word-break: break-word;
-    overflow-wrap: bteak-word;
+    overflow-wrap: break-word;
 }
 
 /* Area Chapter */
@@ -234,6 +234,7 @@ html {
 }
 
 .chapter-list li {
+  flex: 1;
   background: rgba(59,130,246,0.15);
   border-radius: 40px;
   transition: all 0.1s ease;
@@ -247,6 +248,8 @@ html {
   text-decoration: none;
   font-weight: 500;
   font-size: 1.1rem;
+  text-align: center;
+  white-space: nowrap;
 }
 
 .chapter-list li:hover {
@@ -267,7 +270,7 @@ html {
     /* Menggunakan Grid untuk mengatur ulang posisi elemen mobile */
     display: grid;
     grid-template-columns: 1fr; /* Satu kolom penuh */
-    grid-template-rows: auto auto auto auto;
+    grid-template-rows: auto;
     gap: 25px;
     padding: 30px;
     max-width: 600px;
