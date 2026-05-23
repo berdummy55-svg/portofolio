@@ -10,7 +10,7 @@ let savedScrollY = 0;
 let totalPages = 0;
 
 fetch(MANGA_JSON_URL)
-.then(res => manga.json())
+.then(res => res.json())
 .then(data => {
 mangaData = data;
 initReader();
