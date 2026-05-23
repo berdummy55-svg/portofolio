@@ -1,31 +1,46 @@
+function getQueryParam(param) {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get(param);
+}
+ 
 // Base URL dari cloudflare R2 dan worker
 const BASE_URL = "https://pub-e8931c5705eb48b4b09534f5efbeacb9.r2.dev";
-const MANGA_JSON_URL = `${BASE_URL}/manga.json`;
 
-let mangaData = {};
 let chapterImageSrcs = [];
 let ebookMode = false;
 let currentEbookPage = 0;
 let savedScrollY = 0;
 let totalPages = 0;
 
-fetch(MANGA_JSON_URL)
-	.then(res => res.json())
-	.then(data => 
-    { mangaData = data;
-     initReader();
-})
-	.catch(err => {
-    alert(`Gagal memuat data manga.`);
-});
-
-
-function initReader() {
-// Ambil parameter dari URL (misal: ?manga=manga1&chapter=53)
-	function getQueryParam(param) {
-  const urlParams = new URLSearchParams(window.location.search);
-  return urlParams.get(param);
-}
+const mangaData = {
+  manga1: {
+    title: "New Normal",
+    prefix: "NN",
+    chapters: {
+      53: { prev: null, next: 54, pages: 24 },
+      54: { prev: 53, next: 55, pages: 24 },
+      55: { prev: 54, next: 56, pages: 26 },
+      56: { prev: 55, next: 57, pages: 26 },
+      57: { prev: 56, next: 58, pages: 26 }, 
+      58: { prev: 57, next: 59, pages: 26 },
+      59: { prev: 58, next: 60, pages: 26 },
+      60: { prev: 59, next: 61, pages: 25 },
+      61: { prev: 60, next: 62, pages: 26 },
+      62: { prev: 61, next: 63, pages: 26 },
+      63: { prev: 62, next: 64, pages: 26 },
+      64: { prev: 63, next: 65, pages: 26 },
+    }
+  },
+  manga2: {
+    title: "Renkinjutsushi no Henkyou Saisei Slow Life",
+    prefix: "ALCHE",
+    chapters: {
+      1: { prev: null, next: 2, pages: 3 },
+      2: { prev: 1, next: 3, pages: 3 },
+      3: { prev: 2, next: null, pages: 3 }
+    }
+  }
+};
 
 const mangaId = getQueryParam('manga');
 const chapterNum = getQueryParam('chapter');
@@ -347,4 +362,4 @@ function updatePageIndicator(pageNum) {
   const logo = document.querySelector('.logo');
   if (logo) logo.textContent = `${pageNum}/${totalPages}`;
 }
-}
+
