@@ -9,20 +9,16 @@ let currentEbookPage = 0;
 let savedScrollY = 0;
 let totalPages = 0;
 
-(async () => {
-  try {
-    alert("Mulai fetch...");
-    const res = await fetch(MANGA_JSON_URL);
-    if (!res.ok) throw new Error("HTTP " + res.status);
-    const data = await res.json();
-    mangaData = data;
-    alert("Berhasil, menjalankan initReader");
-    initReader();
-  } catch (err) {
-    alert("Fetch gagal: " + err.message);
-    console.error(err);
-  }
-})();
+fetch(MANGA_JSON_URL)
+	.then(res => res.json())
+	.then(data => 
+    { mangaData = data;
+     initReader();
+})
+	.catch(err => {
+    alert(`Gagal memuat data manga.`);
+});
+
 
 function initReader() {
 // Ambil parameter dari URL (misal: ?manga=manga1&chapter=53)
