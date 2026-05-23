@@ -1,6 +1,5 @@
 // Base URL dari cloudflare
 const BASE_URL = "https://pub-e8931c5705eb48b4b09534f5efbeacb9.r2.dev";
-const MANGA_JSON_URL = `${BASE_URL}/manga.json`;
 
 let mangaData = {};
 let chapterImageSrcs = [];
@@ -9,8 +8,8 @@ let currentEbookPage = 0;
 let savedScrollY = 0;
 let totalPages = 0;
 
-fetch(MANGA_JSON_URL)
-.then(res => res.json())
+fetch("https://pub-e8931c5705eb48b4b09534f5efbeacb9.r2.dev/manga.json")
+.then(res => manga.json())
 .then(data => {
 mangaData = data;
 initReader();
