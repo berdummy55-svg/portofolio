@@ -1,4 +1,4 @@
-// Base URL dari cloudflare
+// Base URL dari cloudflare R2 dan worker
 const BASE_URL = "https://pub-e8931c5705eb48b4b09534f5efbeacb9.r2.dev";
 const MANGA_JSON_URL = `${BASE_URL}/manga.json`;
 
