@@ -10,13 +10,16 @@ let savedScrollY = 0;
 let totalPages = 0;
 
 fetch(MANGA_JSON_URL)
-	.then(res => res.json())
+	.then(res => {
+  if (!res.ok) throw new Error('HTTP ' + res.status);
+  return res.json();
+	}
 	.then(data => 
     { mangaData = data;
      initReader();
 })
 	.catch(err => {
-    alert(`Gagal memuat data manga.`);
+    alert('Gagal: ' + err.message);
 });
 
 function initReader() {
