@@ -63,7 +63,7 @@
     alert('ID manga tidak ditemukan!');
     window.location.href = '../../index.html';
   } else {
-    fetch(`${BASE_URL}/manga.json`)
+    fetch(`${BASE_URL}/manga.json?v=${Date.now()}`)
       .then(res => {
         console.log("📡 Status Response:", res.status);
         return res.json();
