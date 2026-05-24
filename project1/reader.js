@@ -101,7 +101,7 @@ if (localStorage.getItem('ebookMode') === 'true') {
 window.totalEbookPages = chapter.pages; // simpan untuk navigasi ebook
 
       // Link kembali ke halaman detail manga (dinamis)
-      document.getElementById('nav-home').href = `${mangaId}/${mangaId}.html`;
+      document.getElementById('nav-home').href = `manga1/manga.html?id=${mangaId}`;
 
       // Navigasi prev
       const prevLink = document.getElementById('prev-chapter');
