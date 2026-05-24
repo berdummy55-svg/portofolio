@@ -1,4 +1,4 @@
-const CACHE_NAME = 'manga-cache-v2'; // ganti versi jika ada perubahan besar
+const CACHE_NAME = 'manga-cache-v3'; // ganti versi jika ada perubahan besar
 const BASE_URL = 'https://pub-e8931c5705eb48b4b09534f5efbeacb9.r2.dev';
 
 // Aset yang langsung di-cache saat service worker terpasang (misal cover di halaman index)
