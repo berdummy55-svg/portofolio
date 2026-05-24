@@ -92,7 +92,7 @@
         
         const synopsis = document.getElementById('manga-synopsis');
         if (synopsis) {
-          synopsis.textContent = manga.synopsis ? manga.synopsis.replace(/^"/, '') : 'Tidak ada sinopsis.';
+          synopsis.textContent = manga.synopsis?manga.synopsis.replace(/^"/, '') : 'Tidak ada sinopsis.';
         }
         
         // Generate chapter list
