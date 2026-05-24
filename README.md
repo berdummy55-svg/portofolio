@@ -6,9 +6,7 @@ The structure of this website
 Manga translation
 ├── project1
 │		├── manga1
-│		│		└── manga1.html
-│		├── manga2
-│		│		└── manga2.html
+│		│		└── manga.html
 │		├── reader.html
 │		└── reader.js
 ├── index.html
