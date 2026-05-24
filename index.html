@@ -10,49 +10,49 @@
 
 <header>
   <nav class="navbar">
-    <div class="logo">Project Translation</div>
+   <div class="logo">Project Translation</div>
   </nav>
 </header>
 
-<section class="manga-container">
+<section class="manga-container" id="manga-list">
 
   <!-- Baris 1 (horizontal 7) -->
-<a href="project1/manga1/manga1.html" class="manga-card">
-  <img src="https://pub-e8931c5705eb48b4b09534f5efbeacb9.r2.dev/manga1/newnormal.png" alt="Manga 1">
-</a>
 
-<a href="project1/manga2/manga2.html" class="manga-card">
-  <img src="https://pub-e8931c5705eb48b4b09534f5efbeacb9.r2.dev/manga2/ALCHE.png" alt="Manga 2">
-</a>
-
-<a href="manga3.html" class="manga-card">
-  <img src="cover3.png" alt="Manga 3">
-</a>
-  
-  <a href="manga4.html" class="manga-card">
-  <img src="cover4.png" alt="Manga 4">
-</a>
-  
-   <a href="manga5.html" class="manga-card">
-  <img src="cover5.png" alt="Manga 5">
-</a>
-  
-   <a href="manga6.html" class="manga-card">
-  <img src="cover6.png" alt="Manga 6">
-</a>
-
-   <a href="manga7.html" class="manga-card">
-  <img src="cover7.png" alt="Manga 7">
-</a>
-  
-   <a href="manga8.html" class="manga-card">
-  <img src="cover8.png" alt="Manga 8">
-</a>
-  
-   <a href="manga9.html" class="manga-card">
-  <img src="cover9.png" alt="Manga 9">
-</a>
 </section>
+
+<script>
+  const BASE_URL = "https://pub-e8931c5705eb48b4b09534f5efbeacb9.r2.dev";
+  const container = document.getElementById('manga-list');
+
+  fetch(`${BASE_URL}/manga.json`)
+    .then(res => res.json())
+    .then(data => {
+      // Kosongkan container dulu
+      container.innerHTML = '';
+      
+      // Loop setiap manga
+      Object.keys(data).forEach(id => {
+        const manga = data[id];
+        
+        // Buat elemen <a> dengan class manga-card (PENTING untuk CSS!)
+        const link = document.createElement('a');
+        link.href = `/project1/manga1/manga.html?id=${id}`;
+        link.className = 'manga-card';  // ← Class ini WAJIB ada!
+        
+        // Buat elemen <img>
+        const img = document.createElement('img');
+        img.src = `${BASE_URL}/${id}/${manga.prefix}.png`;
+        img.alt = manga.title || id;
+        
+        // Gabungkan
+        link.appendChild(img);
+        container.appendChild(link);
+      });
+    })
+    .catch(err => console.error('Gagal load manga:', err));
+</script>
+
+
 <script>
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
