@@ -50,59 +50,66 @@
 </section>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const BASE_URL = "https://pub-e8931c5705eb48b4b09534f5efbeacb9.r2.dev";
-    const urlParams = new URLSearchParams(window.location.search);
-    const mangaId = urlParams.get('id');
-    
-    console.log('🔍 Manga ID:', mangaId);
-    
-    if (!mangaId) {
-      alert('ID manga tidak ditemukan!');
-      window.location.href = '../../index.html';
-      return;
-    }
-    
+  console.log(" Script Manga Detail Mulai Jalan");
+
+  const BASE_URL = "https://pub-e8931c5705eb48b4b09534f5efbeacb9.r2.dev";
+  const urlParams = new URLSearchParams(window.location.search);
+  const mangaId = urlParams.get('id');
+
+  console.log("🔍 ID dari URL:", mangaId);
+
+  if (!mangaId) {
+    console.error("❌ ID Manga kosong!");
+    alert('ID manga tidak ditemukan!');
+    window.location.href = '../../index.html';
+  } else {
     fetch(`${BASE_URL}/manga.json`)
       .then(res => {
-        if (!res.ok) throw new Error('HTTP ' + res.status);
+        console.log("📡 Status Response:", res.status);
         return res.json();
       })
       .then(data => {
-        console.log('✅ Data loaded');
-        const manga = data[mangaId];
+        console.log(" Data JSON Berhasil Diambil:", data);
+        console.log("🔑 Key di JSON:", Object.keys(data));
         
+        const manga = data[mangaId];
+        console.log("📖 Data Manga Ditemukan:", manga);
+
         if (!manga) {
-          console.error('❌ Manga tidak ditemukan:', mangaId);
-          alert('Manga tidak ditemukan!');
+          alert(`Manga dengan ID "${mangaId}" tidak ditemukan di JSON!`);
           return;
         }
-        
-        // Safe update elements (cek dulu apakah elemen ada)
+
+        // Update Cover
         const cover = document.getElementById('manga-cover');
-        if (cover) {
-          cover.src = `${BASE_URL}/${mangaId}/${manga.prefix}.png`;
+        if(cover) {
+            cover.src = `${BASE_URL}/${mangaId}/${manga.prefix}.png`;
+            console.log("🖼️ Cover diupdate");
         }
-        
+
+        // Update Judul
         const title = document.getElementById('manga-title');
-        if (title) title.textContent = manga.title || mangaId;
-        
         const pageTitle = document.getElementById('page-title');
-        if (pageTitle) pageTitle.textContent = manga.title || mangaId;
+        if(title) title.textContent = manga.title || mangaId;
+        if(pageTitle) pageTitle.textContent = manga.title || mangaId;
+
+        // Update Synopsis (PENTING)
+        const synopsisEl = document.getElementById('manga-synopsis');
+        console.log("🔍 Elemen Synopsis ditemukan:", synopsisEl);
         
-        const synopsis = document.getElementById('manga-synopsis');
-        if (synopsis) {
-          synopsis.textContent = manga.synopsis?manga.synopsis.replace(/^"/, '') : 'Tidak ada sinopsis.';
+        if (synopsisEl) {
+          // Cek apakah ada teks synopsis
+          const text = manga.synopsis || "Tidak ada sinopsis.";
+          console.log(" Teks Synopsis:", text);
+          synopsisEl.textContent = text;
         }
-        
-        // Generate chapter list
+
+        // Update Chapter List
         const listContainer = document.getElementById('chapter-list');
-        if (listContainer) {
+        if (listContainer && manga.chapters) {
           listContainer.innerHTML = '';
-          const chapters = manga.chapters || {};
-          const sorted = Object.keys(chapters).sort((a, b) => a - b);
-          
-          sorted.forEach(ch => {
+          const sortedChapters = Object.keys(manga.chapters).sort((a, b) => a - b);
+          sortedChapters.forEach(ch => {
             const li = document.createElement('li');
             const a = document.createElement('a');
             a.href = `../reader.html?manga=${mangaId}&chapter=${ch}`;
@@ -110,13 +117,14 @@
             li.appendChild(a);
             listContainer.appendChild(li);
           });
+          console.log(`📚 Berhasil load ${sortedChapters.length} chapter`);
         }
       })
       .catch(err => {
-        console.error('❌ Error:', err);
-        alert('Gagal memuat manga: ' + err.message);
+        console.error("❌ GAGAL FETCH DATA:", err);
+        alert("Gagal mengambil data manga. Cek Console untuk detail.");
       });
-  });
+  }
 </script>
 </body>
 </html>
