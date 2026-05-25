@@ -16,11 +16,11 @@ Manga translation
 Cloudflare R2
 ├── manga1
 │	   ├── cover.png
-│	   ├── chapter53
+│	   └── chapter53
 │			  └── chapter img.jpg
 └── manga2
 	   ├── cover.png
-	   ├── chapter1
+	   └── chapter1
 			  └── chapter img.jpg
 ```
 
