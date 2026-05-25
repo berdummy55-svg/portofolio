@@ -36,30 +36,27 @@ self.addEventListener('activate', event => {
 // Strategi: Cache Falling Back to Network (cache dulu, network hanya jika belum ada)
 self.addEventListener('fetch', event => {
   const url = new URL(event.request.url);
-
-  // Hanya tangani permintaan ke BASE_URL (gambar chapter/cover)
-  if (url.origin === new URL(BASE_URL).origin) {
+  
+  // ✅ Izinkan request dengan parameter cache-busting (?v=...)
+  // Jangan cache request yang punya parameter query khusus
+  if (url.searchParams.has('v') || url.pathname.includes('manga.json')) {
     event.respondWith(
-      caches.open(CACHE_NAME).then(cache => {
-        return cache.match(event.request).then(cachedResponse => {
-          // Kembalikan dari cache jika ada
-          if (cachedResponse) {
-            return cachedResponse;
-          }
-          // Jika tidak ada, ambil dari jaringan, lalu simpan ke cache
-          return fetch(event.request).then(networkResponse => {
-            // Simpan salinan ke cache (pastikan response sukses)
-            if (networkResponse && networkResponse.status === 200) {
-              cache.put(event.request, networkResponse.clone());
-            }
-            return networkResponse;
-          }).catch(() => {
-            // Jika offline dan tidak ada di cache, tampilkan fallback (opsional)
-            return new Response('Offline', { status: 503 });
-          });
+      fetch(event.request).then(res => {
+        // Clone response untuk bisa disimpan ke cache jika perlu
+        const resClone = res.clone();
+        caches.open(CACHE_NAME).then(cache => {
+          cache.put(event.request, resClone);
         });
+        return res;
       })
     );
+    return;
   }
-  // Untuk request lain (HTML, CSS, JS) biarkan default (tidak di-cache di sini)
+  
+  // Logika cache biasa untuk asset lain
+  event.respondWith(
+    caches.match(event.request).then(cached => {
+      return cached || fetch(event.request);
+    })
+  );
 });
