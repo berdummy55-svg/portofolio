@@ -5,20 +5,22 @@ The structure of this website
 ```
 Manga translation
 ├── project1
-│		├── manga1
-│		│		└── manga.html
-│		├── reader.html
-│		└── reader.js
+│	   ├── manga1
+│	   │	  └── manga.html
+│	   ├── reader.html
+│	   └── reader.js
 ├── index.html
 ├── style.css
 └── sw.js
 
 Cloudflare R2
 ├── manga1
-│		├── cover.png
-│		└── chapter img.jpg
+│	   ├── cover.png
+│	   ├── chapter53
+│			  └── chapter img.jpg
 └── manga2
-		├── cover.png
-		└── chapter img.jpg
+	   ├── cover.png
+	   ├── chapter1
+			  └── chapter img.jpg
 ```
 
