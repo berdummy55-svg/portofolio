@@ -59,7 +59,7 @@ html {
         /* Responsive HP */
     @media (max-width: 768px) {
       .manga-container {
-        grid-template-columns: 1fr;
+        grid-template-columns: 2fr;
           margin-right: 15px;
           margin-left: 15px;
           gap: 20px;
