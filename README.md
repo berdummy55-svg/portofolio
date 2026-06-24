@@ -1,7 +1,5 @@
-A simple manga reading website.
-This website is built using HTML, CSS, JavaScript, and Cloudflare R2.
-
-The structure of this website
+Website baca manga / komik sederhana, hanya memakai html, css dan javascript
+Tempat penyimpanan data manga (cover, chapter) memakai cloudflare R2 dengan struktur berikut:
 ```
 Manga translation
 ├── project1
@@ -14,6 +12,8 @@ Manga translation
 └── sw.js
 
 Cloudflare R2
+├── Manga.json
+├── admin.html
 ├── manga1
 │	   ├── cover.png
 │	   └── chapter53
@@ -23,4 +23,5 @@ Cloudflare R2
 	   └── chapter1
 			  └── chapter img.jpg
 ```
-
+Gallery dan Chapter akan berubah secara otomatis seiring bertambahnya konten baru.
+Terdapat Admin panel Dan Cloudflare worker untuk mengupload chapter dan manga baru.
