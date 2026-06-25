@@ -56,19 +56,7 @@ html {
       margin-left: 20px;
     /* JARAKKAN GALLERY DARI AREA KANAN */
     }
-        /* Responsive HP */
-    @media (max-width: 768px) {
-      .manga-container {
-        grid-template-columns: 2fr;
-          margin-right: 15px;
-          margin-left: 15px;
-          gap: 20px;
-          padding-top: 30px;
-          padding-bottom: 30px;
-      }
-    }
-
-    /* Efek hover & klik sama seperti project */
+    
 .manga-card {
   width: 100%;
   aspect-ratio: 3 / 4;   /* rasio cover manga (portrait) */
@@ -260,116 +248,6 @@ html {
   box-shadow: 0 5px 15px rgba(37,99,246,0.4);
 }
 
-/* ===== TAMPILAN TABLET / HP LEBAR ===== */
-@media (max-width: 900px) {
-  .manga-detail-container {
-    margin-right: 65px; /* Tetap mempertahankan back-area */
-    margin-left: 10px;
-    padding-top: 120px;
-  }
-  .manga-detail-card {
-    /* Menggunakan Grid untuk mengatur ulang posisi elemen mobile */
-    display: grid;
-    grid-template-columns: 1fr; /* Satu kolom penuh */
-    grid-template-rows: auto;
-    gap: 25px;
-    padding: 30px;
-    max-width: 600px;
-    /* Urutan Layout Mobile sesuai permintaan: */
-    grid-template-areas: 
-      "title"
-      "cover"
-      "synopsis"
-      "chapters";
-  }
-
-  /* 1. Judul Manga (Paling Atas) */
-  .manga-title {
-    grid-area: title;
-    text-align: center;
-    padding-bottom: 10px;
-  }
-.manga-title h1 {
-    font-size: 2rem;
-  }
-
-  /* 2. Cover (Tepat di Bawah Judul) */
-  .manga-cover {
-    grid-area: cover;
-    max-width: 300px; /* Batasi ukuran cover agar tidak terlalu besar di HP */
-    width: 100%;
-    margin: 0 auto; /* Tengah horizontal */
-    border-radius: 15px;
-  }
-
-  /* 3. Sinopsis (Di Bawah Cover) */
-  .manga-synopsis {
-    grid-area: synopsis;
-    font-size: 0.95rem;
-    line-height: 1.6;
-    text-align: left; /* Teks rata kiri lebih mudah dibaca di HP */
-    padding: 0 10px;
-  }
-
-  /* 4. Daftar Chapter (Di Bawah Sinopsis) */
-  .manga-chapters {
-    grid-area: chapters;
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Tengahkan judul Chapter dan tombol */
-  }
-  .manga-chapters h3 {
-    font-size: 1.4rem;
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  .chapter-list {
-    display: flex;
-    flex-wrap: wrap; /* Barisan tombol menyesuaikan lebar HP */
-    justify-content: center;
-    gap: 10px;
-  }
-  .chapter-list li {
-    border-radius: 20px;
-  }
-  .chapter-list li a {
-    padding: 10px 16px;
-    font-size: 0.9rem;
-  }
-}
-
-/* ===== TAMPILAN HP KECIL ===== */
-@media (max-width: 480px) {
-  .manga-detail-container {
-    margin-right: 65px;
-    margin-left: 10px;
-    padding-top: 120px;
-  }
-  
-  .manga-detail-card {
-    padding: 20px;
-    gap: 25px;
-  }
-  
-  .manga-cover {
-    max-width: 220px;
-  }
-  
-  .manga-info h1 {
-    font-size: 1.6rem;
-  }
-  
-  .sinopsis {
-    font-size: 0.9rem;
-    line-height: 1.6;
-  }
-  
-  .chapter-list li a {
-    padding: 8px 14px;
-    font-size: 0.85rem;
-  }
-}
-
 /* ===== READER PAGE ===== */
 .reader-container {
   padding-top: 140px;
@@ -427,39 +305,6 @@ nav-btn:focus {
   border-color: #2563eb;
   color: #2563eb;
   transform: translateY(-3px);
-}
-
-/* ===== TAMPILAN MOBILE ===== */
-@media (max-width: 768px) {
-  .reader-container {
-    margin: 0;       /* area back lebih kecil */
-    padding-top: 120px;
-      width: 100%;
-  }
-  .chapter-title h1 {
-    font-size: 1.5rem;
-  }
-  .chapter-images img {
-    max-width: 100%;
-  }
-  .nav-btn {
-    padding: 10px 20px;
-    font-size: 0.9rem;
-    min-width: 100px;
-  }
-}
-@media (max-width: 480px) {
-  .chapter-navigation {
-    gap: 10px;
-  }
-  .nav-btn {
-    padding: 8px 16px;
-    font-size: 0.8rem;
-    min-width: 80px;
-  }
-   .reader-container {
-    padding-bottom: 30px;
-   }
 }
 
 /* Container progress bar */
@@ -612,3 +457,151 @@ nav-btn:focus {
     font-size: 1rem; /* Font lebih besar */
     font-weight: 600;
 }
+
+
+/* ===== TAMPILAN TABLET / HP LEBAR ===== */
+@media (max-width: 900px) {
+  .manga-detail-container {
+    margin-right: 65px; /* Tetap mempertahankan back-area */
+    margin-left: 10px;
+    padding-top: 120px;
+  }
+  .manga-detail-card {
+    /* Menggunakan Grid untuk mengatur ulang posisi elemen mobile */
+    display: grid;
+    grid-template-columns: 1fr; /* Satu kolom penuh */
+    grid-template-rows: auto;
+    gap: 25px;
+    padding: 30px;
+    max-width: 600px;
+    /* Urutan Layout Mobile sesuai permintaan: */
+    grid-template-areas: 
+      "title"
+      "cover"
+      "synopsis"
+      "chapters";
+  }
+
+  /* 1. Judul Manga (Paling Atas) */
+  .manga-title {
+    grid-area: title;
+    text-align: center;
+    padding-bottom: 10px;
+  }
+.manga-title h1 {
+    font-size: 2rem;
+  }
+
+  /* 2. Cover (Tepat di Bawah Judul) */
+  .manga-cover {
+    grid-area: cover;
+    max-width: 300px; /* Batasi ukuran cover agar tidak terlalu besar di HP */
+    width: 100%;
+    margin: 0 auto; /* Tengah horizontal */
+    border-radius: 15px;
+  }
+
+  /* 3. Sinopsis (Di Bawah Cover) */
+  .manga-synopsis {
+    grid-area: synopsis;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    text-align: left; /* Teks rata kiri lebih mudah dibaca di HP */
+    padding: 0 10px;
+  }
+
+  /* 4. Daftar Chapter (Di Bawah Sinopsis) */
+  .manga-chapters {
+    grid-area: chapters;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Tengahkan judul Chapter dan tombol */
+  }
+  .manga-chapters h3 {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .chapter-list {
+    display: flex;
+    flex-wrap: wrap; /* Barisan tombol menyesuaikan lebar HP */
+    justify-content: center;
+    gap: 10px;
+  }
+  .chapter-list li {
+    border-radius: 20px;
+  }
+  .chapter-list li a {
+    padding: 10px 16px;
+    font-size: 0.9rem;
+  }
+}
+
+
+/* ===== TAMPILAN MOBILE ===== */
+@media (max-width: 768px) {
+  .manga-container {
+        grid-template-columns: 2fr;
+          margin-right: 15px;
+          margin-left: 15px;
+          gap: 20px;
+          padding-top: 30px;
+          padding-bottom: 30px;
+      }
+    
+  .reader-container {
+    margin: 0;       /* area back lebih kecil */
+    padding-top: 120px;
+      width: 100%;
+  }
+  .chapter-title h1 {
+    font-size: 1.5rem;
+  }
+  .chapter-images img {
+    max-width: 100%;
+  }
+  .nav-btn {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    min-width: 100px;
+  }
+}
+
+/* ===== TAMPILAN HP KECIL ===== */
+@media (max-width: 480px) {
+  .manga-detail-container {
+    margin-right: 65px;
+    margin-left: 10px;
+    padding-top: 120px;
+  }
+  
+  .manga-detail-card {
+    padding: 20px;
+    gap: 25px;
+  }
+  
+  .manga-cover {
+    max-width: 220px;
+  }
+  
+  .manga-title h1 {
+    font-size: 1.6rem;
+  }
+  
+  .chapter-list li a {
+    padding: 8px 14px;
+    font-size: 0.85rem;
+  }
+  
+  .chapter-navigation {
+    gap: 10px;
+  }
+  .nav-btn {
+    padding: 8px 16px;
+    font-size: 0.8rem;
+    min-width: 80px;
+  }
+   .reader-container {
+    padding-bottom: 30px;
+   }
+    }
