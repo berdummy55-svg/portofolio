@@ -295,10 +295,7 @@ html {
   text-align: center;
 }
 .nav-btn:focus {
-    box-shadow: 0 0 0 3px rgba(59,130,246,0.5);
-}
-.nav-btn:hover {
-  background: transparent;
+    background: transparent;
   border-color: #2563eb;
   color: #2563eb;
   transform: translateY(-3px);
