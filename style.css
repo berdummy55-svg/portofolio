@@ -126,8 +126,6 @@ html {
   max-width: 1300px;
   width: 100%;
   box-shadow: 0 0 40px rgba(59,130,246,0.4);
-  
-  /* Layout Desktop (Default) */
   /* Kolom 1: Cover (350px), Kolom 2: Konten (1fr) */
   grid-template-columns: 350px 1fr;
   grid-template-rows: auto auto auto;
@@ -446,7 +444,7 @@ nav-btn:focus {
 /* Judul Manga - font lebih besar & lebih menarik */
 .manga-item-title {
     color: #e2e8f0;
-    font-size: 1.2rem; /* Font lebih besar */
+    font-size: 1.2rem; /*Font lebih besar*/
     font-weight: 700;
     padding: 0 5px;
 }
@@ -506,17 +504,17 @@ nav-btn:focus {
     grid-area: synopsis;
     font-size: 0.95rem;
     line-height: 1.6;
-    text-align: left; /* Teks rata kiri lebih mudah dibaca di HP */
+    text-align: left;
     padding: 0 10px;
-  }
+    }
 
   /* 4. Daftar Chapter (Di Bawah Sinopsis) */
   .manga-chapters {
     grid-area: chapters;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Tengahkan judul Chapter dan tombol */
-  }
+    align-items: center;
+}
   .manga-chapters h3 {
     font-size: 1.4rem;
     margin-bottom: 20px;
@@ -550,7 +548,6 @@ nav-btn:focus {
       }
     
   .reader-container {
-    margin: 0;       /* area back lebih kecil */
     padding-top: 120px;
       width: 100%;
   }
@@ -604,4 +601,4 @@ nav-btn:focus {
    .reader-container {
     padding-bottom: 30px;
    }
-    }
+}
