@@ -23,5 +23,5 @@ Cloudflare R2
 	   └── chapter1
 			  └── chapter img.jpg
 ```
-Gallery dan Chapter akan berubah secara otomatis seiring bertambahnya konten baru.
+Gallery dan Chapter akan berubah secara dinamis seiring bertambahnya konten baru.
 Terdapat Admin panel Dan Cloudflare worker untuk mengupload chapter dan manga baru.
