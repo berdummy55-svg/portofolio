@@ -213,7 +213,7 @@ function toggleEbookMode() {
     btn.classList.remove('active'); // tampilkan ikon scroll
     btn.setAttribute('title', 'Mode E-Book');
   }
-  localStorage.setItem('ebookMode', ebookMode);
+  localStorage.setItem('ebookMode', ebookMode.toString());
 }
 
 function enterEbookMode() {
