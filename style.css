@@ -295,11 +295,12 @@ html {
   text-align: center;
 }
 .nav-btn:focus {
-    background: transparent;
+ background: transparent;
   border-color: #2563eb;
   color: #2563eb;
   transform: translateY(-3px);
 }
+
 
 /* Container progress bar */
 .reading-progress-container {
@@ -433,13 +434,13 @@ html {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 7px; /* Jarak lebih rapat antara cover, judul, dan chapter */
+    gap: 3px; /* Jarak lebih rapat antara cover, judul, dan chapter */
 }
 
 /* Judul Manga - font lebih besar & lebih menarik */
 .manga-item-title {
     color: #e2e8f0;
-    font-size: 2rem; /*Font lebih besar*/
+    font-size: 28px; /*Font lebih besar*/
     font-weight: 700;
     padding: 0 5px;
 }
@@ -447,7 +448,7 @@ html {
 /* Latest Chapter - font lebih besar & style lebih menarik */
 .manga-item-latest {
     color: #3b82f6;
-    font-size: 1.8rem; /* Font lebih besar */
+    font-size: 23px; /* Font lebih besar */
     font-weight: 600;
 }
 
@@ -539,11 +540,11 @@ html {
   }
   
   .manga-item-title {
-    font-size: 1.2rem; /*Font lebih besar*/
+    font-size: 17px; /*Font lebih besar*/
   }
   
   .manga-item-latest {
-    font-size: 1rem; /* Font lebih besar */
+    font-size: 15px; /* Font lebih besar */
 }
 }
 
