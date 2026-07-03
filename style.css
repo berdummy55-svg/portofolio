@@ -1,92 +1,207 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-    -webkit-tap-highlight-color: transparent;
-  }
-  body {
-    background: #0b1120;
-    color: #e2e8f0;
-    overflow-x: hidden;
-      max-width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+body {
+  background: #0b1120;
+  color: #e2e8f0;
+  overflow-x: hidden;
+  max-width: 100%;
   transition: opacity 0.9s ease;
-  }
+}
 
 body.fade-out {
   opacity: 0;
 }
-  header {
-    position: fixed;
-      top: 0;
-    width: 100%;
-    background: rgba(11,17,32,0.9);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(59,130,246,0.2);
-    z-index: 1000;
-padding-bottom: 5px;
-  }
-
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(11, 17, 32, 0.9);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+  z-index: 1000;
+  padding-bottom: 5px;
+}
 
 /* SMOOTH SCROLL */
 html {
   scroll-behavior: smooth;
 }
-  /* Navbar */
-  .navbar {
-    width: 90%;
-    margin: auto;
-    display: flex;
-    justify-content: space-between;
-    padding: 15px 0;
-  }
-  .logo {
-    color: #3b82f6;
-    font-weight: 700;
-    font-size: 22px;
-  }
-
- /*Manga*/
-.manga-container {
-      padding-top: 30px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* 3 horizontal */
-      gap: 30px;
-      margin-right: 20px;
-      margin-left: 20px;
-    /* JARAKKAN GALLERY DARI AREA KANAN */
-    }
-    
-.manga-card {
-  width: 100%;
-  aspect-ratio: 3 / 4;   /* rasio cover manga (portrait) */
-  border: 5px solid #0b1120;
-  border-radius: 25px;
-  overflow: hidden;     /* penting biar gambar tidak keluar kotak */
+/* Navbar */
+.navbar {
+  width: 90%;
+  margin: auto;
   display: flex;
-    justify-content: center;
-    align-items: center;
-  transition: all 0.5s ease;
-    cursor: pointer;
-    outline: none; /* Hilangkan garis biru default browser */
+  justify-content: space-between;
+  padding: 15px 0;
 }
-    .manga-card:hover {
-      transform: translateY(-6px) scale(1.03);
-      border-color: #2563eb;
-    } 
+.logo {
+  color: #3b82f6;
+  font-weight: 700;
+  font-size: 22px;
+}
 
-/* gambar di dalam card */
-.manga-card img {
+/* Container Search Bar */
+#search-box-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
+  margin-top: 90px; /* Gunakan margin-top, bukan padding-top */
+  padding-inline: 20px;
+  box-sizing: border-box;
+}
+
+/* Input Search */
+#search-input {
+  width: 100%;
+  max-width: 500px; /* Membatasi lebar maksimal agar tidak terlalu panjang di desktop */
+  padding: 12px;
+  border-radius: 25px;
+  border: 1px solid #1e293b;
+  background: #1e293b;
+  color: #e2e8f0;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+/* Efek saat input diklik/fokus */
+#search-input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+}
+
+#search-input::placeholder {
+  color: #94a3b8;
+}
+
+/*Manga*/
+.manga-container {
+  padding-top: 15px;
+  padding-left: 40px;
+  padding-right: 40px;
+  display: grid;
+  max-width: 100%;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(400px, 1fr)
+  ); /* 3 horizontal */
+  gap: 30px;
+  margin: 20px auto;
+  /* JARAKKAN GALLERY DARI AREA KANAN */
+}
+
+/* Wrapper - kurangi jarak antar elemen */
+.manga-item-wrapper {
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.5s ease;
+  cursor: pointer;
+  outline: none;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+  background: #1e293b;
+  border-radius: 12px;
+  overflow: hidden;
+  min-height: 250px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Efek Hover untuk Wrapper */
+.manga-item-wrapper:hover {
+  transform: translateY(-5px);
+  border-color: rgba(59, 130, 246, 0.5);
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.4),
+    0 0 15px rgba(59, 130, 246, 0.2);
+}
+
+.manga-item-wrapper img {
+  display: block;
+  width: 40%;
   height: 100%;
   object-fit: cover;
-    border-radius: 22px;
+}
+.manga-card-content {
+  padding: 20px;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+}
+.manga-card-badge {
+  font-size: 0.7rem;
+  color: #3b82f6;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+/* Judul Manga - font lebih besar & lebih menarik */
+.manga-item-title {
+  color: #e9ecf0;
+  font-size: 20px; /*Font lebih besar*/
+  font-weight: 600;
+  padding: 0;
+  text-align: left;
+  margin: 0 0 10px 0;
 }
 
+.manga-card-desc {
+  font-size: 0.85rem;
+  color: #d4dce4;
+  line-height: 1.5;
+  margin-bottom: 15px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  line-clamp: 3;
+  overflow: hidden;
+}
 
+.manga-card-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-bottom: 0;
+}
 
+/* Base style untuk semua status tag */
+.manga-card-status {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+
+.status-ongoing {
+  color: #60a5fa;
+}
+.status-completed {
+  color: #4ade80;
+}
+.status-hiatus {
+  color: #fb923c;
+}
+
+/* Info Chapter */
+.chapter-info {
+  color: #93c5fd;
+  font-size: 0.8rem;
+}
 /* AREA TOMBOL KEMBALI*/
-.back-area{
+.back-area {
   position: fixed;
   top: 65px;
   right: 0;
@@ -97,17 +212,19 @@ html {
   z-index: 999;
   transition: all 0.1s ease;
 }
- .back-area:hover{
+.back-area:hover {
   background: transparent;
   border-left: 5px solid #1e6cff;
 }
-.back-area:active {outline: none;}
+.back-area:active {
+  outline: none;
+}
 
 /* ===== MANGA DETAIL PAGE ===== */
 .manga-detail-container {
   padding-top: 140px;
   padding-bottom: 60px;
-  margin-right: 90px;        /* Ruang untuk back-area */
+  margin-right: 90px; /* Ruang untuk back-area */
   margin-left: 20px;
   min-height: 100vh;
   display: flex;
@@ -124,11 +241,11 @@ html {
   padding: 50px;
   max-width: 1300px;
   width: 100%;
-  box-shadow: 0 0 40px rgba(59,130,246,0.4);
+  box-shadow: 0 0 40px rgba(59, 130, 246, 0.4);
   /* Kolom 1: Cover (350px), Kolom 2: Konten (1fr) */
   grid-template-columns: 350px 1fr;
   grid-template-rows: auto auto auto;
-  grid-template-areas: 
+  grid-template-areas:
     "cover title"
     "cover synopsis"
     "chapters chapters";
@@ -143,7 +260,7 @@ html {
   border-radius: 20px;
   overflow: hidden;
   border: 4px solid #2563eb;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
 }
 
 .manga-cover img {
@@ -164,7 +281,7 @@ html {
   align-items: center; /* Tengah vertikal di area title */
   justify-content: center;
   text-align: center;
-    width:  100%;
+  width: 100%;
 }
 
 .manga-title h1 {
@@ -174,8 +291,8 @@ html {
   line-height: 1.2;
   margin: 0;
   width: 100%;
-    word-break: break-word;
-    overflow-wrap: break-word;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .manga-synopsis {
@@ -184,8 +301,8 @@ html {
   font-size: 1.2rem;
   line-height: 1.8;
   text-align: justify;
-    word-break: break-word;
-    overflow-wrap: break-word;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 /* Area Chapter */
@@ -221,10 +338,10 @@ html {
 
 .chapter-list li {
   flex: 1;
-  background: rgba(59,130,246,0.15);
+  background: rgba(59, 130, 246, 0.15);
   border-radius: 40px;
   transition: all 0.1s ease;
-  border: 1px solid rgba(59,130,246,0.3);
+  border: 1px solid rgba(59, 130, 246, 0.3);
 }
 
 .chapter-list li a {
@@ -242,7 +359,35 @@ html {
   background: #2563eb;
   transform: translateY(-3px);
   border-color: #2563eb;
-  box-shadow: 0 5px 15px rgba(37,99,246,0.4);
+  box-shadow: 0 5px 15px rgba(37, 99, 246, 0.4);
+}
+
+/* ===== CHAPTER SUDAH DIBACA ===== */
+.chapter-list li.read {
+  background: rgba(59, 130, 246, 0.05);
+  border-color: rgba(59, 130, 246, 0.1);
+  opacity: 0.6;
+}
+
+.chapter-list li.read a {
+  color: #94a3b8;
+  position: relative;
+  padding-right: 35px;
+}
+
+.chapter-list li.read::after {
+  content: "✓";
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #22c55e;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.chapter-list li {
+  position: relative;
 }
 
 /* ===== READER PAGE ===== */
@@ -251,7 +396,7 @@ html {
   padding-bottom: 60px;
   margin: 0;
   min-height: 100vh;
-  max-width: none;        /* agar konten tetap di tengah */
+  max-width: none; /* agar konten tetap di tengah */
 }
 .chapter-title {
   text-align: center;
@@ -266,14 +411,14 @@ html {
   display: flex;
   flex-direction: column;
   align-items: center;
-    gap: 3px;
-    width: 100%;
+  gap: 3px;
+  width: 100%;
 }
 .chapter-images img {
   width: 100%;
-    max-width: 100%;
+  max-width: 100%;
   height: auto;
-    display: block;
+  display: block;
 }
 .chapter-navigation {
   display: flex;
@@ -295,12 +440,11 @@ html {
   text-align: center;
 }
 .nav-btn:focus {
- background: transparent;
+  background: transparent;
   border-color: #2563eb;
   color: #2563eb;
   transform: translateY(-3px);
 }
-
 
 /* Container progress bar */
 .reading-progress-container {
@@ -309,7 +453,7 @@ html {
   left: 0;
   width: 100%;
   height: 5px;
-  background: rgba(59,130,246,0.2); /* latar belakang abu-abu gelap */
+  background: rgba(59, 130, 246, 0.2); /* latar belakang abu-abu gelap */
   z-index: 999;
 }
 /* Bar yang menunjukkan progres */
@@ -320,7 +464,6 @@ html {
   transition: width 0.1s ease;
   /*border-radius: 0 2px 2px 0;*/
 }
-
 
 /* Tombol toggle mode baca*/
 .ebook-btn {
@@ -338,8 +481,8 @@ html {
 }
 /* Tombol ikon mode baca */
 .ebook-icon-btn {
-  background: rgba(255,255,255,0.1);
-  border: 1px solid rgba(255,255,255,0.6);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.6);
   border-radius: 6px;
   padding: 6px;
   cursor: pointer;
@@ -347,16 +490,18 @@ html {
   align-items: center;
   justify-content: center;
   color: #fff;
-  transition: background 0.2s, border-color 0.2s;
+  transition:
+    background 0.2s,
+    border-color 0.2s;
   vertical-align: middle;
 }
 .ebook-icon-btn:hover {
-  background: rgba(255,255,255,0.1);
-  border-color: rgba(255,255,255,0.6);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.6);
 }
 /* Saat mode ebook aktif, tombol lebih menonjol */
 .ebook-icon-btn.active {
-  background: rgba(255,100,100,0.3);
+  background: rgba(255, 100, 100, 0.3);
   border-color: #ff6b6b;
 }
 /* Sembunyikan ikon yang tidak sesuai */
@@ -389,69 +534,8 @@ html {
   width: 100%;
   height: auto;
   display: block;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-} 
-
-/* Container Search Bar */
-#search-box-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    margin-top: 90px;  /* Gunakan margin-top, bukan padding-top */
-    padding-inline: 20px;
-    box-sizing: border-box;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
-
-/* Input Search */
-#search-input {
-    width: 100%;
-    max-width: 500px; /* Membatasi lebar maksimal agar tidak terlalu panjang di desktop */
-    padding: 12px;
-    border-radius: 25px;
-    border: 1px solid #1e293b;
-    background: #1e293b;
-    color: #e2e8f0;
-    font-size: 1rem;
-    outline: none;
-    transition: all 0.3s ease;
-}
-
-/* Efek saat input diklik/fokus */
-#search-input:focus {
-    border-color: #3b82f6;
-    box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
-    
-}
-
-#search-input::placeholder {
-    color: #94a3b8;
-}
-
-/* Wrapper - kurangi jarak antar elemen */
-.manga-item-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 3px; /* Jarak lebih rapat antara cover, judul, dan chapter */
-}
-
-/* Judul Manga - font lebih besar & lebih menarik */
-.manga-item-title {
-    color: #e2e8f0;
-    font-size: 28px; /*Font lebih besar*/
-    font-weight: 700;
-    padding: 0 5px;
-}
-
-/* Latest Chapter - font lebih besar & style lebih menarik */
-.manga-item-latest {
-    color: #3b82f6;
-    font-size: 23px; /* Font lebih besar */
-    font-weight: 600;
-}
-
 
 /* ===== TAMPILAN TABLET / HP LEBAR ===== */
 @media (max-width: 900px) {
@@ -468,7 +552,7 @@ html {
     padding: 30px;
     max-width: 600px;
     /* Urutan Layout Mobile sesuai permintaan: */
-    grid-template-areas: 
+    grid-template-areas:
       "title"
       "cover"
       "synopsis"
@@ -480,7 +564,7 @@ html {
     grid-area: title;
     padding-bottom: 10px;
   }
-.manga-title h1 {
+  .manga-title h1 {
     font-size: 2rem;
   }
 
@@ -499,13 +583,13 @@ html {
     line-height: 1.6;
     text-align: left;
     padding: 0 10px;
-    }
- 
+  }
+
   .manga-chapters h3 {
     font-size: 1.4rem;
     margin-bottom: 20px;
   }
-  
+
   .chapter-list li {
     border-radius: 20px;
   }
@@ -515,60 +599,55 @@ html {
   }
 }
 
-
 /* ===== TAMPILAN MOBILE ===== */
 @media (max-width: 768px) {
   .manga-container {
-          margin-right: 15px;
-          margin-left: 15px;
-          gap: 20px;
-          padding-top: 30px;
-          padding-bottom: 30px;
-      }
-    
-  .reader-container {
-    padding-top: 120px;
+    margin-right: 15px;
+    margin-left: 15px;
+    gap: 20px;
+    padding-top: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    grid-template-columns: 1fr;
+  }
+  .manga-item-title {
+    font-size: 17px; /*Font lebih besar*/
   }
   .chapter-title h1 {
     font-size: 1.5rem;
   }
-  
+  .reader-container {
+    padding-top: 120px;
+  }
   .nav-btn {
     padding: 10px 20px;
     font-size: 0.9rem;
     min-width: 100px;
   }
-  
-  .manga-item-title {
-    font-size: 17px; /*Font lebih besar*/
-  }
-  
-  .manga-item-latest {
-    font-size: 15px; /* Font lebih besar */
-}
 }
 
 /* ===== TAMPILAN HP KECIL ===== */
 @media (max-width: 480px) {
-  
   .manga-detail-card {
     padding: 20px;
     gap: 25px;
   }
-  
+
   .manga-cover {
     max-width: 220px;
   }
-  
+
   .manga-title h1 {
     font-size: 1.6rem;
   }
-  
+
   .chapter-list li a {
     padding: 8px 14px;
     font-size: 0.85rem;
   }
-  
+  .reader-container {
+    padding-bottom: 30px;
+  }
   .chapter-navigation {
     gap: 10px;
   }
@@ -577,7 +656,4 @@ html {
     font-size: 0.8rem;
     min-width: 80px;
   }
-   .reader-container {
-    padding-bottom: 30px;
-   }
 }
