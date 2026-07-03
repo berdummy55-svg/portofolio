@@ -1,130 +1,110 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title id="page-title"></title>
-<link rel="stylesheet" href="../../style.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title id="page-title"></title>
+    <link rel="stylesheet" href="../../style.css" />
+  </head>
+  <body>
+    <a href="../../index.html" class="back-area" id="metu"></a>
 
-<!-- Tombol Kembali (Tetap dipertahankan) -->
-<a href="../../index.html" class="back-area" id="metu"></a>
+    <header>
+      <nav class="navbar">
+        <div class="logo">Project Translation</div>
+      </nav>
+    </header>
 
-<!-- Header -->
-<header>
-  <nav class="navbar">
-   <div class="logo">Project Translation</div>
-  </nav>
-</header>
+    <section class="manga-detail-container">
+      <div class="manga-detail-card">
+        <div class="manga-cover">
+          <img id="manga-cover" src="" alt="" />
+        </div>
+        <div class="manga-title">
+          <h1 id="manga-title"></h1>
+        </div>
+        <div class="manga-synopsis">
+          <p id="manga-synopsis" class="synopsis"></p>
+        </div>
+        <div class="manga-chapters">
+          <h3>Chapter List</h3>
+          <ul id="chapter-list" class="chapter-list"></ul>
+        </div>
+      </div>
+    </section>
 
-<!-- Konten Detail Manga -->
-<section class="manga-detail-container">
-  <div class="manga-detail-card">
-    
-    <!-- 1. Cover (Area Kiri Desktop / Kiri Mobile) -->
-    <div class="manga-cover">
-      <img id="manga-cover" src="" alt="">
-    </div>
+    <script>
+      const BASE_URL = "https://pub-e8931c5705eb48b4b09534f5efbeacb9.r2.dev";
+      const urlParams = new URLSearchParams(window.location.search);
+      const mangaId = urlParams.get("id");
 
-    <!-- 2. Judul (Area Kanan Desktop / Kanan Mobile) -->
-    <div class="manga-title">
-      <h1 id="manga-title"></h1>
-    </div>
+      if (!mangaId) {
+        alert("ID manga tidak ditemukan!");
+        window.location.href = "../../index.html";
+      }
 
-    <!-- 3. Sinopsis (Area Kanan Bawah Desktop / Bawah Full Mobile) -->
-    <div class="manga-synopsis">
-      <p id="manga-synopsis" class="synopsis">
-      </p>
-    </div>
+      async function loadMangaDetail() {
+        try {
+          const res = await fetch(`${BASE_URL}/manga.json`);
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
-    <!-- 4. Daftar Chapter (Area Bawah Full) -->
-    <div class="manga-chapters">
-      <h3>Chapter List</h3>
-      <ul id="chapter-list" class="chapter-list">
-      
-      </ul>
-    </div>
+          const data = await res.json();
+          const manga = data[mangaId];
 
-  </div>
-</section>
+          if (!manga) {
+            alert(`Manga dengan ID "${mangaId}" tidak ditemukan!`);
+            return;
+          }
 
-<script>
-  console.log(" Script Manga Detail Mulai Jalan");
-
-  const BASE_URL = "https://pub-e8931c5705eb48b4b09534f5efbeacb9.r2.dev";
-  const urlParams = new URLSearchParams(window.location.search);
-  const mangaId = urlParams.get('id');
-
-  console.log("🔍 ID dari URL:", mangaId);
-
-  if (!mangaId) {
-    console.error("❌ ID Manga kosong!");
-    alert('ID manga tidak ditemukan!');
-    window.location.href = '../../index.html';
-  } else {
-    fetch(`${BASE_URL}/manga.json?`)
-      .then(res => {
-        console.log("📡 Status Response:", res.status);
-        return res.json();
-      })
-      .then(data => {
-        console.log(" Data JSON Berhasil Diambil:", data);
-        console.log("🔑 Key di JSON:", Object.keys(data));
-        
-        const manga = data[mangaId];
-        console.log("📖 Data Manga Ditemukan:", manga);
-
-        if (!manga) {
-          alert(`Manga dengan ID "${mangaId}" tidak ditemukan di JSON!`);
-          return;
-        }
-
-        // Update Cover
-        const cover = document.getElementById('manga-cover');
-        if(cover) {
+          // Update Cover
+          const cover = document.getElementById("manga-cover");
+          if (cover) {
             cover.src = `${BASE_URL}/${mangaId}/${manga.prefix}.png`;
-            console.log("🖼️ Cover diupdate");
-        }
+          }
 
-        // Update Judul
-        const title = document.getElementById('manga-title');
-        const pageTitle = document.getElementById('page-title');
-        if(title) title.textContent = manga.title || mangaId;
-        if(pageTitle) pageTitle.textContent = manga.title || mangaId;
+          // Update Title
+          const titleEl = document.getElementById("manga-title");
+          const pageTitle = document.getElementById("page-title");
+          const title = manga.title || mangaId;
+          if (titleEl) titleEl.textContent = title;
+          if (pageTitle) pageTitle.textContent = title;
 
-        // Update Synopsis (PENTING)
-        const synopsisEl = document.getElementById('manga-synopsis');
-        console.log("🔍 Elemen Synopsis ditemukan:", synopsisEl);
-        
-        if (synopsisEl) {
-          // Cek apakah ada teks synopsis
-          const text = manga.synopsis || "Tidak ada sinopsis.";
-          console.log(" Teks Synopsis:", text);
-          synopsisEl.textContent = text;
-        }
+          // Update Synopsis
+          const synopsisEl = document.getElementById("manga-synopsis");
+          if (synopsisEl) {
+            synopsisEl.textContent = manga.synopsis || "Tidak ada sinopsis.";
+          }
 
-        // Update Chapter List
-        const listContainer = document.getElementById('chapter-list');
-        if (listContainer && manga.chapters) {
-          listContainer.innerHTML = '';
-          const sortedChapters = Object.keys(manga.chapters).sort((a, b) => a - b);
-          sortedChapters.forEach(ch => {
-            const li = document.createElement('li');
-            const a = document.createElement('a');
-            a.href = `../reader.html?manga=${mangaId}&chapter=${ch}`;
-            a.textContent = `Chapter ${ch}`;
-            li.appendChild(a);
-            listContainer.appendChild(li);
-          });
-          console.log(`📚 Berhasil load ${sortedChapters.length} chapter`);
+          // Update Chapter List
+          const listContainer = document.getElementById("chapter-list");
+          if (listContainer && manga.chapters) {
+            const readData = localStorage.getItem(`readChapters_${mangaId}`);
+            const readChapters = readData ? readData.split(",") : [];
+
+            const sortedChapters = Object.keys(manga.chapters).sort(
+              (a, b) => a - b,
+            );
+
+            listContainer.innerHTML = sortedChapters
+              .map((ch) => {
+                const isRead = readChapters.includes(ch);
+                return `
+          <li class="${isRead ? "read" : ""}">
+            <a href="../reader.html?manga=${mangaId}&chapter=${ch}">
+              Chapter ${ch}
+            </a>
+          </li>
+        `;
+              })
+              .join("");
+          }
+        } catch (err) {
+          console.error("Gagal memuat detail manga:", err);
+          alert("Gagal mengambil data manga.");
         }
-      })
-      .catch(err => {
-        console.error("❌ GAGAL FETCH DATA:", err);
-        alert("Gagal mengambil data manga. Cek Console untuk detail.");
-      });
-  }
-</script>
-</body>
+      }
+
+      loadMangaDetail();
+    </script>
+  </body>
 </html>
