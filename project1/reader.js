@@ -52,6 +52,18 @@ else {
       // Set judul halaman
       document.title = `${manga.title} - Chapter ${chapterNum}`;
       document.getElementById('chapter-title').textContent = `${manga.title} - Chapter ${chapterNum}`;
+
+// Simpan chapter yang sedang dibaca ke localStorage
+const readData = localStorage.getItem(`readChapters_${mangaId}`);
+let readChapters = readData ? readData.split(',') : [];
+
+// Tambahkan chapter ini jika belum ada
+if (!readChapters.includes(chapterNum)) {
+  readChapters.push(chapterNum);
+  localStorage.setItem(`readChapters_${mangaId}`, readChapters.join(','));
+  console.log(`💾 Chapter ${chapterNum} disimpan sebagai sudah dibaca`);
+}
+
 // Ubah teks logo di navbar menjadi judul chapter
 const logoElement = document.querySelector('.logo');
 
