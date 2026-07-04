@@ -81,9 +81,18 @@
             const readData = localStorage.getItem(`readChapters_${mangaId}`);
             const readChapters = readData ? readData.split(",") : [];
 
-            const sortedChapters = Object.keys(manga.chapters).sort(
-              (a, b) => a - b,
-            );
+
+            //SORT CHAPTER
+            function sortChapters(a, b) {
+    const [chA, partA] = String(a).split('.').map(Number);
+    const [chB, partB] = String(b).split('.').map(Number);
+    if (chA !== chB) return chA - chB;
+    const pA = isNaN(partA) ? 0 : partA;
+    const pB = isNaN(partB) ? 0 : partB;
+    return pA - pB;
+}
+
+const sortedChapters = Object.keys(manga.chapters).sort(sortChapters);
 
             listContainer.innerHTML = sortedChapters
               .map((ch) => {
