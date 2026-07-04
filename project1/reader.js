@@ -150,6 +150,7 @@ window.totalEbookPages = chapter.pages; // simpan untuk navigasi ebook
     }
   }
 }
+}
 
 // Fungsi untuk menghitung dan mengupdate progress bar
 function updateReadingProgress() {
@@ -364,4 +365,4 @@ function updatePageIndicator(pageNum) {
   const logo = document.querySelector('.logo');
   if (logo) logo.textContent = `${pageNum}/${totalPages}`;
 }
-}
+
