@@ -47,7 +47,7 @@
         <span class="manga-card-badge">${genreText}</span>
         <p class="manga-card-desc">${truncate(manga.synopsis)}</p>
         <div class="manga-card-meta">
-          <span class="manga-card-status ${status}">${status.charAt(0).toUpperCase() + status.slice(1)}</span>
+        <span class="manga-card-status status-${status}">${status}</span>
           <span class="chapter-info">Last Release: Chapter ${latestChapter}</span>
         </div>
       </div>
