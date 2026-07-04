@@ -182,7 +182,7 @@ html {
 /* Base style untuk semua status tag */
 .manga-card-status {
   font-size: 0.8rem;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 .status-ongoing {
