@@ -149,6 +149,7 @@ html {
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 100%;
+  min-width: 0:
 }
 /* Judul Manga - font lebih besar & lebih menarik */
 .manga-item-title {
