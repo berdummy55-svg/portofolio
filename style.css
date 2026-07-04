@@ -185,6 +185,7 @@ html {
 .manga-card-status {
   font-size: 0.8rem;
   text-transform: uppercase;
+  font-weight: 600;
 }
 
 .status-ongoing {
