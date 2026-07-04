@@ -170,29 +170,31 @@ function updateReadingProgress() {
 }
 // Panggil fungsi saat scroll
 window.addEventListener('scroll', () => {
-  // Progress bar (tetap berfungsi)
-  if (!ebookMode) {
-    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    document.getElementById('readingProgressBar').style.width = (winScroll / height) * 100 + '%';
-    
-    // Deteksi halaman saat ini
-    const images = document.querySelectorAll('#chapter-images img');
-    if (images.length > 0) {
-      const viewportCenter = window.innerHeight / 2;
-      let best = 0, minDist = Infinity;
-      images.forEach((img, idx) => {
-        const rect = img.getBoundingClientRect();
-        if (rect.height === 0) return;
-        const dist = Math.abs(rect.top + rect.height/2 - viewportCenter);
-        if (dist < minDist) { minDist = dist; best = idx; }
-      });
-      updatePageIndicator(best + 1);
+    if (!ebookMode) {
+        // 1. Update Progress Bar
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        document.getElementById('readingProgressBar').style.width = scrolled + '%';
+
+        // 2. Deteksi Halaman (Gunakan IntersectionObserver untuk performa lebih baik di masa depan)
+        const images = document.querySelectorAll('#chapter-images img');
+        if (images.length > 0) {
+            const viewportCenter = window.innerHeight / 2;
+            let best = 0, minDist = Infinity;
+            images.forEach((img, idx) => {
+                const rect = img.getBoundingClientRect();
+                if (rect.height === 0) return;
+                const dist = Math.abs(rect.top + rect.height/2 - viewportCenter);
+                if (dist < minDist) { minDist = dist; best = idx; }
+            });
+            updatePageIndicator(best + 1);
+        }
+    } else {
+        // Progress bar ebook
+        const progress = ((currentEbookPage + 1) / totalPages) * 100;
+        document.getElementById('readingProgressBar').style.width = progress + '%';
     }
-  } else {
-    // Progress bar ebook pakai currentEbookPage
-    document.getElementById('readingProgressBar').style.width = ((currentEbookPage + 1) / totalPages) * 100 + '%';
-  }
 });
 
 // Panggil sekali saat halaman dimuat untuk mengatur posisi awal
@@ -265,7 +267,8 @@ function enterEbookMode() {
     nav.parentNode.insertBefore(viewer, nav);
   }
   viewer.style.display = 'block';
-  window.scrollTo({ top: 85, behavior: 'instant' });
+ const headerHeight = document.querySelector('header').offsetHeight;
+window.scrollTo({ top: headerHeight, behavior: 'instant' });
   
   // Tampilkan gambar halaman yang terdeteksi
   updateEbookImage();
