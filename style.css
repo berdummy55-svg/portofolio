@@ -137,6 +137,7 @@ html {
   flex-direction: column;
   justify-content: center;
   text-align: left;
+  overflow: hidden;
 }
 .manga-card-badge {
   font-size: 0.7rem;
@@ -145,11 +146,11 @@ html {
   letter-spacing: 1px;
   margin-bottom: 10px;
   text-transform: uppercase;
-  white-space: nowrap;
+ white-space: normal;
   overflow: hidden;
-  text-overflow: ellipsis;
+  overflow-wrap: break-word;
   max-width: 100%;
-  min-width: 0:
+  min-width: 0;
 }
 /* Judul Manga - font lebih besar & lebih menarik */
 .manga-item-title {
@@ -183,7 +184,7 @@ html {
 /* Base style untuk semua status tag */
 .manga-card-status {
   font-size: 0.8rem;
-  text-transform: capitalize;
+  text-transform: uppercase;
 }
 
 .status-ongoing {
