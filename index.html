@@ -37,6 +37,14 @@
         const status = (manga.status || "unknown").toLowerCase();
         const chapters = manga.chapters || {};
         const keys = Object.keys(chapters);
+        keys.sort((a, b) => {
+  const [chA, partA] = String(a).split('.').map(Number);
+  const [chB, partB] = String(b).split('.').map(Number);
+  if (chA !== chB) return chA - chB;
+  const pA = isNaN(partA) ? 0 : partA;
+  const pB = isNaN(partB) ? 0 : partB;
+  return pA - pB;
+});
         const latestChapter = keys.length > 0 ? keys[keys.length - 1] : "?";
 
         return `
@@ -58,7 +66,7 @@
       // --- Load & Render ---
       async function loadManga() {
         try {
-          const res = await fetch(`${BASE_URL}/manga.json`);
+          const res = await fetch(`${BASE_URL}/manga.json?t=${Date.now()}`, { cache: "no-store" });
           if (!res.ok) throw new Error(`HTTP ${res.status}`);
           const data = await res.json();
 
