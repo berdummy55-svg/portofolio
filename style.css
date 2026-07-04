@@ -164,7 +164,7 @@ html {
 
 .manga-card-desc {
   font-size: 0.85rem;
-  color: #d4dce4;
+  color: #e3e7ec;
   line-height: 1.5;
   margin-bottom: 15px;
   display: -webkit-box;
@@ -192,7 +192,7 @@ html {
   color: #3b82f6;
 }
 .status-completed {
-  color: #4ade80;
+  color: #3cfb83;
 }
 .status-hiatus {
   color: #fb923c;
@@ -200,28 +200,11 @@ html {
 
 /* Info Chapter */
 .chapter-info {
-  color: #93c5fd;
+  color: #e3e7ec;
   font-size: 0.8rem;
 }
-/* AREA TOMBOL KEMBALI*/
-.back-area {
-  position: fixed;
-  top: 65px;
-  right: 0;
-  width: 55px;
-  height: 100vh;
-  background: #1e6cff;
-  border-left: 5px solid #1e6cff;
-  z-index: 999;
-  transition: all 0.1s ease;
-}
-.back-area:hover {
-  background: transparent;
-  border-left: 5px solid #1e6cff;
-}
-.back-area:active {
-  outline: none;
-}
+
+
 
 /* ===== MANGA DETAIL PAGE ===== */
 .manga-detail-container {
@@ -392,6 +375,27 @@ html {
 .chapter-list li {
   position: relative;
 }
+/* AREA TOMBOL KEMBALI*/
+.back-area {
+  position: fixed;
+  top: 65px;
+  right: 0;
+  width: 55px;
+  height: 100vh;
+  background: #1e6cff;
+  border-left: 5px solid #1e6cff;
+  z-index: 999;
+  transition: all 0.1s ease;
+}
+.back-area:hover {
+  background: transparent;
+  border-left: 5px solid #1e6cff;
+}
+.back-area:active {
+  outline: none;
+}
+
+
 
 /* ===== READER PAGE ===== */
 .reader-container {
