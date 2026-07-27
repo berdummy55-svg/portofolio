@@ -730,6 +730,10 @@ html {
   .manga-container {
   padding-left: 15px;
   padding-right: 15px;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(160px, 1fr)
+  );
   }
   .manga-detail-card {
    gap: 5px;
@@ -742,8 +746,17 @@ html {
     font-size: 0.9rem;
   }
   .manga-detail-status {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
   }
+  .manga-detail-status::before {
+  content: "";
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: currentColor;
+  box-shadow: 0 0 7px currentColor;
+}
  .manga-detail-genre {
   font-size: 0.7rem;
  }
