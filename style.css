@@ -735,6 +735,10 @@ html {
     minmax(160px, 1fr)
   );
   }
+  .manga-detail-container {
+    padding-top: 85px;
+    padding-bottom: 45px;
+  }
   .manga-detail-card {
    gap: 5px;
     padding: 20px;
