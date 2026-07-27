@@ -1,108 +1,127 @@
 <!doctype html>
 <html lang="id">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Manga Translation</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <header>
-      <nav class="navbar">
-        <div class="logo">Project Translation</div>
-      </nav>
-    </header>
 
-    <div id="search-box-container">
-      <input type="text" id="search-input" placeholder="Search..." />
-    </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manga Translation</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
 
-    <section class="manga-container" id="manga-list"></section>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">Project Translation</div>
+    </nav>
+  </header>
 
-    <script>
-      const BASE_URL = "https://pub-e8931c5705eb48b4b09534f5efbeacb9.r2.dev";
-      const container = document.getElementById("manga-list");
+  <div id="search-box-container">
+    <input type="text" id="search-input" placeholder="Search..." />
+  </div>
 
-      // --- Helper: Potong teks ---
-      function truncate(str, max = 150) {
-        return str && str.length > max
-          ? str.substring(0, max) + "..."
-          : str || "Tidak ada deskripsi.";
-      }
+  <section class="manga-container" id="manga-list"></section>
 
-      // --- Helper: Buat card HTML dari data manga ---
-      function createMangaCard(id, manga) {
-        const genres = manga.genre || manga.genres || ["Unknown"];
-        const genreText = Array.isArray(genres) ? genres.join(" • ") : genres;
-        const status = (manga.status || "unknown").toLowerCase();
-        const chapters = manga.chapters || {};
-        const keys = Object.keys(chapters);
-        keys.sort((a, b) => {
-  const [chA, partA] = String(a).split('.').map(Number);
-  const [chB, partB] = String(b).split('.').map(Number);
-  if (chA !== chB) return chA - chB;
-  const pA = isNaN(partA) ? 0 : partA;
-  const pB = isNaN(partB) ? 0 : partB;
-  return pA - pB;
-});
-        const latestChapter = keys.length > 0 ? keys[keys.length - 1] : "?";
+  <script>
+    const BASE_URL = "https://pub-e8931c5705eb48b4b09534f5efbeacb9.r2.dev";
+    const container = document.getElementById("manga-list");
 
-        return `
+    // --- Helper: Potong teks ---
+    function truncate(str, max = 150) {
+      return str && str.length > max
+        ? str.substring(0, max) + "..."
+        : str || "Tidak ada deskripsi.";
+    }
+
+    // --- Helper: Buat card HTML dari data manga ---
+    function createMangaCard(id, manga) {
+      const genres = manga.genre || manga.genres || ["Unknown"];
+      const genreText = Array.isArray(genres) ? genres.join(" • ") : genres;
+      const status = (manga.status || "unknown").toLowerCase();
+     
+      return `
     <a class="manga-item-wrapper" href="project1/manga1/manga.html?id=${id}">
       <img src="${BASE_URL}/${id}/${manga.prefix}.png" alt="${manga.title || id}">
       <div class="manga-card-content">
         <div class="manga-item-title">${manga.title || id}</div>
         <span class="manga-card-badge">${genreText}</span>
-        <p class="manga-card-desc">${truncate(manga.synopsis)}</p>
-        <div class="manga-card-meta">
+        
         <span class="manga-card-status status-${status}">${status}</span>
-          <span class="chapter-info">Last Release: Chapter ${latestChapter}</span>
-        </div>
+        
       </div>
     </a>
   `;
+    }
+
+    // --- Helper: Buat 1 skeleton card ---
+function createSkeletonCard() {
+  return `
+    <div class="skeleton-card">
+      <div class="skeleton-img"></div>
+      <div class="skeleton-content">
+        <div class="skeleton-badge"></div>
+        <div class="skeleton-title"></div>
+        <div class="skeleton-status"></div>
+      </div>
+    </div>
+  `;
+}
+
+function getSkeletonCount() {
+  const width = window.innerWidth;
+  if (width <= 768) return 4;    // mobile
+  if (width <= 1024) return 8;   // tablet
+  return 14;                      // desktop
+}
+
+// --- Helper: Tampilkan sejumlah skeleton ---
+function showSkeletons(count) {
+  container.innerHTML = Array.from({ length: count }, createSkeletonCard).join("");
+}
+
+
+
+    // --- Load & Render ---
+    async function loadManga() {
+     showSkeletons(getSkeletonCount());
+      try {
+        const res = await fetch(`${BASE_URL}/manga.json?t=${Date.now()}`, { cache: "no-store" });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+
+        container.innerHTML = Object.entries(data)
+          .map(([id, manga]) => createMangaCard(id, manga))
+          .join("");
+      } catch (err) {
+        container.innerHTML = `<p style="color:red;">Gagal memuat manga: ${err.message}</p>`;
+        console.error("Gagal load manga:", err);
       }
+    }
 
-      // --- Load & Render ---
-      async function loadManga() {
-        try {
-          const res = await fetch(`${BASE_URL}/manga.json?t=${Date.now()}`, { cache: "no-store" });
-          if (!res.ok) throw new Error(`HTTP ${res.status}`);
-          const data = await res.json();
+    loadManga();
 
-          container.innerHTML = Object.entries(data)
-            .map(([id, manga]) => createMangaCard(id, manga))
-            .join("");
-        } catch (err) {
-          container.innerHTML = `<p style="color:red;">Gagal memuat manga: ${err.message}</p>`;
-          console.error("Gagal load manga:", err);
-        }
-      }
-
-      loadManga();
-
-      // --- Search ---
-      document
-        .getElementById("search-input")
-        .addEventListener("input", function () {
-          const keyword = this.value.toLowerCase();
-          document.querySelectorAll(".manga-item-wrapper").forEach((item) => {
-            const title = item
-              .querySelector(".manga-item-title")
-              .textContent.toLowerCase();
-            item.style.display = title.includes(keyword) ? "flex" : "none";
-          });
+    // --- Search ---
+    document
+      .getElementById("search-input")
+      .addEventListener("input", function () {
+        const keyword = this.value.toLowerCase();
+        document.querySelectorAll(".manga-item-wrapper").forEach((item) => {
+          const title = item
+            .querySelector(".manga-item-title")
+            .textContent.toLowerCase();
+          item.style.display = title.includes(keyword) ? "flex" : "none";
         });
+      });
 
-      // --- Service Worker ---
-      if ("serviceWorker" in navigator) {
-        window.addEventListener("load", () => {
-          navigator.serviceWorker
-            .register("sw.js")
-            .then((reg) => console.log("Service Worker terdaftar:", reg.scope))
-            .catch((err) => console.log("SW gagal:", err));
-        });
-      }
-    </script>
-  </body>
+    // --- Service Worker ---
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker
+          .register("sw.js")
+          .then((reg) => console.log("Service Worker terdaftar:", reg.scope))
+          .catch((err) => console.log("SW gagal:", err));
+      });
+    }
+  </script>
+</body>
+
 </html>
