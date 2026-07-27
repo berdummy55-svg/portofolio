@@ -307,7 +307,8 @@ html {
   row-gap: 20px;
   background: #141d2c;
   border-radius: 20px;
-  padding: 50px;
+  padding: 30px;
+  padding-top: 30px;
   max-width: 1300px;
   width: 100%;
   grid-template-columns: 250px 1fr;
@@ -662,14 +663,14 @@ html {
 /* ===== TAMPILAN TABLET / HP LEBAR ===== */
 @media (max-width: 900px) {
   .manga-container {
-    padding: 10px 20px;
-    gap: 15px;
+    gap: 10px;
   }
 
   
   .manga-detail-card {
    gap: 5px;
     padding: 30px;
+    padding-top: 15px;
     grid-template-columns: 200px 1fr;
     grid-template-rows: max-content max-content max-content max-content auto;
     grid-template-areas:
@@ -726,10 +727,29 @@ html {
 
 /* ===== TAMPILAN MOBILE ===== */
 @media (max-width: 768px) {  
+  .manga-container {
+  padding-left: 15px;
+  padding-right: 15px;
+  }
+  .manga-detail-card {
+   gap: 5px;
+    padding: 20px;
+    padding-top: 5px;
+    grid-template-columns: 120px 1fr;
+  }
+
   .manga-item-title {
     font-size: 0.9rem;
   }
- 
+  .manga-detail-status {
+    font-size: 0.75rem;
+  }
+ .manga-detail-genre {
+  font-size: 0.7rem;
+ }
+ .manga-detail-ch-count {
+  font-size: 0.8rem;
+ }
   .chapter-title h1 {
     font-size: 1.4rem;
   }
