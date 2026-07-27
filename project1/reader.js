@@ -365,4 +365,3 @@ function updatePageIndicator(pageNum) {
   const logo = document.querySelector('.logo');
   if (logo) logo.textContent = `${pageNum}/${totalPages}`;
 }
-
