@@ -133,10 +133,19 @@ html {
 }
 
 /* Efek Hover untuk Wrapper */
+@media (hover: hover) and (pointer: fine) {
 .manga-item-wrapper:hover {
   transform: translateY(-5px);
   border-color: var(--blue-default);
-}
+	}
+} 
+
+@media (hover: none) and (pointer: coarse) {
+  .manga-item-wrapper:hover {
+  transform: translateY(-5px);
+  border-color: var(--blue-default);
+  }
+} 
 
 .manga-item-wrapper img {
   display: block;
@@ -768,7 +777,7 @@ html {
   font-size: 0.8rem;
  }
   .chapter-title h1 {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
   }
   .reader-container {
     padding-top: 90px;
