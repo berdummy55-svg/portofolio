@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="../../style.css" />
   </head>
   <body>
-    <a href="../../index.html" class="back-area" id="metu"></a>
 
     <header>
       <nav class="navbar">
@@ -22,6 +21,13 @@
         </div>
         <div class="manga-title">
           <h1 id="manga-title"></h1>
+        </div>
+        <div class="manga-genre-container">
+          <span id="manga-detail-genre" class="manga-detail-genre"></span>
+        </div>
+        <div class="manga-meta-container">
+          <span id="manga-detail-status" class="manga-detail-status"></span>
+          <span id="manga-detail-ch-count" class="manga-detail-ch-count"></span>
         </div>
         <div class="manga-synopsis">
           <p id="manga-synopsis" class="synopsis"></p>
@@ -42,6 +48,8 @@
         alert("ID manga tidak ditemukan!");
         window.location.href = "../../index.html";
       }
+
+      
 
       async function loadMangaDetail() {
         try {
@@ -68,6 +76,27 @@
           const title = manga.title || mangaId;
           if (titleEl) titleEl.textContent = title;
           if (pageTitle) pageTitle.textContent = title;
+
+          // Update Meta (Status, Genre, Chapter Count)
+          const statusEl = document.getElementById("manga-detail-status");
+          const genreEl = document.getElementById("manga-detail-genre");
+          const chCountEl = document.getElementById("manga-detail-ch-count");
+
+          if (statusEl) {
+            const status = (manga.status || "unknown").toLowerCase();
+            statusEl.textContent = status;
+            statusEl.className = `manga-detail-status status-${status}`;
+          }
+
+          if (genreEl) {
+            const genres = manga.genre || manga.genres || ["Unknown"];
+            genreEl.textContent = Array.isArray(genres) ? genres.join(" • ") : genres;
+          }
+
+          if (chCountEl) {
+            const chapterCount = manga.chapters ? Object.keys(manga.chapters).length : 0;
+            chCountEl.textContent = `${chapterCount} Chapters`;
+          }
 
           // Update Synopsis
           const synopsisEl = document.getElementById("manga-synopsis");
