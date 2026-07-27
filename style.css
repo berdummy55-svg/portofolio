@@ -141,7 +141,7 @@ html {
 } 
 
 @media (hover: none) and (pointer: coarse) {
-  .manga-item-wrapper:hover {
+  .manga-item-wrapper:active {
   transform: translateY(-5px);
   border-color: var(--blue-default);
   }
