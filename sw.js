@@ -38,20 +38,18 @@ self.addEventListener('fetch', event => {
   const url = new URL(event.request.url);
   
   // ✅ Izinkan request dengan parameter cache-busting (?v=...)
-  // Jangan cache request yang punya parameter query khusus
   if (url.searchParams.has('v') || url.pathname.includes('manga.json')) {
-    event.respondWith(
-      fetch(event.request).then(res => {
-        // Clone response untuk bisa disimpan ke cache jika perlu
+  event.respondWith(
+    fetch(event.request)
+      .then(res => {
         const resClone = res.clone();
-        caches.open(CACHE_NAME).then(cache => {
-          cache.put(event.request, resClone);
-        });
+        caches.open(CACHE_NAME).then(cache => cache.put(event.request, resClone));
         return res;
       })
-    );
-    return;
-  }
+      .catch(() => caches.match(event.request)) // fallback kalau offline
+  );
+  return;
+}
   
   // Logika cache biasa untuk asset lain
   event.respondWith(
