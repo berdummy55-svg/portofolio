@@ -138,10 +138,12 @@ html {
 }
 
 
+  @media (hover: hover) and (pointer: fine) {
   .manga-item-wrapper:hover {
     transform: translateY(-5px);
     border-color: var(--blue-default);
   }
+}
 
 
 @media (hover: none) and (pointer: coarse) {
