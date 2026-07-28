@@ -23,6 +23,7 @@
   font-family: "Poppins", sans-serif;
   -webkit-tap-highlight-color: transparent;
 }
+
 body {
   background: var(--background);
   color: var(--white-default);
@@ -34,6 +35,7 @@ body {
 body.fade-out {
   opacity: 0;
 }
+
 header {
   position: fixed;
   top: 0;
@@ -49,6 +51,7 @@ header {
 html {
   scroll-behavior: smooth;
 }
+
 /* Navbar */
 .navbar {
   width: 90%;
@@ -57,6 +60,7 @@ html {
   justify-content: space-between;
   padding: 15px 0;
 }
+
 .logo {
   color: var(--blue-default);
   font-weight: 700;
@@ -69,7 +73,8 @@ html {
   justify-content: center;
   align-items: center;
   width: 100%;
-  margin-top: 90px; /* Gunakan margin-top, bukan padding-top */
+  margin-top: 90px;
+  /* Gunakan margin-top, bukan padding-top */
   padding-inline: 20px;
   box-sizing: border-box;
 }
@@ -77,7 +82,8 @@ html {
 /* Input Search */
 #search-input {
   width: 100%;
-  max-width: 500px; /* Membatasi lebar maksimal agar tidak terlalu panjang di desktop */
+  max-width: 500px;
+  /* Membatasi lebar maksimal agar tidak terlalu panjang di desktop */
   padding: 12px;
   border-radius: 25px;
   border: 1px solid var(--dark-grey);
@@ -105,14 +111,13 @@ html {
   padding-right: 25px;
   display: grid;
   max-width: 100%;
-  grid-template-columns: repeat(
-    auto-fill,
-    minmax(180px, 1fr)
-  );
+  grid-template-columns: repeat(auto-fill,
+      minmax(180px, 1fr));
   gap: 20px;
   margin: 20px auto;
   justify-items: center;
 }
+
 /* Wrapper - kurangi jarak antar elemen */
 .manga-item-wrapper {
   text-decoration: none;
@@ -126,26 +131,25 @@ html {
   align-items: stretch;
   text-align: center;
   background: transparent;
-  border-radius: 12px;
+  border-radius: 8px;
   overflow: hidden;
   border: 2px solid var(--dark-grey);
   max-width: 200px;
 }
 
-/* Efek Hover untuk Wrapper */
-@media (hover: hover) and (pointer: fine) {
-.manga-item-wrapper:hover {
-  transform: translateY(-5px);
-  border-color: var(--blue-default);
-	}
-} 
+
+  .manga-item-wrapper:hover {
+    transform: translateY(-5px);
+    border-color: var(--blue-default);
+  }
+
 
 @media (hover: none) and (pointer: coarse) {
   .manga-item-wrapper:active {
-  transform: translateY(-5px);
-  border-color: var(--blue-default);
+    transform: translateY(-5px);
+    border-color: var(--blue-default);
   }
-} 
+}
 
 .manga-item-wrapper img {
   display: block;
@@ -154,7 +158,7 @@ html {
   object-fit: cover;
   padding: 0;
   box-sizing: border-box;
-  border-radius: 12px 12px 0 0;
+  border-radius: 8px 8px 0 0;
 }
 
 .manga-card-content {
@@ -171,21 +175,22 @@ html {
 /* Judul Manga - font lebih besar & lebih menarik */
 .manga-item-title {
   color: var(--white-default);
-  font-size: 1rem; 
+  font-size: 1rem;
   font-weight: 700;
   padding: 0;
   text-align: left;
   margin: 8px 0;
   letter-spacing: 0.5px;
-  display: -webkit-box;   
-  -webkit-line-clamp: 2;   
-  line-clamp: 2;   
-  -webkit-box-orient: vertical;  
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
   box-orient: vertical;
-  overflow: hidden; 
+  overflow: hidden;
 }
 
-.manga-card-badge { /* #2a3850 warna cadangan abu-abu */
+.manga-card-badge {
+  /* #2a3850 warna cadangan abu-abu */
   font-size: 0.7rem;
   color: var(--light-grey);
   font-weight: 700;
@@ -211,7 +216,7 @@ html {
   align-items: center;
   gap: 5px;
   animation: blink-status 1s infinite alternate;
-  
+
 }
 
 .manga-card-status::before {
@@ -228,18 +233,21 @@ html {
   0% {
     opacity: 0.25;
   }
+
   100% {
     opacity: 1;
-  
+
   }
 }
 
 .status-ongoing {
   color: var(--ongoing-status);
 }
+
 .status-completed {
   color: var(--complete-status);
 }
+
 .status-hiatus {
   color: var(--hiatus-status);
 }
@@ -292,8 +300,13 @@ html {
 }
 
 @keyframes skeleton-shimmer {
-  0% { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
 }
 
 
@@ -301,7 +314,7 @@ html {
 .manga-detail-container {
   padding-top: 100px;
   padding-bottom: 60px;
-  margin-right: 15px; 
+  margin-right: 15px;
   margin-left: 15px;
   min-height: 100vh;
   display: flex;
@@ -315,7 +328,7 @@ html {
   column-gap: 40px;
   row-gap: 20px;
   background: #141d2c;
-  border-radius: 20px;
+  border-radius: 10px;
   padding: 30px;
   padding-top: 30px;
   max-width: 1300px;
@@ -336,7 +349,7 @@ html {
   grid-area: cover;
   aspect-ratio: 3 / 4;
   width: 100%;
-  border-radius: 20px;
+  border-radius: 5px;
   overflow: hidden;
   box-shadow: 0 10px 20px var(--black-shadow);
 }
@@ -356,7 +369,8 @@ html {
 .manga-title {
   grid-area: title;
   display: flex;
-  align-items: center; /* Tengah vertikal di area title */
+  align-items: center;
+  /* Tengah vertikal di area title */
   justify-content: center;
   text-align: center;
   width: 100%;
@@ -380,6 +394,7 @@ html {
   align-items: center;
   width: 100%;
 }
+
 .manga-detail-genre {
   font-size: 0.75rem;
   color: var(--light-grey);
@@ -444,7 +459,8 @@ html {
   grid-area: chapters;
   color: var(--white-default);
   display: flex;
-  align-items: center; /* Judul dan list sejajar atas */
+  align-items: center;
+  /* Judul dan list sejajar atas */
   flex-direction: column;
   gap: 20px;
 }
@@ -465,7 +481,8 @@ html {
   padding: 0;
   margin: 0;
   display: flex;
-  flex-wrap: wrap; /* Tombol akan turun ke baris baru jika penuh */
+  flex-wrap: wrap;
+  /* Tombol akan turun ke baris baru jika penuh */
   gap: 10px;
   justify-content: center;
   width: 100%;
@@ -531,17 +548,21 @@ html {
   padding-bottom: 50px;
   margin: 0;
   min-height: 100vh;
-  max-width: none; /* agar konten tetap di tengah */
+  max-width: none;
+  /* agar konten tetap di tengah */
 }
+
 .chapter-title {
   text-align: center;
   margin-bottom: 30px;
 }
+
 .chapter-title h1 {
   color: var(--white-default);
   font-size: 1.6rem;
   word-break: break-word;
 }
+
 .chapter-images {
   display: flex;
   flex-direction: column;
@@ -551,12 +572,14 @@ html {
   max-width: 700px;
   margin: 0 auto;
 }
+
 .chapter-images img {
   width: 100%;
   max-width: 100%;
   height: auto;
   display: block;
 }
+
 .chapter-navigation {
   display: flex;
   justify-content: center;
@@ -564,6 +587,7 @@ html {
   margin-top: 30px;
   flex-wrap: wrap;
 }
+
 .nav-btn {
   display: flex;
   align-items: center;
@@ -597,14 +621,17 @@ html {
   left: 0;
   width: 100%;
   height: 3px;
-  background: var(--dark-grey); /* latar belakang abu-abu gelap */
+  background: var(--dark-grey);
+  /* latar belakang abu-abu gelap */
   z-index: 999;
 }
+
 /* Bar yang menunjukkan progres */
 .reading-progress-bar {
   height: 100%;
   width: 0%;
-  background: var(--blue-default); /* warna biru */
+  background: var(--blue-default);
+  /* warna biru */
   transition: width 0.1s ease;
   /*border-radius: 0 2px 2px 0;*/
 }
@@ -625,28 +652,34 @@ html {
     border-color 0.2s;
   vertical-align: middle;
 }
+
 .ebook-icon-btn:hover {
   background: #ffffff1a;
   border-color: #ffffff99;
 }
+
 /* Saat mode ebook aktif, tombol lebih menonjol */
 .ebook-icon-btn.active {
   background: #ff64644d;
   border-color: #ff6b6b;
 }
+
 /* Sembunyikan ikon yang tidak sesuai */
 .icon-scroll,
 .icon-ebook {
   display: none;
 }
+
 /* Default: tampilkan ikon scroll (karena mode awal scroll) */
 .ebook-icon-btn .icon-scroll {
   display: block;
 }
+
 /* Saat mode ebook aktif, sembunyikan ikon scroll & tampilkan ikon ebook */
 .ebook-icon-btn.active .icon-scroll {
   display: none;
 }
+
 .ebook-icon-btn.active .icon-ebook {
   display: block;
 }
@@ -675,9 +708,9 @@ html {
     gap: 10px;
   }
 
-  
+
   .manga-detail-card {
-   gap: 5px;
+    gap: 5px;
     padding: 30px;
     padding-top: 15px;
     grid-template-columns: 200px 1fr;
@@ -693,18 +726,18 @@ html {
   /* 1. Judul Manga (Paling Atas) */
   .manga-title {
     grid-area: title;
-    padding-bottom: 0px; /* Adjust padding if needed */
+    padding-bottom: 0px;
+    /* Adjust padding if needed */
   }
+
   .manga-title h1 {
     font-size: 1.5rem;
   }
 
-  /* 2. Cover (Tepat di Bawah Judul) */
+ 
   .manga-cover {
-    grid-area: cover;
-    max-width: 250px; /* Batasi ukuran cover agar tidak terlalu besar di HP */
-    margin: 15px auto 0; /* Tengah horizontal dan ditambah jarak atas */
-    border-radius: 15px;
+    max-width: 250px;
+    margin-top: 15px;
   }
 
   /* 3. Sinopsis (Di Bawah Cover) */
@@ -713,12 +746,14 @@ html {
     font-size: 0.9rem;
     text-align: left;
     padding: 0 5px;
-    margin-top: 10px; /* Tambahan jarak dari cover */
-    
+    margin-top: 10px;
+    /* Tambahan jarak dari cover */
+
   }
 
   .manga-chapters {
-    margin-top: 10px; /* Tambahan jarak dari sinopsis */
+    margin-top: 10px;
+    /* Tambahan jarak dari sinopsis */
   }
 
   .manga-chapters h3 {
@@ -728,6 +763,7 @@ html {
   .chapter-list li {
     border-radius: 20px;
   }
+
   .chapter-list li a {
     padding: 10px 16px;
     font-size: 0.85rem;
@@ -735,21 +771,21 @@ html {
 }
 
 /* ===== TAMPILAN MOBILE ===== */
-@media (max-width: 768px) {  
+@media (max-width: 768px) {
   .manga-container {
-  padding-left: 15px;
-  padding-right: 15px;
-  grid-template-columns: repeat(
-    auto-fill,
-    minmax(160px, 1fr)
-  );
+    padding-left: 15px;
+    padding-right: 15px;
+    grid-template-columns: repeat(auto-fill,
+        minmax(160px, 1fr));
   }
+
   .manga-detail-container {
     padding-top: 85px;
     padding-bottom: 45px;
   }
+
   .manga-detail-card {
-   gap: 5px;
+    gap: 5px;
     padding: 20px;
     padding-top: 5px;
     grid-template-columns: 120px 1fr;
@@ -758,52 +794,62 @@ html {
   .manga-item-title {
     font-size: 0.9rem;
   }
+
   .manga-detail-status {
-    font-size: 0.7rem;
+    font-size: 0.65rem;
   }
+
   .manga-detail-status::before {
-  content: "";
-  display: block;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: currentColor;
-  box-shadow: 0 0 7px currentColor;
-}
- .manga-detail-genre {
-  font-size: 0.7rem;
- }
- .manga-detail-ch-count {
-  font-size: 0.8rem;
- }
+    content: "";
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: currentColor;
+    box-shadow: 0 0 7px currentColor;
+  }
+
+  .manga-detail-genre {
+    font-size: 0.65rem;
+  }
+  .manga-title h1 {
+    font-size: 1.2rem;
+  }
+
+  .manga-detail-ch-count {
+    font-size: 0.75rem;
+  }
+
   .chapter-title h1 {
     font-size: 1.2rem;
   }
+
   .reader-container {
     padding-top: 90px;
     padding-bottom: 40;
   }
-  
+
 }
 
 /* ===== TAMPILAN HP KECIL ===== */
 @media (max-width: 480px) {
-  
-  
+
+
 
   .manga-cover {
     max-width: 220px;
   }
 
 
-  
-  .nav-btn{
+
+  .nav-btn {
     width: 30px;
-  height: 30px;
+    height: 30px;
   }
-  .nav-icon{
-     width: 25px;
-  height: 25px;
+
+  .nav-icon {
+    width: 25px;
+    height: 25px;
   }
-    
+
 }
