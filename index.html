@@ -104,9 +104,9 @@ function showSkeletons(count) {
       .getElementById("search-input")
       .addEventListener("input", function () {
         const keyword = this.value.toLowerCase();
-        document.querySelectorAll(".manga-item-wrapper, .manga-card-badge").forEach((item) => {
+        document.querySelectorAll(".manga-item-wrapper").forEach((item) => {
           const title = item
-            .querySelector(".manga-item-title, .manga-card-badge")
+            .querySelector(".manga-item-title")
             .textContent.toLowerCase();
           item.style.display = title.includes(keyword) ? "flex" : "none";
         });
@@ -127,6 +127,14 @@ function showSkeletons(count) {
     }, 150);
   });
 }
+
+    window.addEventListener("pageshow", (e) => {
+  if (e.persisted) {
+    document.querySelectorAll(".manga-item-wrapper.clicked").forEach((el) =>
+      el.classList.remove("clicked")
+    );
+  }
+});
  
 
     // --- Service Worker ---
