@@ -104,13 +104,30 @@ function showSkeletons(count) {
       .getElementById("search-input")
       .addEventListener("input", function () {
         const keyword = this.value.toLowerCase();
-        document.querySelectorAll(".manga-item-wrapper").forEach((item) => {
+        document.querySelectorAll(".manga-item-wrapper, .manga-card-badge").forEach((item) => {
           const title = item
-            .querySelector(".manga-item-title")
+            .querySelector(".manga-item-title, .manga-card-badge")
             .textContent.toLowerCase();
           item.style.display = title.includes(keyword) ? "flex" : "none";
         });
       });
+
+    if (window.matchMedia("(hover: none) and (pointer: coarse)").matches) {
+  document.addEventListener("click", (e) => {
+    const card = e.target.closest(".manga-item-wrapper");
+    if (!card) return;
+    if (e.ctrlKey || e.metaKey || e.button === 1) return;
+    e.preventDefault();
+    document.querySelectorAll(".manga-item-wrapper.clicked").forEach((el) =>
+      el.classList.remove("clicked")
+    );
+    card.classList.add("clicked");
+    setTimeout(() => {
+      window.location.href = card.href;
+    }, 150);
+  });
+}
+ 
 
     // --- Service Worker ---
     if ("serviceWorker" in navigator) {
