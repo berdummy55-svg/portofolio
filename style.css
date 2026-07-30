@@ -62,10 +62,12 @@ html {
 }
 
 .logo {
+  text-decoration: none;
   color: var(--blue-default);
   font-weight: 700;
   font-size: 22px;
 }
+
 
 /* Container Search Bar */
 #search-box-container {
@@ -138,19 +140,16 @@ html {
 }
 
 
-  @media (hover: hover) and (pointer: fine) {
+@media (hover: hover) and (pointer: fine) {
   .manga-item-wrapper:hover {
     transform: translateY(-5px);
     border-color: var(--blue-default);
   }
 }
 
-
-@media (hover: none) and (pointer: coarse) {
-  .manga-item-wrapper:active {
-    transform: translateY(-5px);
-    border-color: var(--blue-default);
-  }
+.manga-item-wrapper.clicked {
+  transform: translateY(-5px);
+  border-color: var(--blue-default);
 }
 
 .manga-item-wrapper img {
