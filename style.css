@@ -716,7 +716,7 @@ html {
 /* ===== TAMPILAN TABLET / HP LEBAR ===== */
 @media (max-width: 900px) {
   .logo {
-    font-size: 22px;
+    font-size: 20px;
   }
   
   #search-box-container {
