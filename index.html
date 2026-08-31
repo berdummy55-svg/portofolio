@@ -12,12 +12,13 @@
   <header>
     <nav class="navbar">
       <div class="logo">Project Translation</div>
+      <div id="search-box-container">
+    <input type="text" id="search-input" placeholder="Search..." />
+  </div>
     </nav>
   </header>
 
-  <div id="search-box-container">
-    <input type="text" id="search-input" placeholder="Search..." />
-  </div>
+ 
 
   <section class="manga-container" id="manga-list"></section>
 
@@ -37,16 +38,16 @@
       const genres = manga.genre || manga.genres || ["Unknown"];
       const genreText = Array.isArray(genres) ? genres.join(" • ") : genres;
       const status = (manga.status || "unknown").toLowerCase();
-     
+
       return `
     <a class="manga-item-wrapper" href="project1/manga1/manga.html?id=${id}">
       <img src="${BASE_URL}/${id}/${manga.prefix}.png" alt="${manga.title || id}">
       <div class="manga-card-content">
         <div class="manga-item-title">${manga.title || id}</div>
         <span class="manga-card-badge">${genreText}</span>
-        
+
         <span class="manga-card-status status-${status}">${status}</span>
-        
+
       </div>
     </a>
   `;
@@ -112,6 +113,7 @@ function showSkeletons(count) {
         });
       });
 
+
     if (window.matchMedia("(hover: none) and (pointer: coarse)").matches) {
   document.addEventListener("click", (e) => {
     const card = e.target.closest(".manga-item-wrapper");
@@ -127,15 +129,14 @@ function showSkeletons(count) {
     }, 150);
   });
 }
-
-    window.addEventListener("pageshow", (e) => {
+  window.addEventListener("pageshow", (e) => {
   if (e.persisted) {
     document.querySelectorAll(".manga-item-wrapper.clicked").forEach((el) =>
       el.classList.remove("clicked")
     );
   }
 });
- 
+
 
     // --- Service Worker ---
     if ("serviceWorker" in navigator) {
