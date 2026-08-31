@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap');
 
+
 :root {
   --blue-default: #3b82f6;
   --white-default: #e2e8f0;
@@ -15,7 +16,6 @@
 
 
 }
-
 
 
 * {
@@ -45,7 +45,8 @@ header {
   background: var(--background);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--dark-grey);
+  
+  border-bottom: 1px solid var(--blue-default);
   z-index: 1000;
 }
 
@@ -56,18 +57,24 @@ html {
 
 /* Navbar */
 .navbar {
-  width: 90%;
+  width: 100%;
   margin: auto;
   display: flex;
   justify-content: space-between;
-  padding: 15px 0;
+  align-items: center;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  min-height: 77.2px;
+
 }
 
 .logo {
   text-decoration: none;
   color: var(--blue-default);
   font-weight: 700;
-  font-size: 22px;
+  font-size: 25px;
+  margin-left: 15px;
+  line-height: 1; 
 }
 
 
@@ -76,23 +83,19 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  margin-top: 90px;
-  /* Gunakan margin-top, bukan padding-top */
-  padding-inline: 20px;
+  width: auto;
   box-sizing: border-box;
+  margin-right: 15px;
 }
 
 /* Input Search */
 #search-input {
-  width: 100%;
-  max-width: 500px;
-  /* Membatasi lebar maksimal agar tidak terlalu panjang di desktop */
+  width: 300px;
   padding: 12px;
   border-radius: 25px;
   border: 1px solid var(--dark-grey);
   background: var(--dark-grey);
-  color: var(--light-grey);
+  color: var(--white-default);
   font-size: 1rem;
   outline: none;
   transition: all 0.3s ease;
@@ -105,12 +108,12 @@ html {
 }
 
 #search-input::placeholder {
-  color: var(--light-grey);
+  color: var(--white-default);
 }
 
 /*Manga*/
 .manga-container {
-  padding-top: 15px;
+  padding-top: 85px;
   padding-left: 25px;
   padding-right: 25px;
   display: grid;
@@ -641,6 +644,7 @@ html {
 
 /* Tombol ikon mode baca */
 .ebook-icon-btn {
+  margin-right: 20px;
   background: #ffffff1a;
   border: 1px solid var(--light-grey);
   border-radius: 6px;
@@ -775,6 +779,11 @@ html {
 
 /* ===== TAMPILAN MOBILE ===== */
 @media (max-width: 768px) {
+
+  #search-input {
+  max-width: 200px;
+  }
+
   .manga-container {
     padding-left: 15px;
     padding-right: 15px;
