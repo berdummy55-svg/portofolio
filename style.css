@@ -75,6 +75,7 @@ html {
   font-size: 25px;
   margin-left: 15px;
   line-height: 1; 
+  white-space: nowrap;
 }
 
 
@@ -86,6 +87,7 @@ html {
   width: auto;
   box-sizing: border-box;
   margin-right: 15px;
+  
 }
 
 /* Input Search */
@@ -330,6 +332,7 @@ html {
 
 /* Card Utama - Menggunakan Grid Layout */
 .manga-detail-card {
+  margin-top: 15px;
   display: grid;
   column-gap: 40px;
   row-gap: 20px;
@@ -561,6 +564,7 @@ html {
 .chapter-title {
   text-align: center;
   margin-bottom: 30px;
+  margin-top: 10px;
 }
 
 .chapter-title h1 {
@@ -711,6 +715,18 @@ html {
 
 /* ===== TAMPILAN TABLET / HP LEBAR ===== */
 @media (max-width: 900px) {
+  .logo {
+    font-size: 22px;
+  }
+  
+  #search-box-container {
+  margin-left: 5px;
+}
+
+#search-input {
+  width: 150px;
+}
+  
   .manga-container {
     gap: 10px;
   }
@@ -720,6 +736,7 @@ html {
     gap: 5px;
     padding: 30px;
     padding-top: 15px;
+    margin-top: 20px;
     grid-template-columns: 200px 1fr;
     grid-template-rows: max-content max-content max-content max-content auto;
     grid-template-areas:
