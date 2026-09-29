@@ -115,7 +115,7 @@ html {
 
 /*Manga*/
 .manga-container {
-  padding-top: 85px;
+  padding-top: 95px;
   padding-left: 25px;
   padding-right: 25px;
   display: grid;
@@ -127,7 +127,7 @@ html {
   justify-items: center;
 }
 
-/* Wrapper - kurangi jarak antar elemen */
+/* Wrapper */
 .manga-item-wrapper {
   text-decoration: none;
   color: inherit;
@@ -224,6 +224,8 @@ html {
   align-items: center;
   gap: 5px;
   animation: blink-status 1s infinite alternate;
+  margin-top: auto;
+  margin-left: 2px;
 
 }
 
@@ -320,7 +322,7 @@ html {
 
 /* ===== MANGA DETAIL PAGE ===== */
 .manga-detail-container {
-  padding-top: 115px;
+  padding-top: 120px;
   padding-bottom: 60px;
   margin-right: 15px;
   margin-left: 15px;
@@ -809,7 +811,7 @@ html {
   }
 
   .manga-detail-container {
-    padding-top: 90px;
+    padding-top: 95px;
     padding-bottom: 45px;
   }
 
