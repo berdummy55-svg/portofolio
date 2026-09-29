@@ -45,7 +45,7 @@ header {
   background: var(--background);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
-  
+
   border-bottom: 1px solid var(--blue-default);
   z-index: 1000;
 }
@@ -74,7 +74,7 @@ html {
   font-weight: 700;
   font-size: 25px;
   margin-left: 15px;
-  line-height: 1; 
+  line-height: 1;
   white-space: nowrap;
 }
 
@@ -87,7 +87,7 @@ html {
   width: auto;
   box-sizing: border-box;
   margin-right: 15px;
-  
+
 }
 
 /* Input Search */
@@ -320,7 +320,7 @@ html {
 
 /* ===== MANGA DETAIL PAGE ===== */
 .manga-detail-container {
-  padding-top: 100px;
+  padding-top: 115px;
   padding-bottom: 60px;
   margin-right: 15px;
   margin-left: 15px;
@@ -718,15 +718,15 @@ html {
   .logo {
     font-size: 20px;
   }
-  
-  #search-box-container {
-  margin-left: 5px;
-}
 
-#search-input {
-  width: 150px;
-}
-  
+  #search-box-container {
+    margin-left: 5px;
+  }
+
+  #search-input {
+    width: 150px;
+  }
+
   .manga-container {
     gap: 10px;
   }
@@ -758,7 +758,7 @@ html {
     font-size: 1.5rem;
   }
 
- 
+
   .manga-cover {
     max-width: 250px;
     margin-top: 15px;
@@ -798,7 +798,7 @@ html {
 @media (max-width: 768px) {
 
   #search-input {
-  max-width: 200px;
+    max-width: 200px;
   }
 
   .manga-container {
@@ -809,7 +809,7 @@ html {
   }
 
   .manga-detail-container {
-    padding-top: 85px;
+    padding-top: 90px;
     padding-bottom: 45px;
   }
 
@@ -841,6 +841,7 @@ html {
   .manga-detail-genre {
     font-size: 0.65rem;
   }
+
   .manga-title h1 {
     font-size: 1.2rem;
   }
